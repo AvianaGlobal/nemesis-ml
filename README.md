@@ -1,7 +1,7 @@
 nemesisML
 ==============================
 
-Development of mMachine Learning in Nemesis
+Development of Machine Learning in Nemesis
 
 Project Organization
 ------------
