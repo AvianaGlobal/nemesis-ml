@@ -4,7 +4,7 @@ setup(
     name='src',
     packages=find_packages(),
     version='0.1.0',
-    description='Development of mMachine Learning in Nemesis',
+    description='Development of Machine Learning in Nemesis',
     author='Aviana Global Technologies',
     license='',
 )
