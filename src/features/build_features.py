@@ -46,18 +46,18 @@ def get_distinct_num(column): #input the whole column
 
 #function to get count of each distict value in a column
 def get_distinct_count(column): #input the whole column
-    if get_distinct_num(column) > 5:
-        print('Number of distict values is larger than 5. We stop updating the number of distinct values')
-    else:
-        return column.value_counts()
+    dis_count={}
+    values = column.value_counts().to_list()       
+    for i in range(get_distinct_num(column)):
+        key = column.value_counts().index[i]
+        value = values[i]
+        dis_count[key] = value
+    return dis_count
 
 #function to get median in a column
 import statistics
 def get_median(column):
-    if get_distinct_num(column) > 5:
-        print('Number of distict values is larger than 5. We do not calculate median')
-    else:
-        return statistics.median(column)
+    return statistics.median(column)
 
 #function to get mode and count for the mode in a column
 def get_mode(column):
@@ -75,58 +75,70 @@ def column_type(column_name,df_type):
 
 #function to do basic variable screening and create basic statistical report
 def Stats_Collection(df,df_type):
+    file = open('../../reports/Univariate_statistic_report.txt','w') 
     for c in df:
+        file.write('\n')
         #exclude Target 
         if (column_type(c,df_type) != 'Flag_Continuous' and column_type(c,df_type) != 'Flag_Categorical'):
-            print('Variable name: ',c)
+            file.write('Variable name: '+c+'\n')
 
             #Basic variable screening
             if get_na_num(df[c])/len(df[c]) > 0.5:
-                print('More 50% missing values, drop this column\n')
+                file.write('More 50% missing values, drop this column\n')
                 df = df.drop(columns=c)
                 df_type = df_type.drop(index=int(df_type[df_type.Variable == c].index[0]))
                 continue
             if (column_type(c,df_type) == 'Delete'):
-                print('Column type is Delete, drop this column\n')
+                file.write('Column type is Delete, drop this column\n')
                 df = df.drop(columns=c)
                 df_type = df_type.drop(index=int(df_type[df_type.Variable == c].index[0]))
                 continue
             if (column_type(c,df_type) == 'Continuous') and (get_min(df[c]) == get_max(df[c])):
-                print('All same value, drop this column\n')
+                file.write('All same value, drop this column\n')
                 df = df.drop(columns=c)
                 df_type = df_type.drop(index=int(df_type[df_type.Variable == c].index[0]))
                 continue
             if (column_type(c,df_type) == 'Ordinal' or column_type(c,df_type) == 'Nominal') and (get_mode(df[c])[1]/get_valid_num(df[c]) > 0.95):
-                print('Mode contains more than 95% cases, drop this column\n')
+                file.write('Mode contains more than 95% cases, drop this column\n')
                 df = df.drop(columns=c)
                 df_type = df_type.drop(index=int(df_type[df_type.Variable == c].index[0]))
                 continue
             if (column_type(c,df_type) == 'Nominal') and (get_distinct_num(df[c]) > 100):
-                print('More than 100 categories, drop this column\n')
+                file.write('More than 100 categories, drop this column\n')
                 df = df.drop(columns=c)
                 df_type = df_type.drop(index=int(df_type[df_type.Variable == c].index[0]))
                 continue
 
             #Basic statistic report
-            print('Variable type: ', column_type(c,df_type))
-            print ('Number of missing values: ',get_na_num(df[c]))
-            print ('Number of valid values: ',get_valid_num(df[c]))
+            file.write('Variable type: '+column_type(c,df_type)+'\n')
+            file.write('Number of missing values: '+str(get_na_num(df[c]))+'\n')
+            file.write('Number of valid values: '+str(get_valid_num(df[c]))+'\n')
             if column_type(c,df_type) == 'Continuous' or column_type(c,df_type) == 'Ordinal':
-                print('Minimum value: ', get_min(df[c]))
-                print('Maximum value: ', get_max(df[c]))
+                file.write('Minimum value: '+str(get_min(df[c]))+'\n')
+                file.write('Maximum value: '+str(get_max(df[c]))+'\n')
             if column_type(c,df_type) == 'Continuous':
-                print('Mean: ',get_mean(df[c]))
-                print('Standard Deviation: ',get_std(df[c]))
-                print('Skewness: ',get_skew(df[c]))
-                print('Number of distinct values: ',get_distinct_num(df[c]))
-                print('Number of cases for each distinct value: ')
-                print(get_distinct_count(df[c]))
+                file.write('Mean: '+str(get_mean(df[c]))+'\n')
+                file.write('Standard Deviation: '+str(get_std(df[c]))+'\n')
+                file.write('Skewness: '+str(get_skew(df[c]))+'\n')
+                file.write('Number of distinct values: '+str(get_distinct_num(df[c]))+'\n')
+                file.write('Number of cases for each distinct value: \n')
+                if get_distinct_num(df[c]) > 5:
+                    file.write('Number of distict values is larger than 5. We stop updating the number of distinct values\n')
+                else:
+                    dict_count = get_distinct_count(df[c])
+                    for k, v in dict_count.items():
+                        file.write(str(k) + ' >>> '+ str(v) + '\n')
             else:
-                print('Number of categories: ', get_distinct_num(df[c]))
-                print('The counts of each category: ')
-                print(get_distinct_count(df[c]))
-                print('Mode: ', get_mode(df[c])[0],'Count: ',get_mode(df[c])[1])                
-        print()
+                file.write('Number of categories: '+str(get_distinct_num(df[c]))+'\n')
+                file.write('The counts of each category:\n')
+                if get_distinct_num(df[c]) > 5:
+                    file.write('Number of distict categories is larger than 5. We stop updating the number of distinct values\n')
+                else:
+                    dict_count = get_distinct_count(df[c])
+                    for k, v in dict_count.items():
+                        file.write(str(k) + ' >>> '+ str(v) + '\n')
+                file.write('Mode: '+str(get_mode(df[c])[0])+', Count: '+str(get_mode(df[c])[1])+'\n')   
+    file.close()             
     return(df,df_type)
 
 # function to identify outliers in continuous variables
@@ -201,50 +213,50 @@ def fill_missing_value(mydata, column_type):
             mydata[column_list[i]] = mydata[column_list[i]].fillna(mean_value) # fill missing value with mean
             cont_sd = mydata[column_list[i]].std() # calculate standard deviation
             cont_skew = mydata[column_list[i]].skew() # calculate skewness
-            print('')
+            """print('')
             print('Column:', column_list[i])
             print('Column type: continuous')
             print('Mean:', mean_value)
             print('Standard deviation:', cont_sd)
             print('Skewness:', cont_skew)
             print('The number of missing values:', get_na_num(mydata[column_list[i]]))
-            print('The number of valid values:', get_valid_num(mydata[column_list[i]]))
+            print('The number of valid values:', get_valid_num(mydata[column_list[i]]))"""
         elif (typ == 'Ordinal' and mydata[column_list[i]].dtype != 'object'):
             num_median = column_data.median() # calculate median 
             mydata[column_list[i]] = mydata[column_list[i]].fillna(num_median) # fill missing value with median
             count_median_num = mydata[column_list[i]][mydata[column_list[i]] == num_median].count() # count the the number of cases in the median category
-            print('')
+            """print('')
             print('Column:', column_list[i])
             print('Column type: num_ordinal')
             print('Median:', num_median)
             print('The number of cases in the median category:', count_median_num)
             print('The number of missing values:', get_na_num(mydata[column_list[i]]))
-            print('The number of valid values:', get_valid_num(mydata[column_list[i]]))
+            print('The number of valid values:', get_valid_num(mydata[column_list[i]]))"""
         elif (typ == 'Ordinal' and mydata[column_list[i]].dtype == 'object'):
             mode_value = column_data.mode()[0] # calculate mode
             mydata[column_list[i]] = mydata[column_list[i]].fillna(mode_value) # fill missing valye with mode
             count_mode = mydata[column_list[i]][mydata[column_list[i]] == mode_value].count() # count the the number of cases in the modal category
-            print('')
+            """print('')
             print('Column:', column_list[i])
             print('Column type: cat_ordinal')
             print('Mode:', mode_value)
             print('The number of cases in the modal category:', count_mode)
             print('The number of missing values:', get_na_num(mydata[column_list[i]]))
-            print('The number of valid values:', get_valid_num(mydata[column_list[i]]))
+            print('The number of valid values:', get_valid_num(mydata[column_list[i]]))"""
         else:
             mode_value = column_data.mode()[0] # calculate mode
             mydata[column_list[i]] = mydata[column_list[i]].fillna(mode_value) # fill missing valye with mode
             count_mode = mydata[column_list[i]][mydata[column_list[i]] == mode_value].count() # count the the number of cases in the modal category
-            print('')
+            """print('')
             print('Column:', column_list[i])
             print('Column type: nominal')
             print('Mode:', mode_value)
             print('The number of cases in the modal category:', count_mode)
             print('The number of missing values:', get_na_num(mydata[column_list[i]]))
-            print('The number of valid values:', get_valid_num(mydata[column_list[i]]))
+            print('The number of valid values:', get_valid_num(mydata[column_list[i]]))"""
         i = i + 1
     # add column type at the last row
-    print('add column type at the last row:')
+    #print('add column type at the last row:')
     return (mydata)
 
 #function to do z-score transformation of a column
@@ -268,8 +280,7 @@ def sort_data(Series):
 
 # Function to supervised merged categories in categorical variables
 # df = dataset, Predictor_type = Nominal or Ordinal, dependent_variable_name = target name, indep_column_num = column index
-def Supervised_Merged (df, Predictor_type, dependent_variable_name, indep_column_num, Categorical = True):
-    
+def Supervised_Merged (file,df, Predictor_type, dependent_variable_name, indep_column_num, Categorical = True):
     
     # Get the names of Independent and Dependent variables
     independent_variable_column = [df.columns[indep_column_num]]
@@ -292,9 +303,8 @@ def Supervised_Merged (df, Predictor_type, dependent_variable_name, indep_column
                                    dep_variable, dep_variable_type='continuous',max_depth = 1)
     
     # Print the fitted tree
-    print('The CHAID TREE is presented below:')
-    print('')
-    tree.print_tree()
+    file.write('The CHAID TREE is presented below:\n\n')
+    file.write(str(tree.print_tree())+'\n')
 
     # Get the merged categoriess string from the tree
     Merged_group = tree.tree_store[0].split.groupings.split('],')
@@ -308,10 +318,10 @@ def Supervised_Merged (df, Predictor_type, dependent_variable_name, indep_column
         for i in length_Merged_group:
             group = list(map(int, re.findall(r'\d+',Merged_group[i])))
             New_Merged_Categories[i] = group 
-        print('The P-Values of this node is',tree.tree_store[0].split.p)
-        print('The new categories are:' )
-        print(New_Merged_Categories)
-        print('')
+        file.write('The P-Values of this node is '+str(tree.tree_store[0].split.p)+'\n')
+        file.write('The new categories are:\n')
+        for k, v in New_Merged_Categories.items():
+            file.write(str(k) + ' >>> '+ str(v) + '\n')
         
         # Convert the dict_format to match the previous dic
         # For example: new_merged: {0:[1,2,3,4,5],1:[6,7,8],2:[0,9]}
@@ -323,16 +333,16 @@ def Supervised_Merged (df, Predictor_type, dependent_variable_name, indep_column
             for k in np.arange(0,len(values)):
                 new_dict[values[k]]=j
     else:
-        print('The P-Values of this node is',tree.tree_store[0].split.p)
-        print('The P-values is too large.')
-        print('There is no categories can be merged in this variables.')
-        print('')
+        file.write('The P-Values of this node is '+str(tree.tree_store[0].split.p)+'\n')
+        file.write('The P-values is too large.\n')
+        file.write('There is no categories can be merged in this variables.\n\n')
         new_dict={}
     return new_dict
 
 # Function to Rearrange categories and Supervised Merged for Categorical Predictors
 # dataset = original dataset, column_type = dataset includes the columns type, dep_variable_name = target name.
 def Reorder_Categories (dataset,column_type):
+    file = open('../../reports/Supervised_Merge_report.txt','w') 
     dep_variable_name = get_target(dataset,column_type)
     
     # Get the target column index
@@ -363,8 +373,8 @@ def Reorder_Categories (dataset,column_type):
             
             # Sort the categories  
             Count_Each_Level = sort_data(Count_Each_Level)
-            print('Column name:',Column_name.upper())
-            print(Count_Each_Level.to_frame())
+            file.write('Column name: '+Column_name.upper()+'\n')
+            file.write(str(Count_Each_Level.to_frame())+'\n\n')
 
 
             # Assign each category a number, starting from 0 to N, by counts.
@@ -375,35 +385,35 @@ def Reorder_Categories (dataset,column_type):
                 dict_Level[Level_name]= j 
 
 
-            print('Reorder Categories :')
-            print(dict_Level)
-            print('')
+            file.write('Reorder Categories:\n')
+            for k, v in dict_Level.items():
+                file.write(str(k) + ' >>> '+ str(v) + '\n')
 
             # Substitute orignal Categories to number
             dataset[Column_name] = dataset[Column_name].map(dict_Level)
 
 
             # Supervised Merged
-            print('Supervised Merged:')
+            file.write('\nSupervised Merged:\n')
             
             New_Categories ={}
             if T_colnumber != i:
                 
                 # Check if target is Categorical or Continuous
                 if Flag_type1 == True:
-                    New_Categories = Supervised_Merged(dataset, Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i, Categorical = False)
+                    New_Categories = Supervised_Merged(file,dataset, Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i, Categorical = False)
                 else:
-                    New_Categories = Supervised_Merged(dataset, Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i)
+                    New_Categories = Supervised_Merged(file,dataset, Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i)
             else:
-                print('')
-                print('This is the Target column.')
+                file.write('\n')
+                file.write('This is the Target column.\n')
                 
             # Check if there the New_Categories is empty set
             if len(New_Categories) != 0:
                 dataset[Column_name] = dataset[Column_name].map(New_Categories)
                 
-            print('------------------------------------------------------------------------------------------------------------------')
-            print('')
+            file.write('------------------------------------------------------------------------------------------------------------------')
+            file.write('\n')
             
          
         # If the Predictor type is Ordinal
@@ -416,13 +426,13 @@ def Reorder_Categories (dataset,column_type):
             
             # Check if target is Categorical or Continuous
             if Flag_type1 == True:
-                New_Categories = Supervised_Merged(dataset, Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i, Categorical = False)
+                New_Categories = Supervised_Merged(file,dataset, Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i, Categorical = False)
             else:
-                New_Categories = Supervised_Merged(dataset,Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i)
+                New_Categories = Supervised_Merged(file,dataset,Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i)
                 
             if len(New_Categories) != 0:
                     dataset[Column_name] = dataset[Column_name].map(New_Categories)
-            
+    file.close()            
     return dataset
 
 def p_value_continuous(column1,column2):
@@ -542,9 +552,8 @@ def get_continuous_after_pca(new_continuous_predictors,new_df):
 
 def main():
     #load data
-    df = pd.read_csv('data/raw/Kaggle/train_sample.csv')
-    df=df.drop(columns = ['Unnamed: 0']) #only for this sample dataset
-    df_type = pd.read_csv('data/raw/Kaggle/column_type.csv')
+    df = pd.read_csv('../../data/raw/Kaggle/train_sample.csv')
+    df_type = pd.read_csv('../../data/raw/Kaggle/column_type.csv')
 
     # Basic screening and print report
     d = Stats_Collection(df,df_type)
@@ -578,8 +587,7 @@ def main():
 
     #Continuous variable construction:
     new_df = get_continuous_after_pca(new_continuous_predictors,new_df)
-
-    print(new_df.head())
+    new_df.to_csv('../../data/processed/kaggle_sample_train.csv', index=False)
 
 main()
 
