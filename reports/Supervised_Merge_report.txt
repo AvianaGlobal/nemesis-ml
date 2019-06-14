@@ -1,0 +1,463 @@
+Column name: CALENDAR_YEAR
+      Calendar_Year
+2006            973
+2005           4025
+
+Reorder Categories:
+2006 >>> 0
+2005 >>> 1
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+------------------------------------------------------------------------------------------------------------------
+Column name: MODEL_YEAR
+      Model_Year
+1982           7
+2007           9
+1983          13
+1981          16
+1984          25
+1987          28
+1986          33
+1985          35
+1988          50
+1989          59
+1990          65
+1992          95
+1991          97
+2006         105
+1993         138
+1994         169
+1996         198
+1995         208
+1998         269
+1997         293
+1999         367
+2005         377
+2000         429
+2001         461
+2004         468
+2003         478
+2002         506
+
+Reorder Categories:
+1982 >>> 0
+2007 >>> 1
+1983 >>> 2
+1981 >>> 3
+1984 >>> 4
+1987 >>> 5
+1986 >>> 6
+1985 >>> 7
+1988 >>> 8
+1989 >>> 9
+1990 >>> 10
+1992 >>> 11
+1991 >>> 12
+2006 >>> 13
+1993 >>> 14
+1994 >>> 15
+1996 >>> 16
+1995 >>> 17
+1998 >>> 18
+1997 >>> 19
+1999 >>> 20
+2005 >>> 21
+2000 >>> 22
+2001 >>> 23
+2004 >>> 24
+2003 >>> 25
+2002 >>> 26
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is 5.241546592811847e-06
+The new categories are:
+0 >>> [0, 1, 2, 3, 4, 7, 12, 23, 26, 20, 8, 9, 10, 11, 17, 22, 14, 13, 18, 6, 19, 21, 15, 24, 25]
+1 >>> [5, 16]
+------------------------------------------------------------------------------------------------------------------
+Column name: BLIND_MAKE
+    Blind_Make
+CB           1
+E            1
+U            1
+BD           3
+AW           4
+BY           5
+AV           7
+AY           7
+BB           7
+G            7
+AF           8
+J            8
+AC           9
+BG           9
+Z           10
+BZ          13
+AX          15
+BN          19
+N           19
+AZ          20
+I           22
+AN          24
+O           26
+AI          32
+BP          36
+M           38
+BF          43
+BU          50
+AQ          51
+BV          64
+R           67
+AL          74
+D           78
+Q           82
+AR          88
+P           88
+BH          92
+L           96
+BT          98
+W          112
+AO         121
+AH         137
+Y          275
+BO         280
+X          304
+AU         351
+K          499
+BW         739
+AJ         858
+
+Reorder Categories:
+CB >>> 0
+E >>> 1
+U >>> 2
+BD >>> 3
+AW >>> 4
+BY >>> 5
+AV >>> 6
+AY >>> 7
+BB >>> 8
+G >>> 9
+AF >>> 10
+J >>> 11
+AC >>> 12
+BG >>> 13
+Z >>> 14
+BZ >>> 15
+AX >>> 16
+BN >>> 17
+N >>> 18
+AZ >>> 19
+I >>> 20
+AN >>> 21
+O >>> 22
+AI >>> 23
+BP >>> 24
+M >>> 25
+BF >>> 26
+BU >>> 27
+AQ >>> 28
+BV >>> 29
+R >>> 30
+AL >>> 31
+D >>> 32
+Q >>> 33
+AR >>> 34
+P >>> 35
+BH >>> 36
+L >>> 37
+BT >>> 38
+W >>> 39
+AO >>> 40
+AH >>> 41
+Y >>> 42
+BO >>> 43
+X >>> 44
+AU >>> 45
+K >>> 46
+BW >>> 47
+AJ >>> 48
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is 0.006335930861154875
+The new categories are:
+0 >>> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 46, 40, 28, 29, 47, 30, 35, 32, 33, 38, 36, 37, 41]
+1 >>> [26, 39, 45, 48, 31, 44, 34, 43, 42]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT1
+   Cat1
+E    61
+H    69
+J   120
+G   204
+C   212
+A   273
+F   375
+I  1103
+B  1229
+D  1352
+
+Reorder Categories:
+E >>> 0
+H >>> 1
+J >>> 2
+G >>> 3
+C >>> 4
+A >>> 5
+F >>> 6
+I >>> 7
+B >>> 8
+D >>> 9
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT2
+   Cat2
+B    49
+A   812
+C  4137
+
+Reorder Categories:
+B >>> 0
+A >>> 1
+C >>> 2
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT3
+   Cat3
+D   130
+E   311
+F   356
+C   507
+B   750
+A  2944
+
+Reorder Categories:
+D >>> 0
+E >>> 1
+F >>> 2
+C >>> 3
+B >>> 4
+A >>> 5
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT6
+   Cat6
+F   108
+E   565
+C  1089
+B  1510
+D  1726
+
+Reorder Categories:
+F >>> 0
+E >>> 1
+C >>> 2
+B >>> 3
+D >>> 4
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT8
+   Cat8
+C   276
+B  1442
+A  3280
+
+Reorder Categories:
+C >>> 0
+B >>> 1
+A >>> 2
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is 0.008425755047176495
+The new categories are:
+0 >>> [0]
+1 >>> [1, 2]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT9
+   Cat9
+A   739
+B  4259
+
+Reorder Categories:
+A >>> 0
+B >>> 1
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT10
+   Cat10
+C    254
+B   1493
+A   3251
+
+Reorder Categories:
+C >>> 0
+B >>> 1
+A >>> 2
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT11
+   Cat11
+D    134
+E    300
+F    312
+C    406
+B   1147
+A   2699
+
+Reorder Categories:
+D >>> 0
+E >>> 1
+F >>> 2
+C >>> 3
+B >>> 4
+A >>> 5
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT12
+   Cat12
+A      1
+F    177
+E    462
+D   1333
+C   1383
+B   1642
+
+Reorder Categories:
+A >>> 0
+F >>> 1
+E >>> 2
+D >>> 3
+C >>> 4
+B >>> 5
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+------------------------------------------------------------------------------------------------------------------
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+Column name: NVCAT
+   NVCat
+D      7
+I     55
+C     62
+G     77
+B     84
+A    101
+E    127
+K    134
+H    160
+F    199
+L    305
+J    323
+O    615
+N    730
+M   2019
+
+Reorder Categories:
+D >>> 0
+I >>> 1
+C >>> 2
+G >>> 3
+B >>> 4
+A >>> 5
+E >>> 6
+K >>> 7
+H >>> 8
+F >>> 9
+L >>> 10
+J >>> 11
+O >>> 12
+N >>> 13
+M >>> 14
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+None
+The P-Values of this node is 0.006536703028126455
+The new categories are:
+0 >>> [0, 1, 4, 14, 7, 5, 6, 8, 11, 12, 9, 13, 10]
+1 >>> [2, 3]
+------------------------------------------------------------------------------------------------------------------
