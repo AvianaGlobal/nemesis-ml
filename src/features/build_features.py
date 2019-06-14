@@ -74,8 +74,7 @@ def column_type(column_name,df_type):
     return (df_type.loc[df_type['Variable'] == column_name, 'Type'].iloc[0])
 
 #function to do basic variable screening and create basic statistical report
-def Stats_Collection(df,df_type):
-    file = open('../../reports/Univariate_statistic_report.txt','w') 
+def Stats_Collection(file,df,df_type):
     for c in df:
         file.write('\n')
         #exclude Target 
@@ -137,8 +136,7 @@ def Stats_Collection(df,df_type):
                     dict_count = get_distinct_count(df[c])
                     for k, v in dict_count.items():
                         file.write(str(k) + ' >>> '+ str(v) + '\n')
-                file.write('Mode: '+str(get_mode(df[c])[0])+', Count: '+str(get_mode(df[c])[1])+'\n')   
-    file.close()             
+                file.write('Mode: '+str(get_mode(df[c])[0])+', Count: '+str(get_mode(df[c])[1])+'\n')               
     return(df,df_type)
 
 # function to identify outliers in continuous variables
@@ -341,8 +339,7 @@ def Supervised_Merged (file,df, Predictor_type, dependent_variable_name, indep_c
 
 # Function to Rearrange categories and Supervised Merged for Categorical Predictors
 # dataset = original dataset, column_type = dataset includes the columns type, dep_variable_name = target name.
-def Reorder_Categories (dataset,column_type):
-    file = open('../../reports/Supervised_Merge_report.txt','w') 
+def Reorder_Categories (file,dataset,column_type):
     dep_variable_name = get_target(dataset,column_type)
     
     # Get the target column index
@@ -431,8 +428,7 @@ def Reorder_Categories (dataset,column_type):
                 New_Categories = Supervised_Merged(file,dataset,Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i)
                 
             if len(New_Categories) != 0:
-                    dataset[Column_name] = dataset[Column_name].map(New_Categories)
-    file.close()            
+                    dataset[Column_name] = dataset[Column_name].map(New_Categories)            
     return dataset
 
 def p_value_continuous(column1,column2):
@@ -471,14 +467,16 @@ def continuous_selection(new_df,new_df_type):
     for c in df_continuous_predictors:
         if p_value_target_predictor(target,df_continuous_predictors[c],new_df_type) > 0.05:
             df_continuous_predictors = df_continuous_predictors.drop(columns = c)
-    return df_continuous_predictors
+            new_df = new_df.drop(columns = c)
+            new_df_type = new_df_type.drop(index=int(new_df_type[new_df_type.Variable == c].index[0]))
+    return (df_continuous_predictors,new_df,new_df_type)
 
 #function to get correlation between a feature and a group
 def get_corr_group(variable_index,group_list,new_continuous_predictors):
     corr_list = []
     for i in group_list:
         matrix = np.corrcoef(new_continuous_predictors.iloc[:,variable_index],new_continuous_predictors.iloc[:,i])
-        corr_list.append(matrix[0,1])
+        corr_list.append(abs(matrix[0,1]))
     return min(corr_list)
 
 #function to get grouped feature index. 
@@ -532,7 +530,7 @@ def get_grouped_features(new_continuous_predictors):
 #function to get continuous features after PCA
 #input: a dataset contains only continuous features with high correlation with target and the new_df from previous steps
 #output: a dataset contains only continuous features after PCA 
-def get_continuous_after_pca(new_continuous_predictors,new_df):
+def get_continuous_after_pca(new_continuous_predictors,new_df,new_df_type):
     pca = PCA(n_components=1)
     groups = get_grouped_features(new_continuous_predictors)
     for group in groups:
@@ -547,16 +545,24 @@ def get_continuous_after_pca(new_continuous_predictors,new_df):
         X_pca=pca.transform(df_pca) 
         X_pca = pd.DataFrame(X_pca)
         new_df = new_df.drop(columns=group)
+        for c in group:
+            new_df_type = new_df_type.drop(index=int(new_df_type[new_df_type.Variable == c].index[0]))
         new_df[new_pca] = X_pca
-    return(new_df)
+        new_df_type = new_df_type.append(pd.DataFrame([[new_pca,'Continuous']], columns=['Variable','Type']))
+    return(new_df,new_df_type)
 
 def main():
     #load data
     df = pd.read_csv('../../data/raw/Kaggle/train_sample.csv')
     df_type = pd.read_csv('../../data/raw/Kaggle/column_type.csv')
 
+    target_name = get_target(df,df_type)
+    target_type = column_type(target_name,df_type)
+
     # Basic screening and print report
-    d = Stats_Collection(df,df_type)
+    file = open('../../reports/raw_univariate_statistic_report.txt','w') 
+    d = Stats_Collection(file,df,df_type)
+    file.close()
     # After deleting useless variables, new dataset and new column type dataset are named as new_df and new_df_type
     #new_df & new_df_type do not contain target
     new_df_type = d[1]
@@ -577,17 +583,30 @@ def main():
         # new_df[c] = minmax(new_df, c,new_df_type)
 
     #Categorical variable handling: Reorder and Supervised Merged
-    new_df = Reorder_Categories(new_df,new_df_type)
-
-    #Continuous variable handling Supervised Binning
-
+    file = open('../../reports/supervised_merge_report.txt','w') 
+    new_df = Reorder_Categories(file,new_df,new_df_type)
+    file.close()
 
     #Continuous variable handling when target is continuous: Abandon not highly correlated features with target
-    new_continuous_predictors = continuous_selection(new_df,new_df_type)
+    if target_type == 'Flag_Continuous':
+        selection = continuous_selection(new_df,new_df_type)
+        new_continuous_predictors = selection[0]
+        new_df = selection[1]
+        new_df_type = selection[2]
 
-    #Continuous variable construction:
-    new_df = get_continuous_after_pca(new_continuous_predictors,new_df)
+        #Continuous variable construction:
+        pca = get_continuous_after_pca(new_continuous_predictors,new_df,new_df_type)
+        new_df = pca[0]
+        new_df_type = pca[1]
+    #else:
+        #Continuous variable handling Supervised Binning
+
     new_df.to_csv('../../data/processed/kaggle_sample_train.csv', index=False)
+
+    file = open('../../reports/processed_univariate_statistic_report.txt','w') 
+    d = Stats_Collection(file,new_df,new_df_type)
+    file.close()
+
 
 main()
 
