@@ -187,8 +187,8 @@ Variable type: Continuous
 Number of missing values: 0
 Number of valid values: 5000
 Minimum value: -3.668347665976766
-Maximum value: 3.7323920862294737
-Mean: 1.4210854715202004e-18
+Maximum value: 3.7323920862294733
+Mean: -5.684341886080802e-18
 Standard Deviation: 1.408743096528245
 Skewness: -0.35893134175584135
 Number of distinct values: 335
@@ -199,11 +199,11 @@ Variable name: Var1_Var5
 Variable type: Continuous
 Number of missing values: 0
 Number of valid values: 5000
-Minimum value: -3.137266927782635
-Maximum value: 3.2350931675250267
-Mean: -2.4158453015843405e-17
-Standard Deviation: 1.3815995476647496
-Skewness: -0.5751484482491748
+Minimum value: -3.137266927782634
+Maximum value: 3.235093167525026
+Mean: -2.9842794901924206e-17
+Standard Deviation: 1.3815995476647491
+Skewness: -0.5751484482491749
 Number of distinct values: 717
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
@@ -212,11 +212,11 @@ Variable name: Var3_Var6
 Variable type: Continuous
 Number of missing values: 0
 Number of valid values: 5000
-Minimum value: -2.988020227074491
-Maximum value: 3.424000800422876
-Mean: -3.268496584496461e-17
-Standard Deviation: 1.350196339517916
-Skewness: -0.19059697331719042
+Minimum value: -2.9880202270744904
+Maximum value: 3.4240008004228755
+Mean: -4.405364961712621e-17
+Standard Deviation: 1.3501963395179157
+Skewness: -0.1905969733171904
 Number of distinct values: 1380
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
@@ -225,11 +225,11 @@ Variable name: Var7_Var8_NVVar4
 Variable type: Continuous
 Number of missing values: 0
 Number of valid values: 5000
-Minimum value: -2.6454169760391566
-Maximum value: 3.285048772321299
-Mean: -9.237055564881302e-18
+Minimum value: -2.6454169760391593
+Maximum value: 3.285048772321298
+Mean: 1.4210854715202004e-17
 Standard Deviation: 1.18048381841227
-Skewness: 0.2994305116972601
+Skewness: 0.29943051169725954
 Number of distinct values: 1973
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
