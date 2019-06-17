@@ -6,6 +6,9 @@ from sklearn import preprocessing
 from CHAID import Tree
 import re
 from sklearn.decomposition import PCA
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import roc_auc_score
 
 
 
@@ -449,6 +452,75 @@ def p_value_target_predictor(target,column,df_type):
         c, p, dof, expected=stats.chi2_contingency(contingency)
         return p
 
+# Function to get best depth which help to train optimal model
+# Input: data of each column, data of decision varaiable
+# Output: best depth
+def get_best_depth(d_column, d_flag):
+    score_mean = [] # here I will store the roc auc
+    depth_list = [1,2,3,4,5,6,7,8,9,10]    
+    for depth in depth_list:
+        tree_model = DecisionTreeClassifier(max_depth=depth)
+        # calculate roc_auc value
+        score = cross_val_score(tree_model, d_column, d_flag, cv=3, scoring='roc_auc')    
+        score_mean.append(np.mean(score))    
+    # create a dataframe to store depth and roc_auc value
+    table = pd.concat([pd.Series(depth_list), pd.Series(score_mean)], axis=1)
+    table.columns = ['depth', 'roc_auc_mean']    
+    # get best depth
+    table_sort = table.sort_values(by='roc_auc_mean', ascending=False) 
+    best_depth = table_sort.iloc[0,0] # get depth which lead ot the largest roc_auc
+    print(table_sort)
+    print('Best Depth:',best_depth)
+    return (best_depth) 
+
+
+# Function to do supervised binning, based single variable decision tree model
+# Input: all data processed in the previous step，the data including variable and column type
+# Output: new data file
+def supervised_binning(df,df_type):    
+    # get all continuous variable
+    new_df = get_continuous_variables(df,df_type)
+    # get target
+    d_flag = df[[get_target(df,df_type)]] # get data of target
+    #d_flag.loc[d_flag['Claim_Amount'] != 0] = 1
+    column_list = new_df.columns.values.tolist()
+    num_row = len(new_df)
+
+    i = 0
+    for column in column_list:
+        
+        # get data of a certain column
+        d_column = new_df[[column]]
+        
+        num_unique = len(new_df[column].unique())
+        
+        # select best parameter (max_depth, max_leaf_node) 
+        if num_row <= 10000:
+            num_bins = None
+            depth = get_best_depth(d_column,d_flag)
+            print("do not set 'max_leaf_node'")
+        elif (num_row >= 10000 and num_unique <=64):
+            num_bins = None
+            depth = get_best_depth(d_column,d_flag)
+            print("do not set 'max_leaf_node'")
+        else:
+            depth = None
+            num_bins = np.sqrt(num_unique)
+            print("do not set 'max_depth'")
+         
+        # train optimal single variable to do supervised binning
+        optimal_model = DecisionTreeClassifier(max_depth=depth,max_leaf_nodes=num_bins)
+        optimal_model.fit(d_column, d_flag)
+        y_pred = optimal_model.predict_proba(d_column)[:,1]
+        score = roc_auc_score(d_flag,y_pred)
+        df[column]=y_pred
+        print('Column name:', column)
+        print('The number of original unique value (bins):', num_unique)
+        print('The number of unique value (bins):', len(df[column].unique()))
+        print('The value of each bins:', df[column].unique() )
+        print('Roc_Auc value:', score)
+        i=i+1
+    return (df) 
 #function to get all continuous variables. Preparing for PCA
 #input: a record dataset and a column type dataset after predictors handling
 #output: a dataset contains only continuous variables
@@ -598,11 +670,14 @@ def main():
         pca = get_continuous_after_pca(new_continuous_predictors,new_df,new_df_type)
         new_df = pca[0]
         new_df_type = pca[1]
-    #else:
-        #Continuous variable handling Supervised Binning
+    #Continuous variable handling when target is categorical
+    else:
+        new_df = supervised_binning(new_df,new_df_type)
 
     new_df.to_csv('../../data/processed/kaggle_sample_train.csv', index=False)
+    new_df_type.to_csv('../../data/processed/kaggle_sample_type.csv', index=False)
 
+    #Univariate stats report for processed data
     file = open('../../reports/processed_univariate_statistic_report.txt','w') 
     d = Stats_Collection(file,new_df,new_df_type)
     file.close()
