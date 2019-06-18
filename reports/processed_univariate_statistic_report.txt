@@ -1,19 +1,4 @@
 
-Variable name: Vehicle
-Variable type: Continuous
-Number of missing values: 0
-Number of valid values: 5000
-Minimum value: -1.132747132128773
-Maximum value: 1.155509898401059
-Mean: -2.0463630789890885e-16
-Standard Deviation: 1.0001000150025003
-Skewness: 0.02276959772092246
-Number of distinct values: 3
-Number of cases for each distinct value: 
--1.132747132128773 >>> 1929
-1.155509898401059 >>> 1891
--2.303708273550192e-16 >>> 1180
-
 Variable name: Calendar_Year
 Variable type: Nominal
 Number of missing values: 0
@@ -25,26 +10,37 @@ The counts of each category:
 Mode: 1, Count: 4026
 
 Variable name: Model_Year
-Mode contains more than 95% cases, drop this column
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 5000
+Number of categories: 3
+The counts of each category:
+2 >>> 2900
+1 >>> 1295
+0 >>> 805
+Mode: 2, Count: 2900
 
 Variable name: Blind_Make
 Variable type: Nominal
 Number of missing values: 0
 Number of valid values: 5000
-Number of categories: 2
+Number of categories: 4
 The counts of each category:
-0 >>> 2614
-1 >>> 2386
-Mode: 0, Count: 2614
+2 >>> 1855
+3 >>> 1496
+0 >>> 1467
+1 >>> 182
+Mode: 2, Count: 1855
 
 Variable name: Cat1
 Variable type: Nominal
 Number of missing values: 0
 Number of valid values: 5000
-Number of categories: 10
+Number of categories: 2
 The counts of each category:
-Number of distict categories is larger than 5. We stop updating the number of distinct values
-Mode: 9, Count: 1352
+1 >>> 3512
+0 >>> 1488
+Mode: 1, Count: 3512
 
 Variable name: Cat2
 Variable type: Nominal
@@ -83,11 +79,12 @@ Variable name: Cat8
 Variable type: Nominal
 Number of missing values: 0
 Number of valid values: 5000
-Number of categories: 2
+Number of categories: 3
 The counts of each category:
-1 >>> 4724
+2 >>> 3282
+1 >>> 1442
 0 >>> 276
-Mode: 1, Count: 4724
+Mode: 2, Count: 3282
 
 Variable name: Cat9
 Variable type: Nominal
@@ -140,96 +137,13 @@ Number of distict categories is larger than 5. We stop updating the number of di
 Mode: 4, Count: 2047
 
 Variable name: NVCat
-Mode contains more than 95% cases, drop this column
-
-Variable name: NVVar1
-Variable type: Continuous
+Variable type: Nominal
 Number of missing values: 0
 Number of valid values: 5000
-Minimum value: -0.26291735707486824
-Maximum value: 11.998112859731075
-Mean: -3.552713678800501e-17
-Standard Deviation: 1.0001000150025003
-Skewness: 4.16784671979285
-Number of distinct values: 9
-Number of cases for each distinct value: 
-Number of distict values is larger than 5. We stop updating the number of distinct values
+Number of categories: 3
+The counts of each category:
+0 >>> 3229
+2 >>> 1388
+1 >>> 383
+Mode: 0, Count: 3229
 
-Variable name: NVVar2
-Variable type: Continuous
-Number of missing values: 0
-Number of valid values: 5000
-Minimum value: -0.3235048476329229
-Maximum value: 9.240502924558642
-Mean: 8.881784197001253e-18
-Standard Deviation: 1.0001000150025003
-Skewness: 3.1722657127268654
-Number of distinct values: 12
-Number of cases for each distinct value: 
-Number of distict values is larger than 5. We stop updating the number of distinct values
-
-Variable name: NVVar3
-Variable type: Continuous
-Number of missing values: 0
-Number of valid values: 5000
-Minimum value: -0.3087871812718318
-Maximum value: 6.194734060408411
-Mean: -4.831690603168681e-17
-Standard Deviation: 1.0001000150025008
-Skewness: 3.2891866042487017
-Number of distinct values: 11
-Number of cases for each distinct value: 
-Number of distict values is larger than 5. We stop updating the number of distinct values
-
-
-Variable name: Var2_Var4
-Variable type: Continuous
-Number of missing values: 0
-Number of valid values: 5000
-Minimum value: -3.668347665976766
-Maximum value: 3.7323920862294733
-Mean: -5.684341886080802e-18
-Standard Deviation: 1.408743096528245
-Skewness: -0.35893134175584135
-Number of distinct values: 335
-Number of cases for each distinct value: 
-Number of distict values is larger than 5. We stop updating the number of distinct values
-
-Variable name: Var1_Var5
-Variable type: Continuous
-Number of missing values: 0
-Number of valid values: 5000
-Minimum value: -3.137266927782634
-Maximum value: 3.235093167525026
-Mean: -2.9842794901924206e-17
-Standard Deviation: 1.3815995476647491
-Skewness: -0.5751484482491749
-Number of distinct values: 717
-Number of cases for each distinct value: 
-Number of distict values is larger than 5. We stop updating the number of distinct values
-
-Variable name: Var3_Var6
-Variable type: Continuous
-Number of missing values: 0
-Number of valid values: 5000
-Minimum value: -2.9880202270744904
-Maximum value: 3.4240008004228755
-Mean: -4.405364961712621e-17
-Standard Deviation: 1.3501963395179157
-Skewness: -0.1905969733171904
-Number of distinct values: 1380
-Number of cases for each distinct value: 
-Number of distict values is larger than 5. We stop updating the number of distinct values
-
-Variable name: Var7_Var8_NVVar4
-Variable type: Continuous
-Number of missing values: 0
-Number of valid values: 5000
-Minimum value: -2.6454169760391593
-Maximum value: 3.285048772321298
-Mean: 1.4210854715202004e-17
-Standard Deviation: 1.18048381841227
-Skewness: 0.29943051169725954
-Number of distinct values: 1973
-Number of cases for each distinct value: 
-Number of distict values is larger than 5. We stop updating the number of distinct values
