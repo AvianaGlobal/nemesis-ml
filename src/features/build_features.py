@@ -274,6 +274,17 @@ def minmax(df, column,df_type):
    else:
        return(df[column])
 
+#function to do Box-Cox transformation of continuous target
+def boxcox(df, target, df_type):
+    if column_type(target, df_type) == 'Flag_Continuous':
+        c = min(df[target]) - 1
+        target1 = df[target] - c
+        target1 = stats.boxcox(target1)[0]
+        return(pd.Series(stats.zscore(target1)))
+    else:
+        return(df[target])
+
+
 # Function to sort the Series by value and then by index(Lexical order)
 def sort_data(Series):
     return Series.iloc[np.lexsort([Series.index, Series.values])]
@@ -521,6 +532,7 @@ def supervised_binning(df,df_type):
         print('Roc_Auc value:', score)
         i=i+1
     return (df) 
+
 #function to get all continuous variables. Preparing for PCA
 #input: a record dataset and a column type dataset after predictors handling
 #output: a dataset contains only continuous variables
@@ -654,6 +666,10 @@ def main():
         new_df[c] = zscore(new_df, c,new_df_type)
         # new_df[c] = minmax(new_df, c,new_df_type)
 
+    #Box-Cox transformation of continuous target
+    new_df[target_name] = boxcox(new_df, target_name, new_df_type)
+
+
     #Categorical variable handling: Reorder and Supervised Merged
     file = open('../../reports/supervised_merge_report.txt','w') 
     new_df = Reorder_Categories(file,new_df,new_df_type)
@@ -667,9 +683,12 @@ def main():
         new_df_type = selection[2]
 
         #Continuous variable construction:
-        pca = get_continuous_after_pca(new_continuous_predictors,new_df,new_df_type)
-        new_df = pca[0]
-        new_df_type = pca[1]
+        #If there are more than 2 continuous variables left in data set, perform PCA
+        if new_continuous_predictors.shape[1] != 0:
+            pca = get_continuous_after_pca(new_continuous_predictors,new_df,new_df_type)
+            new_df = pca[0]
+            new_df_type = pca[1]
+
     #Continuous variable handling when target is categorical
     else:
         new_df = supervised_binning(new_df,new_df_type)

@@ -1,5 +1,4 @@
 Variable,Type
-Vehicle,Continuous
 Calendar_Year,Nominal
 Model_Year,Nominal
 Blind_Make,Nominal
@@ -14,11 +13,4 @@ Cat11,Nominal
 Cat12,Nominal
 OrdCat,Ordinal
 NVCat,Nominal
-NVVar1,Continuous
-NVVar2,Continuous
-NVVar3,Continuous
 Claim_Amount,Flag_Continuous
-Var2_Var4,Continuous
-Var1_Var5,Continuous
-Var3_Var6,Continuous
-Var7_Var8_NVVar4,Continuous
