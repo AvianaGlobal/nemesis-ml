@@ -10,7 +10,7 @@ Reorder Categories:
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
 The P-Values of this node is None
 The P-values is too large.
 There is no categories can be merged in this variables.
@@ -78,7 +78,7 @@ Reorder Categories:
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, (Model_Year, p=0.0004225007191116167, score=7.781411652512168, groups=[[0, 1, 2, 3, 4, 7, 19, 8, 9, 10, 11, 14], [5, 6, 16, 17, 20, 23], [12, 25, 21, 13, 26, 15, 24, 18, 22]]), dof=4998)), ([0, 1, 2, 3, 4, 7, 19, 8, 9, 10, 11, 14], {'mean': -0.09355216452047296, 's.t.d': 0.33771712123773057}, <Invalid Chaid Split> - the max depth has been reached), ([5, 6, 16, 17, 20, 23], {'mean': 0.07963097388210039, 's.t.d': 1.319237630415527}, <Invalid Chaid Split> - the max depth has been reached), ([12, 25, 21, 13, 26, 15, 24, 18, 22], {'mean': -0.009590558185634127, 's.t.d': 0.9539141272552158}, <Invalid Chaid Split> - the max depth has been reached)]
 The P-Values of this node is 0.0004225007191116167
 The new categories are:
 0 >>> [0, 1, 2, 3, 4, 7, 19, 8, 9, 10, 11, 14]
@@ -191,7 +191,7 @@ AJ >>> 48
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, (Blind_Make, p=3.1898070710215082e-09, score=14.215360434050517, groups=[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 47, 30, 32, 33, 38], [26, 27, 34], [29, 48, 44, 42, 43, 31], [35, 36, 37, 39, 40, 45, 41, 46]]), dof=4998)), ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 47, 30, 32, 33, 38], {'mean': -0.08585548722870684, 's.t.d': 0.43313371109415766}, <Invalid Chaid Split> - the max depth has been reached), ([26, 27, 34], {'mean': 0.3685586094120752, 's.t.d': 2.078258627771395}, <Invalid Chaid Split> - the max depth has been reached), ([29, 48, 44, 42, 43, 31], {'mean': 0.054765582622147056, 's.t.d': 1.2290520755989105}, <Invalid Chaid Split> - the max depth has been reached), ([35, 36, 37, 39, 40, 45, 41, 46], {'mean': -0.028554694460272232, 's.t.d': 0.8552575389279985}, <Invalid Chaid Split> - the max depth has been reached)]
 The P-Values of this node is 3.1898070710215082e-09
 The new categories are:
 0 >>> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 47, 30, 32, 33, 38]
@@ -227,7 +227,7 @@ D >>> 9
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, (Cat1, p=0.01307686210056731, score=6.163094730484698, groups=[[0, 3, 7, 2], [1, 4, 8, 6, 5, 9]]), dof=4998)), ([0, 3, 7, 2], {'mean': -0.05391498413368916, 's.t.d': 0.7011224121638558}, <Invalid Chaid Split> - the max depth has been reached), ([1, 4, 8, 6, 5, 9], {'mean': 0.022843250680788643, 's.t.d': 1.1016634178058333}, <Invalid Chaid Split> - the max depth has been reached)]
 The P-Values of this node is 0.01307686210056731
 The new categories are:
 0 >>> [0, 3, 7, 2]
@@ -247,7 +247,7 @@ C >>> 2
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
 The P-Values of this node is None
 The P-values is too large.
 There is no categories can be merged in this variables.
@@ -273,7 +273,7 @@ A >>> 5
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
 The P-Values of this node is None
 The P-values is too large.
 There is no categories can be merged in this variables.
@@ -297,7 +297,7 @@ D >>> 4
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
 The P-Values of this node is None
 The P-values is too large.
 There is no categories can be merged in this variables.
@@ -317,7 +317,7 @@ A >>> 2
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
 The P-Values of this node is None
 The P-values is too large.
 There is no categories can be merged in this variables.
@@ -335,7 +335,7 @@ B >>> 1
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
 The P-Values of this node is None
 The P-values is too large.
 There is no categories can be merged in this variables.
@@ -355,7 +355,7 @@ A >>> 2
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
 The P-Values of this node is None
 The P-values is too large.
 There is no categories can be merged in this variables.
@@ -381,7 +381,7 @@ A >>> 5
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
 The P-Values of this node is None
 The P-values is too large.
 There is no categories can be merged in this variables.
@@ -407,7 +407,7 @@ B >>> 5
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
 The P-Values of this node is None
 The P-values is too large.
 There is no categories can be merged in this variables.
@@ -415,7 +415,7 @@ There is no categories can be merged in this variables.
 ------------------------------------------------------------------------------------------------------------------
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
 The P-Values of this node is None
 The P-values is too large.
 There is no categories can be merged in this variables.
@@ -458,7 +458,7 @@ M >>> 14
 Supervised Merged:
 The CHAID TREE is presented below:
 
-None
+[([], {'mean': 4.1744385725905886e-17, 's.t.d': 1.0}, (NVCat, p=1.067846967499871e-07, score=16.104129002310163, groups=[[0, 1, 10, 5, 6, 12, 14], [2, 4, 8, 3], [7, 9, 13, 11]]), dof=4998)), ([0, 1, 10, 5, 6, 12, 14], {'mean': -0.04607669185595867, 's.t.d': 0.7522336277291276}, <Invalid Chaid Split> - the max depth has been reached), ([2, 4, 8, 3], {'mean': 0.24500694457245495, 's.t.d': 1.7992825230760696}, <Invalid Chaid Split> - the max depth has been reached), ([7, 9, 13, 11], {'mean': 0.03958499872596577, 's.t.d': 1.1702670552368821}, <Invalid Chaid Split> - the max depth has been reached)]
 The P-Values of this node is 1.067846967499871e-07
 The new categories are:
 0 >>> [0, 1, 10, 5, 6, 12, 14]

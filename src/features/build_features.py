@@ -316,7 +316,7 @@ def Supervised_Merged (file,df, Predictor_type, dependent_variable_name, indep_c
     
     # Print the fitted tree
     file.write('The CHAID TREE is presented below:\n\n')
-    file.write(str(tree.print_tree())+'\n')
+    file.write(str(tree)+'\n')
 
     # Get the merged categoriess string from the tree
     Merged_group = tree.tree_store[0].split.groupings.split('],')
