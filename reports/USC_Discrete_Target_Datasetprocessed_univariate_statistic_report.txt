@@ -1,0 +1,162 @@
+
+Variable name: BUS__CODE
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 14112
+Number of categories: 8
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: 1, Count: 5665
+
+Variable name: SCORE
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 14112
+Minimum value: 0.19005956813104988
+Maximum value: 0.2206057007125891
+Mean: 0.19734977324263042
+Standard Deviation: 0.013021232510420096
+Skewness: 1.2263036837779173
+Number of distinct values: 2
+Number of cases for each distinct value: 
+0.19005956813104988 >>> 10744
+0.2206057007125891 >>> 3368
+
+Variable name: A_GrossSales
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 14112
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.1973497732426304
+Standard Deviation: 0.13680861312949777
+Skewness: 1.254905279941169
+Number of distinct values: 48
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_ExtaxPurch
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 14112
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.1973497732426304
+Standard Deviation: 0.14494468983672873
+Skewness: 1.5570306073360507
+Number of distinct values: 42
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_Resales
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 14112
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.1973497732426304
+Standard Deviation: 0.14081062978069814
+Skewness: 1.1993161266867443
+Number of distinct values: 33
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_FoodCosts
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 14112
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.19734977324263042
+Standard Deviation: 0.12344527248043681
+Skewness: 0.294270813014685
+Number of distinct values: 21
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_LaborCosts
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 14112
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.1973497732426304
+Standard Deviation: 0.14203753475028866
+Skewness: 0.5503505769259689
+Number of distinct values: 28
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_IOC
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 14112
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.1973497732426304
+Standard Deviation: 0.13343831190383365
+Skewness: 0.5452898563854799
+Number of distinct values: 31
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_BadDebts
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 14112
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.1973497732426304
+Standard Deviation: 0.1347410217472512
+Skewness: -0.032398134235110496
+Number of distinct values: 21
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_TOPP
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 14112
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.1973497732426304
+Standard Deviation: 0.1394756639375722
+Skewness: -0.07439747267645166
+Number of distinct values: 20
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_SalesFinal
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 14112
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.19734977324263045
+Standard Deviation: 0.11997696686596596
+Skewness: -0.2750984094472937
+Number of distinct values: 8
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: OwnCode
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 14112
+Number of categories: 3
+The counts of each category:
+0 >>> 10763
+2 >>> 3181
+1 >>> 168
+Mode: 0, Count: 10763
+
+Variable name: Status
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 14112
+Number of categories: 2
+The counts of each category:
+1 >>> 13150
+0 >>> 962
+Mode: 1, Count: 13150
+

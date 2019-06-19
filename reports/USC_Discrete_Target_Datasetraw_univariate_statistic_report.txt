@@ -1,0 +1,171 @@
+
+Variable name: Case_ID
+Column type is Delete, drop this column
+
+Variable name: BUS__CODE
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 14112
+Number of categories: 74
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: A00149, Count: 2122
+
+Variable name: SCORE
+Variable type: Continuous
+Number of missing values: 2007
+Number of valid values: 12105
+Minimum value: 3.0
+Maximum value: 169.0
+Mean: 62.16951672862454
+Standard Deviation: 20.977689639947144
+Skewness: 0.12341485597068161
+Number of distinct values: 122
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_EmployeeCount
+More 50% missing values, drop this column
+
+Variable name: A_GrossSales
+Variable type: Continuous
+Number of missing values: 4953
+Number of valid values: 9159
+Minimum value: nan
+Maximum value: nan
+Mean: 41447027.55846708
+Standard Deviation: 120066628.76709422
+Skewness: 7.512219089616314
+Number of distinct values: 9019
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_ExtaxPurch
+Variable type: Continuous
+Number of missing values: 4953
+Number of valid values: 9159
+Minimum value: nan
+Maximum value: nan
+Mean: 701260.8919095971
+Standard Deviation: 4660538.425429299
+Skewness: 23.432396135974574
+Number of distinct values: 6036
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_Resales
+Variable type: Continuous
+Number of missing values: 4953
+Number of valid values: 9159
+Minimum value: nan
+Maximum value: nan
+Mean: 17526512.9735779
+Standard Deviation: 79788912.02043892
+Skewness: 11.484213789724269
+Number of distinct values: 6084
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_FoodCosts
+Variable type: Continuous
+Number of missing values: 4953
+Number of valid values: 9159
+Minimum value: nan
+Maximum value: nan
+Mean: 1292362.5220002183
+Standard Deviation: 19195907.648093797
+Skewness: 27.566631265170038
+Number of distinct values: 1652
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_LaborCosts
+Variable type: Continuous
+Number of missing values: 4953
+Number of valid values: 9159
+Minimum value: nan
+Maximum value: nan
+Mean: 1337411.95436183
+Standard Deviation: 9464651.712588845
+Skewness: 31.64973992068437
+Number of distinct values: 3407
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_IOC
+Variable type: Continuous
+Number of missing values: 4953
+Number of valid values: 9159
+Minimum value: nan
+Maximum value: nan
+Mean: 6983813.527131783
+Standard Deviation: 51909469.014348276
+Skewness: 19.80361674800817
+Number of distinct values: 3464
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_BadDebts
+Variable type: Continuous
+Number of missing values: 4953
+Number of valid values: 9159
+Minimum value: nan
+Maximum value: nan
+Mean: 21506.703461076537
+Standard Deviation: 332081.4039339302
+Skewness: 39.866467220937
+Number of distinct values: 1418
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_TOPP
+Variable type: Continuous
+Number of missing values: 4953
+Number of valid values: 9159
+Minimum value: nan
+Maximum value: nan
+Mean: 85195.36859919205
+Standard Deviation: 2907668.4882986736
+Skewness: 69.30146709592587
+Number of distinct values: 1328
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: A_SalesFinal
+Variable type: Continuous
+Number of missing values: 4953
+Number of valid values: 9159
+Minimum value: nan
+Maximum value: nan
+Mean: 13849.215744076864
+Standard Deviation: 545345.859693274
+Skewness: 79.9441660740277
+Number of distinct values: 511
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PriorAuditTax
+More 50% missing values, drop this column
+
+Variable name: PriorAuditHours
+More 50% missing values, drop this column
+
+Variable name: OwnCode
+Variable type: Nominal
+Number of missing values: 50
+Number of valid values: 14062
+Number of categories: 14
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: C, Count: 9806
+
+Variable name: Status
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 14112
+Number of categories: 2
+The counts of each category:
+Established >>> 13150
+New >>> 962
+Mode: Established, Count: 13150
+
