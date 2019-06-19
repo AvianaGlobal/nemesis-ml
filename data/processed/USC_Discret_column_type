@@ -1,0 +1,15 @@
+Variable,Type
+BUS__CODE,Nominal
+SCORE,Continuous
+A_GrossSales,Continuous
+A_ExtaxPurch,Continuous
+A_Resales,Continuous
+A_FoodCosts,Continuous
+A_LaborCosts,Continuous
+A_IOC,Continuous
+A_BadDebts,Continuous
+A_TOPP,Continuous
+A_SalesFinal,Continuous
+OwnCode,Nominal
+Status,Nominal
+Y_AuditResult,Flag_Categorical

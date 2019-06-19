@@ -466,7 +466,7 @@ def p_value_target_predictor(target,column,df_type):
 # Function to get best depth which help to train optimal model
 # Input: data of each column, data of decision varaiable
 # Output: best depth
-def get_best_depth(d_column, d_flag):
+def get_best_depth(file,d_column, d_flag):
     score_mean = [] # here I will store the roc auc
     depth_list = [1,2,3,4,5,6,7,8,9,10]    
     for depth in depth_list:
@@ -480,15 +480,15 @@ def get_best_depth(d_column, d_flag):
     # get best depth
     table_sort = table.sort_values(by='roc_auc_mean', ascending=False) 
     best_depth = table_sort.iloc[0,0] # get depth which lead ot the largest roc_auc
-    print(table_sort)
-    print('Best Depth:',best_depth)
+    file.write(str(table_sort)+'\n')
+    file.write('Best Depth:'+str(best_depth)+'\n')
     return (best_depth) 
 
 
 # Function to do supervised binning, based single variable decision tree model
 # Input: all data processed in the previous step，the data including variable and column type
 # Output: new data file
-def supervised_binning(df,df_type):    
+def supervised_binning(file,df,df_type):    
     # get all continuous variable
     new_df = get_continuous_variables(df,df_type)
     # get target
@@ -508,16 +508,16 @@ def supervised_binning(df,df_type):
         # select best parameter (max_depth, max_leaf_node) 
         if num_row <= 10000:
             num_bins = None
-            depth = get_best_depth(d_column,d_flag)
-            print("do not set 'max_leaf_node'")
+            depth = get_best_depth(file,d_column,d_flag)
+            file.write("do not set 'max_leaf_node'\n")
         elif (num_row >= 10000 and num_unique <=64):
             num_bins = None
-            depth = get_best_depth(d_column,d_flag)
-            print("do not set 'max_leaf_node'")
+            depth = get_best_depth(file,d_column,d_flag)
+            file.write("do not set 'max_leaf_node'\n")
         else:
             depth = None
-            num_bins = np.sqrt(num_unique)
-            print("do not set 'max_depth'")
+            num_bins = int(np.sqrt(num_unique))
+            file.write("do not set 'max_depth'\n")
          
         # train optimal single variable to do supervised binning
         optimal_model = DecisionTreeClassifier(max_depth=depth,max_leaf_nodes=num_bins)
@@ -525,11 +525,11 @@ def supervised_binning(df,df_type):
         y_pred = optimal_model.predict_proba(d_column)[:,1]
         score = roc_auc_score(d_flag,y_pred)
         df[column]=y_pred
-        print('Column name:', column)
-        print('The number of original unique value (bins):', num_unique)
-        print('The number of unique value (bins):', len(df[column].unique()))
-        print('The value of each bins:', df[column].unique() )
-        print('Roc_Auc value:', score)
+        file.write('Column name:'+str(column)+'\n')
+        file.write('The number of original unique value (bins):'+str(num_unique)+'\n')
+        file.write('The number of unique value (bins):'+str(len(df[column].unique()))+'\n')
+        file.write('The value of each bins:'+str(df[column].unique())+'\n')
+        file.write('Roc_Auc value:'+str(score)+'\n\n')
         i=i+1
     return (df) 
 
@@ -637,14 +637,16 @@ def get_continuous_after_pca(new_continuous_predictors,new_df,new_df_type):
 
 def main():
     #load data
-    df = pd.read_csv('../../data/raw/Kaggle/train_sample.csv')
-    df_type = pd.read_csv('../../data/raw/Kaggle/column_type.csv')
+    data_file_name = input('Data file name: ')
+    data_type_file_name = input('Column type file name: ')
+    df = pd.read_csv('../../data/raw/'+data_file_name+'.csv')
+    df_type = pd.read_csv('../../data/raw/'+data_type_file_name+'.csv')
 
     target_name = get_target(df,df_type)
     target_type = column_type(target_name,df_type)
 
     # Basic screening and print report
-    file = open('../../reports/raw_univariate_statistic_report.txt','w') 
+    file = open('../../reports/'+data_file_name+'raw_univariate_statistic_report.txt','w') 
     d = Stats_Collection(file,df,df_type)
     file.close()
     # After deleting useless variables, new dataset and new column type dataset are named as new_df and new_df_type
@@ -671,7 +673,7 @@ def main():
 
 
     #Categorical variable handling: Reorder and Supervised Merged
-    file = open('../../reports/supervised_merge_report.txt','w') 
+    file = open('../../reports/'+data_file_name+'supervised_merge_report.txt','w') 
     new_df = Reorder_Categories(file,new_df,new_df_type)
     file.close()
 
@@ -691,13 +693,15 @@ def main():
 
     #Continuous variable handling when target is categorical
     else:
-        new_df = supervised_binning(new_df,new_df_type)
+        file = open('../../reports/'+data_file_name+'supervised_binning_report.txt','w') 
+        new_df = supervised_binning(file,new_df,new_df_type)
+        file.close()
 
-    new_df.to_csv('../../data/processed/kaggle_sample_train.csv', index=False)
-    new_df_type.to_csv('../../data/processed/kaggle_sample_type.csv', index=False)
+    new_df.to_csv('../../data/processed/'+data_file_name, index=False)
+    new_df_type.to_csv('../../data/processed/'+data_type_file_name, index=False)
 
     #Univariate stats report for processed data
-    file = open('../../reports/processed_univariate_statistic_report.txt','w') 
+    file = open('../../reports/'+data_file_name+'processed_univariate_statistic_report.txt','w') 
     d = Stats_Collection(file,new_df,new_df_type)
     file.close()
 
