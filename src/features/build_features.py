@@ -697,8 +697,8 @@ def main():
         new_df = supervised_binning(file,new_df,new_df_type)
         file.close()
 
-    new_df.to_csv('../../data/processed/'+data_file_name, index=False)
-    new_df_type.to_csv('../../data/processed/'+data_type_file_name, index=False)
+    new_df.to_csv('../../data/processed/'+data_file_name+'.csv', index=False)
+    new_df_type.to_csv('../../data/processed/'+data_type_file_name+'.csv', index=False)
 
     #Univariate stats report for processed data
     file = open('../../reports/'+data_file_name+'processed_univariate_statistic_report.txt','w') 
