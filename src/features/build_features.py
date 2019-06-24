@@ -186,7 +186,7 @@ def outlier_identification(column):
         M_robust = M_robust + A_i
         N_sum = N_sum + N_i[i + 3]
     sd_robust = np.sqrt(M_robust / (N_sum - 1))
-    result = (column - x_robust < -3 * sd_robust) | (column + x_robust > 3 * sd_robust)
+    result = (column - x_robust < -3 * sd_robust) | (column - x_robust > 3 * sd_robust)
     lower_cutoff_value = x_robust - 3 * sd_robust
     upper_cutoff_value = x_robust + 3 * sd_robust
     return(result, lower_cutoff_value, upper_cutoff_value)
