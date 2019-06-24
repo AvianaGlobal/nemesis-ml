@@ -12,15 +12,14 @@ Variable name: SCORE
 Variable type: Continuous
 Number of missing values: 0
 Number of valid values: 14112
-Minimum value: 0.19005956813104988
-Maximum value: 0.2206057007125891
-Mean: 0.19734977324263042
-Standard Deviation: 0.013021232510420096
-Skewness: 1.2263036837779173
-Number of distinct values: 2
+Minimum value: 0.14864864864864866
+Maximum value: 0.6666666666666666
+Mean: 0.1973497732426304
+Standard Deviation: 0.0378908621711989
+Skewness: 1.229856997952731
+Number of distinct values: 10
 Number of cases for each distinct value: 
-0.19005956813104988 >>> 10744
-0.2206057007125891 >>> 3368
+Number of distict values is larger than 5. We stop updating the number of distinct values
 
 Variable name: A_GrossSales
 Variable type: Continuous
@@ -29,9 +28,9 @@ Number of valid values: 14112
 Minimum value: 0.0
 Maximum value: 1.0
 Mean: 0.1973497732426304
-Standard Deviation: 0.13680861312949777
-Skewness: 1.254905279941169
-Number of distinct values: 48
+Standard Deviation: 0.14246922879288873
+Skewness: 1.142825727375529
+Number of distinct values: 52
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
 
@@ -42,9 +41,9 @@ Number of valid values: 14112
 Minimum value: 0.0
 Maximum value: 1.0
 Mean: 0.1973497732426304
-Standard Deviation: 0.14494468983672873
-Skewness: 1.5570306073360507
-Number of distinct values: 42
+Standard Deviation: 0.1507863791513479
+Skewness: 1.437577811017742
+Number of distinct values: 43
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
 
@@ -55,9 +54,9 @@ Number of valid values: 14112
 Minimum value: 0.0
 Maximum value: 1.0
 Mean: 0.1973497732426304
-Standard Deviation: 0.14081062978069814
-Skewness: 1.1993161266867443
-Number of distinct values: 33
+Standard Deviation: 0.14311533193126855
+Skewness: 1.171288686456927
+Number of distinct values: 36
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
 
@@ -67,10 +66,10 @@ Number of missing values: 0
 Number of valid values: 14112
 Minimum value: 0.0
 Maximum value: 1.0
-Mean: 0.19734977324263042
-Standard Deviation: 0.12344527248043681
-Skewness: 0.294270813014685
-Number of distinct values: 21
+Mean: 0.1973497732426304
+Standard Deviation: 0.12457048658741264
+Skewness: 0.2836648542054752
+Number of distinct values: 20
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
 
@@ -81,9 +80,9 @@ Number of valid values: 14112
 Minimum value: 0.0
 Maximum value: 1.0
 Mean: 0.1973497732426304
-Standard Deviation: 0.14203753475028866
-Skewness: 0.5503505769259689
-Number of distinct values: 28
+Standard Deviation: 0.14286765627641118
+Skewness: 0.48652442081948016
+Number of distinct values: 29
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
 
@@ -94,9 +93,9 @@ Number of valid values: 14112
 Minimum value: 0.0
 Maximum value: 1.0
 Mean: 0.1973497732426304
-Standard Deviation: 0.13343831190383365
-Skewness: 0.5452898563854799
-Number of distinct values: 31
+Standard Deviation: 0.13340483185871857
+Skewness: 0.5380834980256117
+Number of distinct values: 26
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
 
@@ -107,9 +106,9 @@ Number of valid values: 14112
 Minimum value: 0.0
 Maximum value: 1.0
 Mean: 0.1973497732426304
-Standard Deviation: 0.1347410217472512
-Skewness: -0.032398134235110496
-Number of distinct values: 21
+Standard Deviation: 0.13496298160135617
+Skewness: -0.04207814382647236
+Number of distinct values: 20
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
 
@@ -119,10 +118,10 @@ Number of missing values: 0
 Number of valid values: 14112
 Minimum value: 0.0
 Maximum value: 1.0
-Mean: 0.1973497732426304
-Standard Deviation: 0.1394756639375722
-Skewness: -0.07439747267645166
-Number of distinct values: 20
+Mean: 0.19734977324263037
+Standard Deviation: 0.14056807402143348
+Skewness: -0.09690128557627145
+Number of distinct values: 24
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
 
@@ -132,10 +131,10 @@ Number of missing values: 0
 Number of valid values: 14112
 Minimum value: 0.0
 Maximum value: 1.0
-Mean: 0.19734977324263045
-Standard Deviation: 0.11997696686596596
-Skewness: -0.2750984094472937
-Number of distinct values: 8
+Mean: 0.19734977324263042
+Standard Deviation: 0.11940093254145435
+Skewness: -0.3160646980314674
+Number of distinct values: 10
 Number of cases for each distinct value: 
 Number of distict values is larger than 5. We stop updating the number of distinct values
 
