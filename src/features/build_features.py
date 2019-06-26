@@ -9,7 +9,11 @@ from sklearn.decomposition import PCA
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import roc_auc_score
-
+# from time import time
+#
+# start = time.clock()
+import datetime
+starttime = datetime.datetime.now()
 
 
 #function to get number of missing values in a column
@@ -25,22 +29,27 @@ def get_valid_num(column): #input the whole column
 
 #function to get minimum value in a column
 def get_min(column): #input the whole column
+    new_column = column.dropna()
     return min(column)
 
 #function to get maximum value in a column
 def get_max(column): #input the whole column
+    new_column = column.dropna()
     return max(column)
 
 #function to get mean in a column
 def get_mean(column): #input the whole column
+    new_column = column.dropna()
     return column.mean()
 
 #function to get std in a column
 def get_std(column): #input the whole column
+    new_column = column.dropna()
     return column.std()
 
 #function to get skewness in a column
 def get_skew(column): #input the whole column
+    new_column = column.dropna()
     return column.skew()
 
 #function to get number of distict values in a column
@@ -60,6 +69,7 @@ def get_distinct_count(column): #input the whole column
 #function to get median in a column
 import statistics
 def get_median(column):
+    new_column = column.dropna()
     return statistics.median(column)
 
 #function to get mode and count for the mode in a column
@@ -115,10 +125,9 @@ def Stats_Collection(file,df,df_type):
             file.write('Variable type: '+column_type(c,df_type)+'\n')
             file.write('Number of missing values: '+str(get_na_num(df[c]))+'\n')
             file.write('Number of valid values: '+str(get_valid_num(df[c]))+'\n')
-            if column_type(c,df_type) == 'Continuous' or column_type(c,df_type) == 'Ordinal':
-                file.write('Minimum value: '+str(get_min(df[c]))+'\n')
-                file.write('Maximum value: '+str(get_max(df[c]))+'\n')
             if column_type(c,df_type) == 'Continuous':
+                file.write('Minimum value: ' + str(get_min(df[c])) + '\n')
+                file.write('Maximum value: ' + str(get_max(df[c])) + '\n')
                 file.write('Mean: '+str(get_mean(df[c]))+'\n')
                 file.write('Standard Deviation: '+str(get_std(df[c]))+'\n')
                 file.write('Skewness: '+str(get_skew(df[c]))+'\n')
@@ -646,7 +655,7 @@ def main():
     target_type = column_type(target_name,df_type)
 
     # Basic screening and print report
-    file = open('../../reports/'+data_file_name+'raw_univariate_statistic_report.txt','w') 
+    file = open('../../reports/'+data_file_name+'_raw_univariate_statistic_report.txt','w') 
     d = Stats_Collection(file,df,df_type)
     file.close()
     # After deleting useless variables, new dataset and new column type dataset are named as new_df and new_df_type
@@ -673,7 +682,7 @@ def main():
 
 
     #Categorical variable handling: Reorder and Supervised Merged
-    file = open('../../reports/'+data_file_name+'supervised_merge_report.txt','w') 
+    file = open('../../reports/'+data_file_name+'_supervised_merge_report.txt','w') 
     new_df = Reorder_Categories(file,new_df,new_df_type)
     file.close()
 
@@ -693,20 +702,22 @@ def main():
 
     #Continuous variable handling when target is categorical
     else:
-        file = open('../../reports/'+data_file_name+'supervised_binning_report.txt','w') 
+        file = open('../../reports/'+data_file_name+'_supervised_binning_report.txt','w')
         new_df = supervised_binning(file,new_df,new_df_type)
         file.close()
 
-    new_df.to_csv('../../data/processed/'+data_file_name+'.csv', index=False)
-    new_df_type.to_csv('../../data/processed/'+data_type_file_name+'.csv', index=False)
+    new_df.to_csv('../../data/processed/processed_'+data_file_name+'.csv', index=False)
+    new_df_type.to_csv('../../data/processed/processed_'+data_type_file_name+'.csv', index=False)
 
     #Univariate stats report for processed data
-    file = open('../../reports/'+data_file_name+'processed_univariate_statistic_report.txt','w') 
+    file = open('../../reports/'+data_file_name+'_processed_univariate_statistic_report.txt','w') 
     d = Stats_Collection(file,new_df,new_df_type)
     file.close()
 
 
 main()
 
-
-
+# elapsed = (time.clock() - start)
+# print("Time used:",elapsed)
+endtime = datetime.datetime.now()
+print((endtime - starttime).seconds)

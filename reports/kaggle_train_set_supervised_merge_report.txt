@@ -1,0 +1,584 @@
+Column name: CALENDAR_YEAR
+      Calendar_Year
+2005        4025670
+2006        4447730
+2007        4710888
+
+Reorder Categories:
+2005 >>> 0
+2006 >>> 1
+2007 >>> 2
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Calendar_Year, p=1.4213565087121126e-11, score=45.63972337982598, groups=[[0], [1, 2]]), dof=13184288)), ([0], {'mean': 0.0028063264436698565, 's.t.d': 1.0161728102935064}, <Invalid Chaid Split> - the max depth has been reached), ([1, 2], {'mean': -0.0012335212350969456, 's.t.d': 0.9928053814494162}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 1.4213565087121126e-11
+The new categories are:
+0 >>> [0]
+1 >>> [1, 2]
+------------------------------------------------------------------------------------------------------------------
+Column name: MODEL_YEAR
+      Model_Year
+2009           2
+1981       20966
+1982       24868
+1983       33514
+2008       50787
+1984       53449
+1985       70738
+1986       92397
+1987      104061
+1988      138717
+1989      177728
+1990      203242
+1991      235688
+1992      281716
+2007      366845
+1993      382330
+1994      478067
+1996      589346
+1995      627182
+2006      704628
+1997      732651
+1998      791733
+1999      887858
+2001      993400
+2000     1004464
+2003     1007184
+2005     1007447
+2002     1055299
+2004     1067981
+
+Reorder Categories:
+2009 >>> 0
+1981 >>> 1
+1982 >>> 2
+1983 >>> 3
+2008 >>> 4
+1984 >>> 5
+1985 >>> 6
+1986 >>> 7
+1987 >>> 8
+1988 >>> 9
+1989 >>> 10
+1990 >>> 11
+1991 >>> 12
+1992 >>> 13
+2007 >>> 14
+1993 >>> 15
+1994 >>> 16
+1996 >>> 17
+1995 >>> 18
+2006 >>> 19
+1997 >>> 20
+1998 >>> 21
+1999 >>> 22
+2001 >>> 23
+2000 >>> 24
+2003 >>> 25
+2005 >>> 26
+2002 >>> 27
+2004 >>> 28
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Model_Year, p=0.0, score=196.83626082942493, groups=[[0, 4], [1, 3, 5, 2], [6, 7], [8, 9], [10, 14], [11], [12, 13, 19], [15, 26], [16, 28], [17, 27, 20, 21], [18, 25], [22, 24, 23]]), dof=13184288)), ([0, 4], {'mean': -0.06291396907012105, 's.t.d': 0.5147727332562101}, <Invalid Chaid Split> - the max depth has been reached), ([1, 3, 5, 2], {'mean': -0.04678820901925696, 's.t.d': 0.6740734397137861}, <Invalid Chaid Split> - the max depth has been reached), ([6, 7], {'mean': -0.04057787189396679, 's.t.d': 0.7258662791766851}, <Invalid Chaid Split> - the max depth has been reached), ([8, 9], {'mean': -0.030127243937373042, 's.t.d': 0.8055951952000809}, <Invalid Chaid Split> - the max depth has been reached), ([10, 14], {'mean': -0.025146355371091916, 's.t.d': 0.8408716860709289}, <Invalid Chaid Split> - the max depth has been reached), ([11], {'mean': -0.01819410201308674, 's.t.d': 0.8876764976742094}, <Invalid Chaid Split> - the max depth has been reached), ([12, 13, 19], {'mean': -0.011766690493718694, 's.t.d': 0.9289414227729171}, <Invalid Chaid Split> - the max depth has been reached), ([15, 26], {'mean': -0.00544941762989456, 's.t.d': 0.967805581529282}, <Invalid Chaid Split> - the max depth has been reached), ([16, 28], {'mean': 7.494001635346209e-05, 's.t.d': 1.0004791282122418}, <Invalid Chaid Split> - the max depth has been reached), ([17, 27, 20, 21], {'mean': 0.0076172367691600415, 's.t.d': 1.0433030215070926}, <Invalid Chaid Split> - the max depth has been reached), ([18, 25], {'mean': 0.004022454219032267, 's.t.d': 1.0230321891048293}, <Invalid Chaid Split> - the max depth has been reached), ([22, 24, 23], {'mean': 0.011039826866765393, 's.t.d': 1.0622009942171653}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 0.0
+The new categories are:
+0 >>> [0, 4]
+1 >>> [1, 3, 5, 2]
+2 >>> [6, 7]
+3 >>> [8, 9]
+4 >>> [10, 14]
+5 >>> [11]
+6 >>> [12, 13, 19]
+7 >>> [15, 26]
+8 >>> [16, 28]
+9 >>> [17, 27, 20, 21]
+10 >>> [18, 25]
+11 >>> [22, 24, 23]
+------------------------------------------------------------------------------------------------------------------
+Column name: BLIND_MAKE
+    Blind_Make
+AB           5
+C            7
+H           10
+CA          13
+A           17
+AK          18
+AS          30
+BK          40
+BQ          81
+F          132
+BS         142
+CB         150
+AM         163
+AT         188
+BC         207
+B          232
+AP         236
+AE         242
+AG         326
+S          348
+BL         433
+AD         546
+U          707
+E          733
+BA        1075
+V         1969
+BM        2318
+BR        2569
+AW        6100
+BN       13305
+..         ...
+I        62298
+AY       65013
+AI       83702
+O        87692
+AN      100065
+BP      126188
+D       174362
+BU      174778
+BF      180156
+BT      180648
+AL      184022
+AR      202083
+BV      203057
+BH      211931
+AQ      211987
+M       213186
+P       219804
+R       224645
+Q       233255
+AH      314206
+AO      381448
+L       382047
+W       552216
+BO      657257
+X       807923
+Y       848371
+AU     1071883
+BW     1265861
+AJ     1547886
+K      1665616
+
+[74 rows x 1 columns]
+
+Reorder Categories:
+AB >>> 0
+C >>> 1
+H >>> 2
+CA >>> 3
+A >>> 4
+AK >>> 5
+AS >>> 6
+BK >>> 7
+BQ >>> 8
+F >>> 9
+BS >>> 10
+CB >>> 11
+AM >>> 12
+AT >>> 13
+BC >>> 14
+B >>> 15
+AP >>> 16
+AE >>> 17
+AG >>> 18
+S >>> 19
+BL >>> 20
+AD >>> 21
+U >>> 22
+E >>> 23
+BA >>> 24
+V >>> 25
+BM >>> 26
+BR >>> 27
+AW >>> 28
+BN >>> 29
+G >>> 30
+AC >>> 31
+BG >>> 32
+BB >>> 33
+BD >>> 34
+BY >>> 35
+AF >>> 36
+AZ >>> 37
+Z >>> 38
+J >>> 39
+BZ >>> 40
+AV >>> 41
+AX >>> 42
+N >>> 43
+I >>> 44
+AY >>> 45
+AI >>> 46
+O >>> 47
+AN >>> 48
+BP >>> 49
+D >>> 50
+BU >>> 51
+BF >>> 52
+BT >>> 53
+AL >>> 54
+AR >>> 55
+BV >>> 56
+BH >>> 57
+AQ >>> 58
+M >>> 59
+P >>> 60
+R >>> 61
+Q >>> 62
+AH >>> 63
+AO >>> 64
+L >>> 65
+W >>> 66
+BO >>> 67
+X >>> 68
+Y >>> 69
+AU >>> 70
+BW >>> 71
+AJ >>> 72
+K >>> 73
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Blind_Make, p=1.804742695e-314, score=165.1448718084569, groups=[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 22, 32, 13, 14, 15, 16, 18, 19, 24, 20, 21, 23], [11, 43, 51, 50, 34, 66, 37], [17, 35, 26, 27], [25, 45, 44, 46, 61, 63, 71, 28, 58], [29, 48, 49, 64, 70, 41, 47], [30, 73, 40, 62, 59, 55], [31, 57, 52], [33, 67, 60, 42, 72, 56, 65], [36, 53, 39, 54], [38, 68, 69]]), dof=13184288)), ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 22, 32, 13, 14, 15, 16, 18, 19, 24, 20, 21, 23], {'mean': -0.0630424130098399, 's.t.d': 0.5134454313588225}, <Invalid Chaid Split> - the max depth has been reached), ([11, 43, 51, 50, 34, 66, 37], {'mean': -0.007075290153116102, 's.t.d': 0.9579865165243983}, <Invalid Chaid Split> - the max depth has been reached), ([17, 35, 26, 27], {'mean': -0.03741162661022715, 's.t.d': 0.751104163965985}, <Invalid Chaid Split> - the max depth has been reached), ([25, 45, 44, 46, 61, 63, 71, 28, 58], {'mean': -0.011947267273358132, 's.t.d': 0.9278994702894422}, <Invalid Chaid Split> - the max depth has been reached), ([29, 48, 49, 64, 70, 41, 47], {'mean': 0.015070705052855586, 's.t.d': 1.0839185923403127}, <Invalid Chaid Split> - the max depth has been reached), ([30, 73, 40, 62, 59, 55], {'mean': 0.0027187872202742254, 's.t.d': 1.0156135583113237}, <Invalid Chaid Split> - the max depth has been reached), ([31, 57, 52], {'mean': 0.02488499589654535, 's.t.d': 1.1350344740441467}, <Invalid Chaid Split> - the max depth has been reached), ([33, 67, 60, 42, 72, 56, 65], {'mean': -0.0030372079840775253, 's.t.d': 0.9822620051714795}, <Invalid Chaid Split> - the max depth has been reached), ([36, 53, 39, 54], {'mean': -0.019617852513652185, 's.t.d': 0.8783779155147435}, <Invalid Chaid Split> - the max depth has been reached), ([38, 68, 69], {'mean': 0.006309966627007465, 's.t.d': 1.0360123196718773}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 1.804742695e-314
+The new categories are:
+0 >>> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 22, 32, 13, 14, 15, 16, 18, 19, 24, 20, 21, 23]
+1 >>> [11, 43, 51, 50, 34, 66, 37]
+2 >>> [17, 35, 26, 27]
+3 >>> [25, 45, 44, 46, 61, 63, 71, 28, 58]
+4 >>> [29, 48, 49, 64, 70, 41, 47]
+5 >>> [30, 73, 40, 62, 59, 55]
+6 >>> [31, 57, 52]
+7 >>> [33, 67, 60, 42, 72, 56, 65]
+8 >>> [36, 53, 39, 54]
+9 >>> [38, 68, 69]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT1
+      Cat1
+H   226484
+J   233968
+E   279699
+C   401355
+A   768871
+G   782602
+F  1305107
+D  2487951
+I  2654531
+B  4043720
+
+Reorder Categories:
+H >>> 0
+J >>> 1
+E >>> 2
+C >>> 3
+A >>> 4
+G >>> 5
+F >>> 6
+D >>> 7
+I >>> 8
+B >>> 9
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Cat1, p=5.322709691628311e-253, score=293.6426639239261, groups=[[0, 4, 3, 2], [1, 5, 7], [6], [8], [9]]), dof=13184288)), ([0, 4, 3, 2], {'mean': -0.013755557976418, 's.t.d': 0.91652480977171}, <Invalid Chaid Split> - the max depth has been reached), ([1, 5, 7], {'mean': -0.008856679978866548, 's.t.d': 0.9471431711297628}, <Invalid Chaid Split> - the max depth has been reached), ([6], {'mean': 0.007578756439333793, 's.t.d': 1.0430710381029238}, <Invalid Chaid Split> - the max depth has been reached), ([8], {'mean': -0.0004031926004278376, 's.t.d': 0.9976952371861818}, <Invalid Chaid Split> - the max depth has been reached), ([9], {'mean': 0.01119700527456881, 's.t.d': 1.0629446130735418}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 5.322709691628311e-253
+The new categories are:
+0 >>> [0, 4, 3, 2]
+1 >>> [1, 5, 7]
+2 >>> [6]
+3 >>> [8]
+4 >>> [9]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT2
+       Cat2
+B    224045
+A   2191054
+C  10769189
+
+Reorder Categories:
+B >>> 0
+A >>> 1
+C >>> 2
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Cat2, p=3.180088597352392e-70, score=313.8450493846823, groups=[[0, 1], [2]]), dof=13184288)), ([0, 1], {'mean': 0.01030263235089646, 's.t.d': 1.058177910821874}, <Invalid Chaid Split> - the max depth has been reached), ([2], {'mean': -0.002310468547546188, 's.t.d': 0.9864673602353519}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 3.180088597352392e-70
+The new categories are:
+0 >>> [0, 1]
+1 >>> [2]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT3
+      Cat3
+D   405724
+F   872031
+E   886816
+C  1270889
+B  2256802
+A  7492026
+
+Reorder Categories:
+D >>> 0
+F >>> 1
+E >>> 2
+C >>> 3
+B >>> 4
+A >>> 5
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Cat3, p=0.0, score=555.3247085599947, groups=[[0, 1, 2], [3], [4], [5]]), dof=13184288)), ([0, 1, 2], {'mean': -0.004419253280085398, 's.t.d': 0.9739033475771006}, <Invalid Chaid Split> - the max depth has been reached), ([3], {'mean': -0.026096284453875865, 's.t.d': 0.834302047885009}, <Invalid Chaid Split> - the max depth has been reached), ([4], {'mean': -0.009557282037536679, 's.t.d': 0.9428307177329134}, <Invalid Chaid Split> - the max depth has been reached), ([5], {'mean': 0.008582477476313034, 's.t.d': 1.0486542786813489}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 0.0
+The new categories are:
+0 >>> [0, 1, 2]
+1 >>> [3]
+2 >>> [4]
+3 >>> [5]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT4
+       Cat4
+B    375053
+C   1454424
+A  11354811
+
+Reorder Categories:
+B >>> 0
+C >>> 1
+A >>> 2
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Cat4, p=0.0017695980492476312, score=6.337005894285635, groups=[[0], [1], [2]]), dof=13184288)), ([0], {'mean': -0.0037866589266784007, 's.t.d': 0.9778315964301335}, <Invalid Chaid Split> - the max depth has been reached), ([1], {'mean': 0.002196772293335721, 's.t.d': 1.0126691738349591}, <Invalid Chaid Split> - the max depth has been reached), ([2], {'mean': -0.00015630754188682952, 's.t.d': 0.9990900813169964}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 0.0017695980492476312
+The new categories are:
+0 >>> [0]
+1 >>> [1]
+2 >>> [2]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT5
+       Cat5
+B     83709
+C    779280
+A  12321299
+
+Reorder Categories:
+B >>> 0
+C >>> 1
+A >>> 2
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Cat5, p=3.008717829554347e-45, score=102.51561227846419, groups=[[0], [1], [2]]), dof=13184288)), ([0], {'mean': -0.03837388025461814, 's.t.d': 0.7434994730467829}, <Invalid Chaid Split> - the max depth has been reached), ([1], {'mean': -0.00964056084468528, 's.t.d': 0.9422591744572818}, <Invalid Chaid Split> - the max depth has been reached), ([2], {'mean': 0.0008704385516821936, 's.t.d': 1.0050445655961273}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 3.008717829554347e-45
+The new categories are:
+0 >>> [0]
+1 >>> [1]
+2 >>> [2]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT6
+      Cat6
+F   437605
+E  1173316
+D  3604486
+C  3677692
+B  4291189
+
+Reorder Categories:
+F >>> 0
+E >>> 1
+D >>> 2
+C >>> 3
+B >>> 4
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Cat6, p=2.0184988230951383e-117, score=268.70557807299133, groups=[[0, 2], [1], [3, 4]]), dof=13184288)), ([0, 2], {'mean': -0.006379155508702454, 's.t.d': 0.962235748370641}, <Invalid Chaid Split> - the max depth has been reached), ([1], {'mean': -0.01211279144330201, 's.t.d': 0.9268964059548674}, <Invalid Chaid Split> - the max depth has been reached), ([3, 4], {'mean': 0.005019180112748064, 's.t.d': 1.0287177008735167}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 2.0184988230951383e-117
+The new categories are:
+0 >>> [0, 2]
+1 >>> [1]
+2 >>> [3, 4]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT8
+      Cat8
+C   880481
+B  3673932
+A  8629875
+
+Reorder Categories:
+C >>> 0
+B >>> 1
+A >>> 2
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Cat8, p=3.1461155480973113e-13, score=53.11491825420251, groups=[[0, 1], [2]]), dof=13184288)), ([0, 1], {'mean': -0.0027628998381391246, 's.t.d': 0.9838344108442547}, <Invalid Chaid Split> - the max depth has been reached), ([2], {'mean': 0.0014581189211061727, 's.t.d': 1.008423865555106}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 3.1461155480973113e-13
+The new categories are:
+0 >>> [0, 1]
+1 >>> [2]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT9
+       Cat9
+A   2333508
+B  10850780
+
+Reorder Categories:
+A >>> 0
+B >>> 1
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Cat9, p=1.581205550540814e-110, score=498.99366148075904, groups=[[0], [1]]), dof=13184288)), ([0], {'mean': -0.013265903310723894, 's.t.d': 0.9195831756128365}, <Invalid Chaid Split> - the max depth has been reached), ([1], {'mean': 0.0028528903725833672, 's.t.d': 1.0164404876359703}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 1.581205550540814e-110
+The new categories are:
+0 >>> [0]
+1 >>> [1]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT10
+     Cat10
+C   638111
+B  3969168
+A  8577009
+
+Reorder Categories:
+C >>> 0
+B >>> 1
+A >>> 2
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Cat10, p=0.029056365598589845, score=4.7642718204367975, groups=[[0, 2], [1]]), dof=13184288)), ([0, 2], {'mean': -0.00039452015888189813, 's.t.d': 0.9977035905160367}, <Invalid Chaid Split> - the max depth has been reached), ([1], {'mean': 0.0009159473155636924, 's.t.d': 1.0053106913404684}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 0.029056365598589845
+The new categories are:
+0 >>> [0, 2]
+1 >>> [1]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT11
+     Cat11
+D   319022
+F   787998
+E   816595
+C  1103640
+B  3174528
+A  6982505
+
+Reorder Categories:
+D >>> 0
+F >>> 1
+E >>> 2
+C >>> 3
+B >>> 4
+A >>> 5
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (Cat11, p=0.0032479891115953356, score=8.662651434229803, groups=[[0, 3], [1, 2, 5, 4]]), dof=13184288)), ([0, 3], {'mean': -0.0023306646572459947, 's.t.d': 0.9862980351524561}, <Invalid Chaid Split> - the max depth has been reached), ([1, 2, 5, 4], {'mean': 0.00028191233752735, 's.t.d': 1.001644286449924}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 0.0032479891115953356
+The new categories are:
+0 >>> [0, 3]
+1 >>> [1, 2, 5, 4]
+------------------------------------------------------------------------------------------------------------------
+Column name: CAT12
+     Cat12
+A     2589
+F   462388
+E  1196458
+D  3525722
+C  3619974
+B  4377157
+
+Reorder Categories:
+A >>> 0
+F >>> 1
+E >>> 2
+D >>> 3
+C >>> 4
+B >>> 5
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, <Invalid Chaid Split> - splitting would create nodes with less than the minimum child node size)]
+The P-Values of this node is None
+The P-values is too large.
+There is no categories can be merged in this variables.
+
+------------------------------------------------------------------------------------------------------------------
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (OrdCat, p=1.3759175080914588e-169, score=159.01065452752078, groups=[['1'], ['2'], ['3'], ['4'], [5, '6'], ['7']]), dof=13184288)), (['1'], {'mean': -0.04371181172987382, 's.t.d': 0.7003077285530195}, <Invalid Chaid Split> - the max depth has been reached), (['2'], {'mean': 0.009899929114722823, 's.t.d': 1.0559050573733173}, <Invalid Chaid Split> - the max depth has been reached), (['3'], {'mean': -0.014801686874155548, 's.t.d': 0.9096035678558938}, <Invalid Chaid Split> - the max depth has been reached), (['4'], {'mean': -0.001370191070172052, 's.t.d': 0.9919955359180532}, <Invalid Chaid Split> - the max depth has been reached), ([5, '6'], {'mean': -0.01026199252445115, 's.t.d': 0.938461036744061}, <Invalid Chaid Split> - the max depth has been reached), (['7'], {'mean': -0.054790030293206365, 's.t.d': 0.6004517543058526}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 1.3759175080914588e-169
+The new categories are:
+0 >>> [1]
+1 >>> [2]
+2 >>> [3]
+3 >>> [4]
+4 >>> [5, 6]
+5 >>> [7]
+Column name: NVCAT
+     NVCat
+D     6761
+G    16073
+I    19208
+A    45758
+C    64753
+K   119996
+H   134702
+B   173724
+F   325556
+E   401273
+J   559165
+L   804000
+N  1328428
+O  3416947
+M  5767944
+
+Reorder Categories:
+D >>> 0
+G >>> 1
+I >>> 2
+A >>> 3
+C >>> 4
+K >>> 5
+H >>> 6
+B >>> 7
+F >>> 8
+E >>> 9
+J >>> 10
+L >>> 11
+N >>> 12
+O >>> 13
+M >>> 14
+
+Supervised Merged:
+The CHAID TREE is presented below:
+
+[([], {'mean': 1.871385259011575e-17, 's.t.d': 0.9999999999999982}, (NVCat, p=0.0, score=1158.632773330084, groups=[[0, 7, 1, 4, 2], [3, 6], [5, 8], [9], [10, 11], [12], [13], [14]]), dof=13184288)), ([0, 7, 1, 4, 2], {'mean': 0.06692918574342313, 's.t.d': 1.331592188603717}, <Invalid Chaid Split> - the max depth has been reached), ([3, 6], {'mean': 0.052611551259670764, 's.t.d': 1.26833221758771}, <Invalid Chaid Split> - the max depth has been reached), ([5, 8], {'mean': 0.019129267391920717, 's.t.d': 1.1054163159912893}, <Invalid Chaid Split> - the max depth has been reached), ([9], {'mean': 0.00495307595674778, 's.t.d': 1.0282483287422683}, <Invalid Chaid Split> - the max depth has been reached), ([10, 11], {'mean': 0.03939285663767677, 's.t.d': 1.2065878491492739}, <Invalid Chaid Split> - the max depth has been reached), ([12], {'mean': 0.027681104983413005, 's.t.d': 1.149234940829024}, <Invalid Chaid Split> - the max depth has been reached), ([13], {'mean': 0.0009285224806205607, 's.t.d': 1.0053513159158582}, <Invalid Chaid Split> - the max depth has been reached), ([14], {'mean': -0.022958586998221196, 's.t.d': 0.8560714479764954}, <Invalid Chaid Split> - the max depth has been reached)]
+The P-Values of this node is 0.0
+The new categories are:
+0 >>> [0, 7, 1, 4, 2]
+1 >>> [3, 6]
+2 >>> [5, 8]
+3 >>> [9]
+4 >>> [10, 11]
+5 >>> [12]
+6 >>> [13]
+7 >>> [14]
+------------------------------------------------------------------------------------------------------------------
