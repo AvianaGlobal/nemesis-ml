@@ -1,0 +1,158 @@
+
+Variable name: Calendar_Year
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 2
+The counts of each category:
+1 >>> 9158618
+0 >>> 4025672
+Mode: 1, Count: 9158618
+
+Variable name: Model_Year
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 12
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: 9, Count: 3169031
+
+Variable name: Blind_Make
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 10
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: 7, Count: 3092921
+
+Variable name: Cat1
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 5
+The counts of each category:
+4 >>> 4043720
+1 >>> 3504521
+3 >>> 2654532
+0 >>> 1676409
+2 >>> 1305108
+Mode: 4, Count: 4043720
+
+Variable name: Cat2
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 2
+The counts of each category:
+1 >>> 10769191
+0 >>> 2415099
+Mode: 1, Count: 10769191
+
+Variable name: Cat3
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 4
+The counts of each category:
+3 >>> 7492028
+2 >>> 2256802
+0 >>> 2164571
+1 >>> 1270889
+Mode: 3, Count: 7492028
+
+Variable name: Cat4
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 3
+The counts of each category:
+2 >>> 11354812
+1 >>> 1454425
+0 >>> 375053
+Mode: 2, Count: 11354812
+
+Variable name: Cat5
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 3
+The counts of each category:
+2 >>> 12321301
+1 >>> 779280
+0 >>> 83709
+Mode: 2, Count: 12321301
+
+Variable name: Cat6
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 3
+The counts of each category:
+2 >>> 7968883
+0 >>> 4042091
+1 >>> 1173316
+Mode: 2, Count: 7968883
+
+Variable name: Cat8
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 2
+The counts of each category:
+1 >>> 8629877
+0 >>> 4554413
+Mode: 1, Count: 8629877
+
+Variable name: Cat9
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 2
+The counts of each category:
+1 >>> 10850782
+0 >>> 2333508
+Mode: 1, Count: 10850782
+
+Variable name: Cat10
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 2
+The counts of each category:
+0 >>> 9215120
+1 >>> 3969170
+Mode: 0, Count: 9215120
+
+Variable name: Cat11
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 2
+The counts of each category:
+1 >>> 11761628
+0 >>> 1422662
+Mode: 1, Count: 11761628
+
+Variable name: Cat12
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 6
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: 5, Count: 4377158
+
+Variable name: OrdCat
+More 50% missing values, drop this column
+
+Variable name: NVCat
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 8
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: 7, Count: 5767944
+

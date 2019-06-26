@@ -1,0 +1,347 @@
+
+Variable name: Row_ID
+Column type is Delete, drop this column
+
+Variable name: Household_ID
+More than 100 categories, drop this column
+
+Variable name: Vehicle
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: 1
+Maximum value: 29
+Mean: 1.894002028171407
+Standard Deviation: 1.1738613427338391
+Skewness: 1.9536650823722295
+Number of distinct values: 28
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Calendar_Year
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 3
+The counts of each category:
+2007 >>> 4710888
+2006 >>> 4447730
+2005 >>> 4025672
+Mode: 2007, Count: 4710888
+
+Variable name: Model_Year
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 29
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: 2004, Count: 1067981
+
+Variable name: Blind_Make
+Variable type: Nominal
+Number of missing values: 8431
+Number of valid values: 13175859
+Number of categories: 75
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: K, Count: 1657185
+
+Variable name: Blind_Model
+More than 100 categories, drop this column
+
+Variable name: Blind_Submodel
+More than 100 categories, drop this column
+
+Variable name: Cat1
+Variable type: Nominal
+Number of missing values: 25981
+Number of valid values: 13158309
+Number of categories: 11
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: B, Count: 4017739
+
+Variable name: Cat2
+Variable type: Nominal
+Number of missing values: 4874164
+Number of valid values: 8310126
+Number of categories: 4
+The counts of each category:
+C >>> 5895027
+? >>> 4874164
+A >>> 2191054
+B >>> 224045
+Mode: C, Count: 5895027
+
+Variable name: Cat3
+Variable type: Nominal
+Number of missing values: 3999
+Number of valid values: 13180291
+Number of categories: 7
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: A, Count: 7488029
+
+Variable name: Cat4
+Variable type: Nominal
+Number of missing values: 5631649
+Number of valid values: 7552641
+Number of categories: 4
+The counts of each category:
+A >>> 5723163
+? >>> 5631649
+C >>> 1454425
+B >>> 375053
+Mode: A, Count: 5723163
+
+Variable name: Cat5
+Variable type: Nominal
+Number of missing values: 5637321
+Number of valid values: 7546969
+Number of categories: 4
+The counts of each category:
+A >>> 6683980
+? >>> 5637321
+C >>> 779280
+B >>> 83709
+Mode: A, Count: 6683980
+
+Variable name: Cat6
+Variable type: Nominal
+Number of missing values: 25981
+Number of valid values: 13158309
+Number of categories: 6
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: B, Count: 4265208
+
+Variable name: Cat7
+More 50% missing values, drop this column
+
+Variable name: Cat8
+Variable type: Nominal
+Number of missing values: 3364
+Number of valid values: 13180926
+Number of categories: 4
+The counts of each category:
+A >>> 8626513
+B >>> 3673932
+C >>> 880481
+? >>> 3364
+Mode: A, Count: 8626513
+
+Variable name: Cat9
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 2
+The counts of each category:
+B >>> 10850782
+A >>> 2333508
+Mode: B, Count: 10850782
+
+Variable name: Cat10
+Variable type: Nominal
+Number of missing values: 3917
+Number of valid values: 13180373
+Number of categories: 4
+The counts of each category:
+A >>> 8573092
+B >>> 3969170
+C >>> 638111
+? >>> 3917
+Mode: A, Count: 8573092
+
+Variable name: Cat11
+Variable type: Nominal
+Number of missing values: 31469
+Number of valid values: 13152821
+Number of categories: 7
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: A, Count: 6951038
+
+Variable name: Cat12
+Variable type: Nominal
+Number of missing values: 28882
+Number of valid values: 13155408
+Number of categories: 7
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: B, Count: 4348276
+
+Variable name: OrdCat
+Variable type: Ordinal
+Number of missing values: 7546
+Number of valid values: 13176744
+Number of categories: 15
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: 4, Count: 5781614
+
+Variable name: Var1
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -2.5782217999999997
+Maximum value: 5.1433916
+Mean: -0.010119253951096347
+Standard Deviation: 0.980060870437982
+Skewness: 1.3121896776246136
+Number of distinct values: 360
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Var2
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -2.4933927000000002
+Maximum value: 7.8294196
+Mean: -0.06508702273873675
+Standard Deviation: 0.9684165319564847
+Skewness: 0.6855346316528971
+Number of distinct values: 322
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Var3
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -2.7903352000000003
+Maximum value: 5.5633254
+Mean: -0.025433911627429313
+Standard Deviation: 1.018901955661778
+Skewness: 0.45780770396735465
+Number of distinct values: 195
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Var4
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -2.5082161
+Maximum value: 7.5892625
+Mean: -0.05456792326587172
+Standard Deviation: 0.9680170309975311
+Skewness: 0.6497129070012033
+Number of distinct values: 322
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Var5
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -3.3503442000000003
+Maximum value: 4.0181665
+Mean: 0.0038385937711548973
+Standard Deviation: 0.9910489586384285
+Skewness: 0.4810847262864235
+Number of distinct values: 670
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Var6
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -2.3766568
+Maximum value: 4.5842886
+Mean: -0.04012271497562629
+Standard Deviation: 0.9792078410758253
+Skewness: 0.7805732708329857
+Number of distinct values: 2633
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Var7
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -2.7784904999999998
+Maximum value: 4.127148200000001
+Mean: -0.024212875735454838
+Standard Deviation: 1.0064329294208334
+Skewness: 0.4100213799431037
+Number of distinct values: 358
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Var8
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -2.1630421
+Maximum value: 47.3507385
+Mean: -0.058560590310308795
+Standard Deviation: 1.0039540320138018
+Skewness: 3.9178047451558724
+Number of distinct values: 6181
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: NVCat
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 15
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: M, Count: 5767944
+
+Variable name: NVVar1
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -0.2315299
+Maximum value: 6.627110000000001
+Mean: 0.01468409929869567
+Standard Deviation: 1.0310403779953854
+Skewness: 4.890890320886909
+Number of distinct values: 29
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: NVVar2
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -0.2661168
+Maximum value: 8.8830814
+Mean: 0.01751168720106279
+Standard Deviation: 1.0382124897123424
+Skewness: 4.368820191760384
+Number of distinct values: 27
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: NVVar3
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -0.27233720000000006
+Maximum value: 8.691144
+Mean: 0.013542261947590652
+Standard Deviation: 1.027748489722454
+Skewness: 4.304618655992367
+Number of distinct values: 31
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: NVVar4
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 13184290
+Minimum value: -0.2514189
+Maximum value: 6.3888025
+Mean: 0.0185137592729832
+Standard Deviation: 1.0342738498329724
+Skewness: 4.418903026742618
+Number of distinct values: 30
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+

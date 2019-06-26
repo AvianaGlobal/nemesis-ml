@@ -1,0 +1,295 @@
+
+Variable name: LIMIT_BAL
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.22119999999999998
+Standard Deviation: 0.07572402870965445
+Skewness: 0.5718515762475431
+Number of distinct values: 54
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: SEX
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 30000
+Number of categories: 2
+The counts of each category:
+1 >>> 18112
+0 >>> 11888
+Mode: 1, Count: 18112
+
+Variable name: EDUCATION
+Variable type: Ordinal
+Number of missing values: 0
+Number of valid values: 30000
+Number of categories: 5
+The counts of each category:
+1 >>> 14030
+0 >>> 10599
+2 >>> 4917
+3 >>> 403
+4 >>> 51
+Mode: 1, Count: 14030
+
+Variable name: MARRIAGE
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 30000
+Number of categories: 3
+The counts of each category:
+2 >>> 15964
+1 >>> 13982
+0 >>> 54
+Mode: 2, Count: 15964
+
+Variable name: AGE
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.1926084956295047
+Maximum value: 0.30178571428571427
+Mean: 0.2212
+Standard Deviation: 0.026888337365767144
+Skewness: 0.9498913178494459
+Number of distinct values: 13
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_0
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.12811291307593134
+Maximum value: 0.7252747252747253
+Mean: 0.22120000000000004
+Standard Deviation: 0.1751661998189109
+Skewness: 2.031181337684877
+Number of distinct values: 6
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_2
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.15912269548633184
+Maximum value: 0.6165644171779141
+Mean: 0.22119999999999998
+Standard Deviation: 0.14112335153913116
+Skewness: 1.9902409832983825
+Number of distinct values: 7
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_3
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.1559447625463119
+Maximum value: 0.6266666666666667
+Mean: 0.22119999999999998
+Standard Deviation: 0.12255378138506418
+Skewness: 2.075712070478298
+Number of distinct values: 7
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_4
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.1589590293652189
+Maximum value: 0.75
+Mean: 0.2212
+Standard Deviation: 0.11551503317500506
+Skewness: 2.40737547096653
+Number of distinct values: 7
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_5
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.1619425889149666
+Maximum value: 0.75
+Mean: 0.22120000000000006
+Standard Deviation: 0.11201654138121811
+Skewness: 2.70144682006606
+Number of distinct values: 6
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_6
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.16986062717770034
+Maximum value: 0.672077922077922
+Mean: 0.2212
+Standard Deviation: 0.10379701287725658
+Skewness: 2.7231128349291134
+Number of distinct values: 6
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: BILL_AMT1
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.2212
+Standard Deviation: 0.07861153812383333
+Skewness: 5.178468470680457
+Number of distinct values: 78
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: BILL_AMT2
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.2212
+Standard Deviation: 0.0746993526420431
+Skewness: 5.8065587339324685
+Number of distinct values: 79
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: BILL_AMT3
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.2212
+Standard Deviation: 0.07403533847528714
+Skewness: 4.834884696206002
+Number of distinct values: 72
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: BILL_AMT4
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.2212
+Standard Deviation: 0.07988232901128949
+Skewness: 4.87731625705087
+Number of distinct values: 83
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: BILL_AMT5
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.22119999999999998
+Standard Deviation: 0.07481518124244828
+Skewness: 4.692315497774227
+Number of distinct values: 72
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: BILL_AMT6
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.2212
+Standard Deviation: 0.07534980237589001
+Skewness: 4.501660414735811
+Number of distinct values: 81
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_AMT1
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.22119999999999998
+Standard Deviation: 0.08835872663586707
+Skewness: 1.2006355439667549
+Number of distinct values: 56
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_AMT2
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.2212
+Standard Deviation: 0.08438980668330315
+Skewness: 0.8495572994782544
+Number of distinct values: 65
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_AMT3
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.2212
+Standard Deviation: 0.07822010474876255
+Skewness: 0.9607219034913399
+Number of distinct values: 59
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_AMT4
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.2212
+Standard Deviation: 0.07332607146242705
+Skewness: 1.568373201899163
+Number of distinct values: 54
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_AMT5
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.2212
+Standard Deviation: 0.0702897864209417
+Skewness: 1.331535659086745
+Number of distinct values: 62
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PAY_AMT6
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 30000
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.2212
+Standard Deviation: 0.07047155045488201
+Skewness: 1.0378480077924288
+Number of distinct values: 58
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
