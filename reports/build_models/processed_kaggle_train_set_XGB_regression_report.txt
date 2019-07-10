@@ -1,0 +1,5 @@
+The current dataset has17 columns and 13184290 rowsColumn names are Index(['Calendar_Year', 'Model_Year', 'Blind_Make', 'Cat1', 'Cat2', 'Cat3',
+       'Cat4', 'Cat5', 'Cat6', 'Cat8', 'Cat9', 'Cat10', 'Cat11', 'Cat12',
+       'OrdCat', 'NVCat', 'Claim_Amount'],
+      dtype='object')
+Test MSE: 0.9956217197219608R Square: 0.0007992062078756579

@@ -213,12 +213,24 @@ def outlier_toNone(df,column):
 # function to fill missing value and update statistic
 def fill_missing_value(mydata, column_type):
     # filling missing value and updata statistic
+    # Get target variable name
+    # target = get_target(mydata, column_type)
+    # # if there are missing value in target variable, drop that rows
+    # na_row = mydata[target][mydata[target].isnull().values == True].index.tolist()
+    # mydata = mydata.drop(index=na_row)
+    # # drop target column
+    # mydata = mydata.drop(columns=target)
+    # column_type_index = column_type['Type'][column_type['Type'] == 'Flag_Continuous'].index.tolist()
+    # column_type = column_type.drop(column_type_index)
     column_list = mydata.columns.values.tolist()
-    typelist = list(column_type.iloc[:,1])
+    typelist = list(column_type.iloc[:, 1])
     i = 0
     for typ in typelist:
         column_data = mydata[column_list[i]].dropna()
-        if (typ == 'Continuous'):
+        if (typ == 'Flag_Continuous' or typ == 'Flag_Categorical'):
+            print('')
+            print('Target do not need to fill missing value')
+        elif (typ == 'Continuous'):
             mean_value = column_data.mean() # calculate mean
             mydata[column_list[i]] = mydata[column_list[i]].fillna(mean_value) # fill missing value with mean
             cont_sd = mydata[column_list[i]].std() # calculate standard deviation
@@ -265,8 +277,7 @@ def fill_missing_value(mydata, column_type):
             print('The number of missing values:', get_na_num(mydata[column_list[i]]))
             print('The number of valid values:', get_valid_num(mydata[column_list[i]]))"""
         i = i + 1
-    # add column type at the last row
-    #print('add column type at the last row:')
+
     return (mydata)
 
 #function to do z-score transformation of a column
@@ -358,6 +369,7 @@ def Supervised_Merged (file,df, Predictor_type, dependent_variable_name, indep_c
         file.write('The P-values is too large.\n')
         file.write('There is no categories can be merged in this variables.\n\n')
         new_dict={}
+
     return new_dict
 
 # Function to Rearrange categories and Supervised Merged for Categorical Predictors
@@ -438,20 +450,29 @@ def Reorder_Categories (file,dataset,column_type):
          
         # If the Predictor type is Ordinal
         if Predictor_type == 'Ordinal':
-            
+
             Column_name = dataset.columns[i]
-            Pre_type ='ordinal'
-            
+            pre_type ='ordinal'
+
             New_Categories ={}
-            
+
             # Check if target is Categorical or Continuous
             if Flag_type1 == True:
-                New_Categories = Supervised_Merged(file,dataset, Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i, Categorical = False)
+                New_Categories = Supervised_Merged(file,dataset, pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i, Categorical = False)
             else:
-                New_Categories = Supervised_Merged(file,dataset,Pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i)
-                
+                New_Categories = Supervised_Merged(file,dataset,pre_type, dependent_variable_name = dep_variable_name, indep_column_num = i)
+            # If the column dtype is object(but the values are number), but during the supervised merged, the values were marked as int, then
+            # transform the column dtype from object to int.
+
+            types1 = [type(k) for k in New_Categories.keys()]
+
+
             if len(New_Categories) != 0:
-                    dataset[Column_name] = dataset[Column_name].map(New_Categories)            
+                if types1[0] == int:
+                    dataset[Column_name] = dataset[Column_name].astype(int)
+                    dataset[Column_name] = dataset[Column_name].map(New_Categories)
+                else:
+                    dataset[Column_name] = dataset[Column_name].map(New_Categories)
     return dataset
 
 def p_value_continuous(column1,column2):
@@ -655,7 +676,7 @@ def main():
     target_type = column_type(target_name,df_type)
 
     # Basic screening and print report
-    file = open('../../reports/'+data_file_name+'_raw_univariate_statistic_report.txt','w') 
+    file = open('../../reports/build_features/'+data_file_name+'_raw_univariate_statistic_report.txt','w') 
     d = Stats_Collection(file,df,df_type)
     file.close()
     # After deleting useless variables, new dataset and new column type dataset are named as new_df and new_df_type
@@ -682,7 +703,7 @@ def main():
 
 
     #Categorical variable handling: Reorder and Supervised Merged
-    file = open('../../reports/'+data_file_name+'_supervised_merge_report.txt','w') 
+    file = open('../../reports/build_features/'+data_file_name+'_supervised_merge_report.txt','w') 
     new_df = Reorder_Categories(file,new_df,new_df_type)
     file.close()
 
@@ -702,7 +723,7 @@ def main():
 
     #Continuous variable handling when target is categorical
     else:
-        file = open('../../reports/'+data_file_name+'_supervised_binning_report.txt','w')
+        file = open('../../reports/build_features/'+data_file_name+'_supervised_binning_report.txt','w')
         new_df = supervised_binning(file,new_df,new_df_type)
         file.close()
 
@@ -710,7 +731,7 @@ def main():
     new_df_type.to_csv('../../data/processed/processed_'+data_type_file_name+'.csv', index=False)
 
     #Univariate stats report for processed data
-    file = open('../../reports/'+data_file_name+'_processed_univariate_statistic_report.txt','w') 
+    file = open('../../reports/build_features/'+data_file_name+'_processed_univariate_statistic_report.txt','w')
     d = Stats_Collection(file,new_df,new_df_type)
     file.close()
 

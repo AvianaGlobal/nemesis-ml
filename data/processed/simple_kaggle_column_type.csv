@@ -1,0 +1,15 @@
+Variable,Type
+Vehicle,Continuous
+Var1,Continuous
+Var2,Continuous
+Var3,Continuous
+Var4,Continuous
+Var5,Continuous
+Var6,Continuous
+Var7,Continuous
+Var8,Continuous
+NVVar1,Continuous
+NVVar2,Continuous
+NVVar3,Continuous
+NVVar4,Continuous
+Claim_Amount,Flag_Continuous

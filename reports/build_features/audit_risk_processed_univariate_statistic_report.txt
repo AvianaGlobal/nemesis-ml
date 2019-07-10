@@ -1,0 +1,363 @@
+
+Variable name: Sector_score
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.04878048780487805
+Maximum value: 0.6594202898550725
+Mean: 0.39304123711340205
+Standard Deviation: 0.23254309553429917
+Skewness: -0.11870723292796259
+Number of distinct values: 4
+Number of cases for each distinct value: 
+0.6594202898550725 >>> 276
+0.12236286919831224 >>> 237
+0.4144144144144144 >>> 222
+0.04878048780487805 >>> 41
+
+Variable name: LOCATION_ID
+Variable type: Nominal
+Number of missing values: 0
+Number of valid values: 776
+Number of categories: 4
+The counts of each category:
+3 >>> 313
+2 >>> 290
+0 >>> 88
+1 >>> 85
+Mode: 3, Count: 313
+
+Variable name: PARA_A
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.08333333333333333
+Maximum value: 1.0
+Mean: 0.39304123711340205
+Standard Deviation: 0.31815022765187706
+Skewness: 0.7276492308164156
+Number of distinct values: 6
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Score_A
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.1435523114355231
+Maximum value: 0.8513513513513513
+Mean: 0.39304123711340205
+Standard Deviation: 0.3052607435023448
+Skewness: 0.6816669245059274
+Number of distinct values: 3
+Number of cases for each distinct value: 
+0.1435523114355231 >>> 411
+0.8513513513513513 >>> 222
+0.3986013986013986 >>> 143
+
+Variable name: Risk_A
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.39304123711340205
+Standard Deviation: 0.3197209881344807
+Skewness: 0.6987102219361017
+Number of distinct values: 7
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: PARA_B
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.16205533596837945
+Maximum value: 0.9828571428571429
+Mean: 0.39304123711340205
+Standard Deviation: 0.342286099859056
+Skewness: 0.9796827962498214
+Number of distinct values: 4
+Number of cases for each distinct value: 
+0.16205533596837945 >>> 506
+0.9828571428571429 >>> 175
+0.4375 >>> 48
+0.6382978723404256 >>> 47
+
+Variable name: Score_B
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.18618042226487524
+Maximum value: 0.9184782608695652
+Mean: 0.39304123711340205
+Standard Deviation: 0.3107271076109968
+Skewness: 0.9637801161844647
+Number of distinct values: 3
+Number of cases for each distinct value: 
+0.18618042226487524 >>> 521
+0.9184782608695652 >>> 184
+0.5492957746478874 >>> 71
+
+Variable name: Risk_B
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.16024340770791076
+Maximum value: 0.9881656804733728
+Mean: 0.39304123711340205
+Standard Deviation: 0.33998313844182604
+Skewness: 0.9880391148023719
+Number of distinct values: 4
+Number of cases for each distinct value: 
+0.16024340770791076 >>> 493
+0.9881656804733728 >>> 169
+0.5972222222222222 >>> 72
+0.38095238095238093 >>> 42
+
+Variable name: TOTAL
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.11075949367088607
+Maximum value: 1.0
+Mean: 0.39304123711340205
+Standard Deviation: 0.378244669788162
+Skewness: 0.9257738669598179
+Number of distinct values: 5
+Number of cases for each distinct value: 
+0.11075949367088607 >>> 316
+1.0 >>> 212
+0.1736111111111111 >>> 144
+0.3137254901960784 >>> 102
+0.5 >>> 2
+
+Variable name: numbers
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.3356940509915014
+Maximum value: 1.0
+Mean: 0.393041237113402
+Standard Deviation: 0.18233342764581859
+Skewness: 2.871879462660761
+Number of distinct values: 3
+Number of cases for each distinct value: 
+0.3356940509915014 >>> 706
+0.9583333333333334 >>> 48
+1.0 >>> 22
+
+Variable name: Score_B.1
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.3356940509915014
+Maximum value: 1.0
+Mean: 0.393041237113402
+Standard Deviation: 0.18233342764581859
+Skewness: 2.871879462660761
+Number of distinct values: 3
+Number of cases for each distinct value: 
+0.3356940509915014 >>> 706
+0.9583333333333334 >>> 48
+1.0 >>> 22
+
+Variable name: Risk_C
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.3356940509915014
+Maximum value: 1.0
+Mean: 0.393041237113402
+Standard Deviation: 0.18233342764581859
+Skewness: 2.871879462660761
+Number of distinct values: 3
+Number of cases for each distinct value: 
+0.3356940509915014 >>> 706
+0.9583333333333334 >>> 48
+1.0 >>> 22
+
+Variable name: Money_Value
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.39304123711340205
+Standard Deviation: 0.359513877248527
+Skewness: 0.8773771432822058
+Number of distinct values: 6
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Score_MV
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.18989547038327526
+Maximum value: 0.9702970297029703
+Mean: 0.39304123711340205
+Standard Deviation: 0.34266365861316084
+Skewness: 1.0945914718553582
+Number of distinct values: 2
+Number of cases for each distinct value: 
+0.18989547038327526 >>> 574
+0.9702970297029703 >>> 202
+
+Variable name: Risk_D
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.39304123711340205
+Standard Deviation: 0.36132139976178207
+Skewness: 0.8869507270306258
+Number of distinct values: 7
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: District_Loss
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.3169984686064318
+Maximum value: 1.0
+Mean: 0.393041237113402
+Standard Deviation: 0.20077625383927727
+Skewness: 2.572933973415911
+Number of distinct values: 3
+Number of cases for each distinct value: 
+0.3169984686064318 >>> 653
+1.0 >>> 73
+0.5 >>> 50
+
+Variable name: PROB
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.39225806451612905
+Maximum value: 1.0
+Mean: 0.39304123711340205
+Standard Deviation: 0.02181666404573901
+Skewness: 27.856776554368228
+Number of distinct values: 2
+Number of cases for each distinct value: 
+0.39225806451612905 >>> 775
+1.0 >>> 1
+
+Variable name: RiSk_E
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.3029827315541601
+Maximum value: 1.0
+Mean: 0.39304123711340205
+Standard Deviation: 0.21302587588333732
+Skewness: 2.259712901954114
+Number of distinct values: 3
+Number of cases for each distinct value: 
+0.3029827315541601 >>> 637
+1.0 >>> 76
+0.5714285714285714 >>> 63
+
+Variable name: History
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.3526170798898072
+Maximum value: 0.98
+Mean: 0.39304123711340205
+Standard Deviation: 0.15413607365844825
+Skewness: 3.5549552209326714
+Number of distinct values: 2
+Number of cases for each distinct value: 
+0.3526170798898072 >>> 726
+0.98 >>> 50
+
+Variable name: Prob
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.3526170798898072
+Maximum value: 0.98
+Mean: 0.39304123711340205
+Standard Deviation: 0.15413607365844825
+Skewness: 3.5549552209326714
+Number of distinct values: 2
+Number of cases for each distinct value: 
+0.3526170798898072 >>> 726
+0.98 >>> 50
+
+Variable name: Risk_F
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.3526170798898072
+Maximum value: 0.98
+Mean: 0.39304123711340205
+Standard Deviation: 0.15413607365844825
+Skewness: 3.5549552209326714
+Number of distinct values: 2
+Number of cases for each distinct value: 
+0.3526170798898072 >>> 726
+0.98 >>> 50
+
+Variable name: Score
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.0
+Maximum value: 0.9940828402366864
+Mean: 0.39304123711340205
+Standard Deviation: 0.4167813149848083
+Skewness: 0.33234745903093166
+Number of distinct values: 6
+Number of cases for each distinct value: 
+Number of distict values is larger than 5. We stop updating the number of distinct values
+
+Variable name: Inherent_Risk
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.39304123711340205
+Standard Deviation: 0.4530064021472544
+Skewness: 0.4918451410267449
+Number of distinct values: 4
+Number of cases for each distinct value: 
+0.0 >>> 382
+1.0 >>> 265
+0.3619047619047619 >>> 105
+0.08333333333333333 >>> 24
+
+Variable name: CONTROL_RISK
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.26411960132890366
+Maximum value: 1.0
+Mean: 0.39304123711340205
+Standard Deviation: 0.2523207602814266
+Skewness: 1.6450774607071539
+Number of distinct values: 3
+Number of cases for each distinct value: 
+0.26411960132890366 >>> 602
+1.0 >>> 89
+0.6705882352941176 >>> 85
+
+Variable name: Audit_Risk
+Variable type: Continuous
+Number of missing values: 0
+Number of valid values: 776
+Minimum value: 0.0
+Maximum value: 1.0
+Mean: 0.39304123711340205
+Standard Deviation: 0.4887408742557492
+Skewness: 0.4388220743033204
+Number of distinct values: 2
+Number of cases for each distinct value: 
+0.0 >>> 471
+1.0 >>> 305
+

@@ -1,0 +1,24 @@
+1. The current dataset has24 columns and 30000 rows
+Column names are ['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6', 'default']
+
+The first 10 rows of this dataset: 
+
+   LIMIT_BAL  SEX  EDUCATION  MARRIAGE  ...  PAY_AMT4  PAY_AMT5  PAY_AMT6  default
+0   0.353239    1          1         1  ...  0.311017  0.293898  0.289697        1
+1   0.246556    1          1         2  ...  0.234232  0.293898  0.224293        1
+2   0.254992    1          1         2  ...  0.234232  0.234642  0.164706        0
+3   0.263001    1          1         1  ...  0.234232  0.265207  0.218727        0
+4   0.263001    0          1         1  ...  0.164251  0.165289  0.263471        0
+5   0.263001    0          0         2  ...  0.234232  0.234642  0.263471        0
+6   0.112188    0          0         2  ...  0.178660  0.122302  0.149235        0
+7   0.259542    1          1         2  ...  0.234232  0.128205  0.101351        0
+8   0.226969    1          2         1  ...  0.234232  0.234642  0.218727        0
+9   0.353239    0          2         2  ...  0.178660  0.265207  0.289697        0
+
+[10 rows x 24 columns]
+
+2. Test set performance 
+The confusion matrix is:
+[[4537  166]
+ [ 784  513]]
+Accuracy: 84.16666666666667

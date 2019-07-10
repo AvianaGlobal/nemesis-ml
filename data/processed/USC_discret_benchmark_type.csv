@@ -1,0 +1,16 @@
+Variable,Type
+Case_ID,Delete
+Y_AuditResult,Flag_Categorical
+SCORE_transformed,Continuous
+A_GrossSales_transformed,Continuous
+A_ExtaxPurch_transformed,Continuous
+A_Resales_transformed,Continuous
+A_FoodCosts_transformed,Continuous
+A_LaborCosts_transformed,Continuous
+A_IOC_transformed,Continuous
+A_BadDebts_transformed,Continuous
+A_TOPP_transformed,Continuous
+A_SalesFinal_transformed,Continuous
+BUS__CODE_transformed,Nominal
+OwnCode_transformed,Nominal
+Status_transformed,Nominal

@@ -1,0 +1,60 @@
+1. The current dataset has 14 columns and 14112 rows
+
+Column names are  :['BUS__CODE', 'SCORE', 'A_GrossSales', 'A_ExtaxPurch', 'A_Resales', 'A_FoodCosts', 'A_LaborCosts', 'A_IOC', 'A_BadDebts', 'A_TOPP', 'A_SalesFinal', 'OwnCode', 'Status', 'Y_AuditResult']
+
+The first 10 rows of this dataset: 
+
+   BUS__CODE     SCORE  A_GrossSales  A_ExtaxPurch  A_Resales  A_FoodCosts  \
+0          1  0.159487      0.050649      0.057615   0.052424     0.054121   
+1          5  0.159487      0.350000      0.297216   0.234368     0.292196   
+2          5  0.159487      0.269103      0.455882   0.345161     0.292196   
+3          5  0.159487      0.269350      0.170758   0.345161     0.292196   
+4          6  0.228013      0.421769      0.455882   0.909091     0.292196   
+5          5  0.159487      0.050649      0.057615   0.052424     0.054121   
+6          5  0.215543      0.050649      0.057615   0.052424     0.054121   
+7          1  0.159487      0.050649      0.057615   0.052424     0.054121   
+8          1  0.188123      0.050649      0.057615   0.052424     0.054121   
+9          1  0.188123      0.269103      0.281879   0.222222     0.292196   
+
+   A_LaborCosts     A_IOC  A_BadDebts    A_TOPP  A_SalesFinal  OwnCode  \
+0      0.037247  0.047505    0.031854  0.021440      0.046638        0   
+1      0.254486  0.000000    0.302926  0.304764      0.288876        0   
+2      0.315652  0.258993    0.302926  0.316456      0.288876        0   
+3      0.315652  0.316640    0.302926  0.304764      0.288876        0   
+4      0.315652  0.316640    0.302926  0.304764      0.288876        1   
+5      0.037247  0.047505    0.031854  0.021440      0.046638        0   
+6      0.037247  0.047505    0.031854  0.021440      0.046638        0   
+7      0.037247  0.047505    0.031854  0.021440      0.046638        0   
+8      0.037247  0.047505    0.031854  0.021440      0.046638        0   
+9      0.315652  0.316640    0.302926  0.304764      0.288876        0   
+
+   Status Y_AuditResult  
+0       1   Not_Success  
+1       1   Not_Success  
+2       1       Success  
+3       1   Not_Success  
+4       1       Success  
+5       1   Not_Success  
+6       1   Not_Success  
+7       1   Not_Success  
+8       1   Not_Success  
+9       1       Success  
+
+
+
+2. Cross validation results
+
+The cross validation accuracy list is [0.8379, 0.8335, 0.8406, 0.837, 0.8264, 0.8264, 0.837, 0.8361, 0.8423, 0.828]
+
+The average Accuracy is:  0.8345
+
+
+3. Test set performance
+
+Test confusion matrix: 
+           predicted     
+                 neg  pos
+actual neg      2227   51
+       pos       408  137
+
+The accuracy of confusion matrix is :0.837

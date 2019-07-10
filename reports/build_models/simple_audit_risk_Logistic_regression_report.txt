@@ -1,0 +1,64 @@
+1. The current dataset has 27 columns and 776 rows
+
+Column names are  :['Sector_score', 'LOCATION_ID', 'PARA_A', 'Score_A', 'Risk_A', 'PARA_B', 'Score_B', 'Risk_B', 'TOTAL', 'numbers', 'Score_B.1', 'Risk_C', 'Money_Value', 'Score_MV', 'Risk_D', 'District_Loss', 'PROB', 'RiSk_E', 'History', 'Prob', 'Risk_F', 'Score', 'Inherent_Risk', 'CONTROL_RISK', 'Detection_Risk', 'Audit_Risk', 'Risk']
+
+The first 10 rows of this dataset: 
+
+   Sector_score  LOCATION_ID  PARA_A  Score_A  Risk_A  PARA_B  Score_B  \
+0          3.89           23    4.18      0.6   2.508    2.50      0.2   
+1          3.89            6    0.00      0.2   0.000    4.83      0.2   
+2          3.89            6    0.51      0.2   0.102    0.23      0.2   
+3          3.89            6    0.00      0.2   0.000   10.80      0.6   
+4          3.89            6    0.00      0.2   0.000    0.08      0.2   
+5          3.89            6    0.00      0.2   0.000    0.83      0.2   
+6          3.89            7    1.10      0.4   0.440    7.41      0.4   
+7          3.89            8    8.50      0.6   5.100   12.03      0.6   
+8          3.89            8    8.40      0.6   5.040   11.05      0.6   
+9          3.89            8    3.98      0.6   2.388    0.99      0.2   
+
+   Risk_B  TOTAL  numbers  ...  RiSk_E  History  Prob  Risk_F  Score  \
+0   0.500   6.68      5.0  ...     0.4        0   0.2     0.0    2.4   
+1   0.966   4.83      5.0  ...     0.4        0   0.2     0.0    2.0   
+2   0.046   0.74      5.0  ...     0.4        0   0.2     0.0    2.0   
+3   6.480  10.80      6.0  ...     0.4        0   0.2     0.0    4.4   
+4   0.016   0.08      5.0  ...     0.4        0   0.2     0.0    2.0   
+5   0.166   0.83      5.0  ...     0.4        0   0.2     0.0    2.0   
+6   2.964   8.51      5.0  ...     0.4        0   0.2     0.0    3.2   
+7   7.218  20.53      5.5  ...     0.4        0   0.2     0.0    4.2   
+8   6.630  19.45      5.5  ...     0.4        0   0.2     0.0    4.2   
+9   0.198   4.97      5.0  ...     0.4        0   0.2     0.0    2.4   
+
+   Inherent_Risk  CONTROL_RISK  Detection_Risk  Audit_Risk  Risk  
+0          8.574           0.4             0.5      1.7148     1  
+1          2.554           0.4             0.5      0.5108     0  
+2          1.548           0.4             0.5      0.3096     0  
+3         17.530           0.4             0.5      3.5060     1  
+4          1.416           0.4             0.5      0.2832     0  
+5          2.156           0.4             0.5      0.4312     0  
+6         31.774           0.4             0.5      6.3548     1  
+7         18.034           0.4             0.5      3.6068     1  
+8         17.206           0.4             0.5      3.4412     1  
+9          4.372           0.4             0.5      0.8744     0  
+
+[10 rows x 27 columns]
+
+
+
+2. Cross validation results
+
+The cross validation accuracy list is [1.0, 1.0, 1.0, 1.0, 0.9839, 1.0, 0.9839, 0.9839, 0.9839, 1.0]
+
+The average Accuracy is:  0.9935
+
+
+3. Test set performance
+
+Test confusion matrix: 
+           predicted    
+                 neg pos
+actual neg       100   1
+       pos         1  54
+
+The accuracy of confusion matrix is :0.987
+Precision: 0.982
+Recall: 0.982
