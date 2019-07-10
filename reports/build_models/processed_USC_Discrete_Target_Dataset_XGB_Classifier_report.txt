@@ -1,0 +1,24 @@
+1. The current dataset has14 columns and 14112 rows
+Column names are ['BUS__CODE', 'SCORE', 'A_GrossSales', 'A_ExtaxPurch', 'A_Resales', 'A_FoodCosts', 'A_LaborCosts', 'A_IOC', 'A_BadDebts', 'A_TOPP', 'A_SalesFinal', 'OwnCode', 'Status', 'Y_AuditResult']
+
+The first 10 rows of this dataset: 
+
+   BUS__CODE     SCORE  A_GrossSales  ...  OwnCode  Status  Y_AuditResult
+0          1  0.159487      0.050649  ...        0       1    Not_Success
+1          5  0.159487      0.350000  ...        0       1    Not_Success
+2          5  0.159487      0.269103  ...        0       1        Success
+3          5  0.159487      0.269350  ...        0       1    Not_Success
+4          6  0.228013      0.421769  ...        1       1        Success
+5          5  0.159487      0.050649  ...        0       1    Not_Success
+6          5  0.215543      0.050649  ...        0       1    Not_Success
+7          1  0.159487      0.050649  ...        0       1    Not_Success
+8          1  0.188123      0.050649  ...        0       1    Not_Success
+9          1  0.188123      0.269103  ...        0       1        Success
+
+[10 rows x 14 columns]
+
+2. Test set performance 
+The confusion matrix is:
+[[2244   34]
+ [ 407  138]]
+Accuracy: 84.37832093517534

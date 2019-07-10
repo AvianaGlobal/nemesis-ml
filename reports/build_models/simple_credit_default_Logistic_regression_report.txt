@@ -1,0 +1,64 @@
+1. The current dataset has 25 columns and 30000 rows
+
+Column names are  :['ID', 'LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6', 'default']
+
+The first 10 rows of this dataset: 
+
+   ID  LIMIT_BAL  SEX  EDUCATION  MARRIAGE  AGE  PAY_0  PAY_2  PAY_3  PAY_4  \
+0   1      20000    2          2         1   24      2      2     -1     -1   
+1   2     120000    2          2         2   26     -1      2      0      0   
+2   3      90000    2          2         2   34      0      0      0      0   
+3   4      50000    2          2         1   37      0      0      0      0   
+4   5      50000    1          2         1   57     -1      0     -1      0   
+5   6      50000    1          1         2   37      0      0      0      0   
+6   7     500000    1          1         2   29      0      0      0      0   
+7   8     100000    2          2         2   23      0     -1     -1      0   
+8   9     140000    2          3         1   28      0      0      2      0   
+9  10      20000    1          3         2   35     -2     -2     -2     -2   
+
+   ...  BILL_AMT4  BILL_AMT5  BILL_AMT6  PAY_AMT1  PAY_AMT2  PAY_AMT3  \
+0  ...          0          0          0         0       689         0   
+1  ...       3272       3455       3261         0      1000      1000   
+2  ...      14331      14948      15549      1518      1500      1000   
+3  ...      28314      28959      29547      2000      2019      1200   
+4  ...      20940      19146      19131      2000     36681     10000   
+5  ...      19394      19619      20024      2500      1815       657   
+6  ...     542653     483003     473944     55000     40000     38000   
+7  ...        221       -159        567       380       601         0   
+8  ...      12211      11793       3719      3329         0       432   
+9  ...          0      13007      13912         0         0         0   
+
+   PAY_AMT4  PAY_AMT5  PAY_AMT6  default  
+0         0         0         0        1  
+1      1000         0      2000        1  
+2      1000      1000      5000        0  
+3      1100      1069      1000        0  
+4      9000       689       679        0  
+5      1000      1000       800        0  
+6     20239     13750     13770        0  
+7       581      1687      1542        0  
+8      1000      1000      1000        0  
+9     13007      1122         0        0  
+
+[10 rows x 25 columns]
+
+
+
+2. Cross validation results
+
+The cross validation accuracy list is [0.7776, 0.7775, 0.7775, 0.7775, 0.7775, 0.7775, 0.7771, 0.7775, 0.7771, 0.7774]
+
+The average Accuracy is:  0.7774
+
+
+3. Test set performance
+
+Test confusion matrix: 
+           predicted    
+                 neg pos
+actual neg      4703   0
+       pos      1296   1
+
+The accuracy of confusion matrix is :0.784
+Precision: 1.0
+Recall: 0.001

@@ -1,0 +1,84 @@
+1. The current dataset has 15 columns and 14112 rows
+
+Column names are  :['Case_ID', 'Y_AuditResult', 'SCORE_transformed', 'A_GrossSales_transformed', 'A_ExtaxPurch_transformed', 'A_Resales_transformed', 'A_FoodCosts_transformed', 'A_LaborCosts_transformed', 'A_IOC_transformed', 'A_BadDebts_transformed', 'A_TOPP_transformed', 'A_SalesFinal_transformed', 'BUS__CODE_transformed', 'OwnCode_transformed', 'Status_transformed']
+
+The first 10 rows of this dataset: 
+
+     Case_ID Y_AuditResult  SCORE_transformed  A_GrossSales_transformed  \
+0  100000001   Not_Success          -0.471958                  0.000000   
+1  100000002   Not_Success          -0.729309                 -0.405738   
+2  100000003       Success          -0.471958                 -0.390586   
+3  100000004   Not_Success          -0.266077                  0.497606   
+4  100000005       Success           0.000000                 -0.428499   
+5  100000006   Not_Success          -0.574898                  0.000000   
+6  100000007   Not_Success           1.175092                  0.000000   
+7  100000008   Not_Success          -0.214606                  0.000000   
+8  100000009   Not_Success           0.248626                  0.000000   
+9  100000010       Success           0.351567                 -0.257362   
+
+   A_ExtaxPurch_transformed  A_Resales_transformed  A_FoodCosts_transformed  \
+0                  0.000000               0.000000                 0.000000   
+1                 -0.186775              -0.264457                -0.083571   
+2                  0.969890              -0.272666                -0.083571   
+3                 -0.182163              -0.272666                -0.083571   
+4                 21.460101              -0.296886                -0.083571   
+5                  0.000000               0.000000                 0.000000   
+6                  0.000000               0.000000                 0.000000   
+7                  0.000000               0.000000                 0.000000   
+8                  0.000000               0.000000                 0.000000   
+9                 -0.154408              -0.015291                -0.083571   
+
+   A_LaborCosts_transformed  A_IOC_transformed  A_BadDebts_transformed  \
+0                  0.000000           0.000000                0.000000   
+1                 -0.134407          -0.165467               -0.080387   
+2                 -0.175404          -0.166987               -0.080365   
+3                 -0.175404          -0.167003               -0.080365   
+4                 -0.175404          -0.167003               -0.080361   
+5                  0.000000           0.000000                0.000000   
+6                  0.000000           0.000000                0.000000   
+7                  0.000000           0.000000                0.000000   
+8                  0.000000           0.000000                0.000000   
+9                 -0.175404          -0.167003               -0.080357   
+
+   A_TOPP_transformed  A_SalesFinal_transformed  BUS__CODE_transformed  \
+0            0.000000                  0.000000                     73   
+1           -0.036371                 -0.031523                     72   
+2           -0.028198                 -0.031523                     72   
+3           -0.036371                 -0.031523                     70   
+4           -0.036371                 -0.031523                     41   
+5            0.000000                  0.000000                     70   
+6            0.000000                  0.000000                     72   
+7            0.000000                  0.000000                     24   
+8            0.000000                  0.000000                     66   
+9           -0.036371                 -0.031523                     66   
+
+   OwnCode_transformed  Status_transformed  
+0                   13                   1  
+1                   13                   1  
+2                   13                   1  
+3                   13                   1  
+4                    6                   1  
+5                   13                   1  
+6                   13                   1  
+7                    7                   1  
+8                   13                   1  
+9                   13                   1  
+
+
+
+2. Cross validation results
+
+The cross validation accuracy list is [0.8016, 0.8016, 0.8016, 0.8016, 0.8016, 0.8016, 0.8016, 0.8016, 0.8016, 0.8014]
+
+The average Accuracy is:  0.8016
+
+
+3. Test set performance
+
+Test confusion matrix: 
+           predicted    
+                 neg pos
+actual neg      2278   0
+       pos       545   0
+
+The accuracy of confusion matrix is :0.807

@@ -145,7 +145,13 @@ Number of distict categories is larger than 5. We stop updating the number of di
 Mode: 5, Count: 4377158
 
 Variable name: OrdCat
-More 50% missing values, drop this column
+Variable type: Ordinal
+Number of missing values: 0
+Number of valid values: 13184290
+Number of categories: 6
+The counts of each category:
+Number of distict categories is larger than 5. We stop updating the number of distinct values
+Mode: 3, Count: 5943021
 
 Variable name: NVCat
 Variable type: Nominal

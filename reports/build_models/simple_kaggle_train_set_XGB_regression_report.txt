@@ -1,0 +1,4 @@
+The current dataset has14 columns and 13184290 rowsColumn names are Index(['Vehicle', 'Var1', 'Var2', 'Var3', 'Var4', 'Var5', 'Var6', 'Var7',
+       'Var8', 'NVVar1', 'NVVar2', 'NVVar3', 'NVVar4', 'Claim_Amount'],
+      dtype='object')
+Test MSE: 1607.195958954823R Square: 1.7770590134524866e-05

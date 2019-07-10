@@ -1,0 +1,24 @@
+1. The current dataset has26 columns and 776 rows
+Column names are ['Sector_score', 'LOCATION_ID', 'PARA_A', 'Score_A', 'Risk_A', 'PARA_B', 'Score_B', 'Risk_B', 'TOTAL', 'numbers', 'Score_B.1', 'Risk_C', 'Money_Value', 'Score_MV', 'Risk_D', 'District_Loss', 'PROB', 'RiSk_E', 'History', 'Prob', 'Risk_F', 'Score', 'Inherent_Risk', 'CONTROL_RISK', 'Audit_Risk', 'Risk']
+
+The first 10 rows of this dataset: 
+
+   Sector_score  LOCATION_ID    PARA_A  ...  CONTROL_RISK  Audit_Risk  Risk
+0       0.65942            1  0.688235  ...       0.26412         1.0     1
+1       0.65942            0  0.197452  ...       0.26412         0.0     0
+2       0.65942            0  0.098765  ...       0.26412         0.0     0
+3       0.65942            0  0.197452  ...       0.26412         1.0     1
+4       0.65942            0  0.197452  ...       0.26412         0.0     0
+5       0.65942            0  0.197452  ...       0.26412         0.0     0
+6       0.65942            1  0.367347  ...       0.26412         1.0     1
+7       0.65942            2  1.000000  ...       0.26412         1.0     1
+8       0.65942            2  1.000000  ...       0.26412         1.0     1
+9       0.65942            2  0.688235  ...       0.26412         0.0     0
+
+[10 rows x 26 columns]
+
+2. Test set performance 
+The confusion matrix is:
+[[101   0]
+ [  0  55]]
+Accuracy: 100.0

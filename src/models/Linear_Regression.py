@@ -1,6 +1,10 @@
-# import data which already build feature
-#dataset = pd.read_csv('../../data/processed/kaggle_train_sample.csv')
-#dataset_type = pd.read_csv('../../data/processed/kaggle_column_type.csv')
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+import statsmodels.formula.api as stfa
+from sklearn.metrics import mean_squared_error
+import pickle
 
 # import dataset
 def main():
@@ -8,21 +12,14 @@ def main():
     data_type_file_name = input('Column type file name: ')
     df = pd.read_csv('../../data/processed/'+data_file_name+'.csv')
     df_type = pd.read_csv('../../data/processed/'+data_type_file_name+'.csv')
-    Linear_Regression(dataset, dataset_type)
+    file = open('../../reports/build_models/'+data_file_name+'_linear_regression_report.txt','w') 
+    Linear_Regression(file,df,df_type,data_file_name)
+    file.close()
 
-def Linear_Regression(dataset,dataset_type,test_size=0.2):
-    import pandas as pd
-    import numpy as np
-    from sklearn.linear_model import LinearRegression
-    from sklearn.model_selection import train_test_split
-    import statsmodels.formula.api as stfa
-    from sklearn.metrics import mean_squared_error
+def Linear_Regression(file,dataset,dataset_type,data_file_name,test_size=0.2):
     
-    print('The current dataset has',dataset.shape[1],'columns and',dataset.shape[0],'rows')
-    print('Column names are',dataset.columns)
-    print('')
-    print('The first 10 rows of this dataset:')
-    print(dataset.head(10))
+    file.write('The current dataset has'+str(dataset.shape[1])+' columns and '+str(dataset.shape[0])+' rows')
+    file.write('Column names are '+str(dataset.columns)+'\n')
     
     # funtion to get column type
     def column_type(column_name,df_type):
@@ -47,16 +44,17 @@ def Linear_Regression(dataset,dataset_type,test_size=0.2):
         formula_list = formula_list + ' + ' + column
     # fit simple LP model
     SLP = stfa.ols(formula = formula_list, data = d_train).fit()
-    ytest_pred1 = SLP.predict(dx_test)
+    # save the model to disk
+    filename = '../../models/'+data_file_name+'_LinearRegressor.sav'
+    pickle.dump(SLP, open(filename, 'wb'))
+
+    # prediction
+    loaded_model = pickle.load(open(filename, 'rb'))
+    ytest_pred1 = loaded_model.predict(dx_test)
     test_error = mean_squared_error(dy_test, ytest_pred1, sample_weight=None, multioutput='uniform_average')
     SLP_sum = SLP.summary()
-    print(SLP_sum)
-    print('')
-    print(test_error)
+    file.write(str(SLP_sum)+'\n')
+    file.write('test error is '+str(test_error))
 
-Linear_Regression(dataset,dataset_type)
+main()
 
-# save the model to disk
-import pickle
-filename = '../../models/LinearRegressor.sav'
-pickle.dump(stfa.ols, open(filename, 'wb'))

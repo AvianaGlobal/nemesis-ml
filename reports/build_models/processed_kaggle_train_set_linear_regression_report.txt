@@ -1,0 +1,45 @@
+The current dataset has17 columns and 13184290 rowsColumn names are Index(['Calendar_Year', 'Model_Year', 'Blind_Make', 'Cat1', 'Cat2', 'Cat3',
+       'Cat4', 'Cat5', 'Cat6', 'Cat8', 'Cat9', 'Cat10', 'Cat11', 'Cat12',
+       'OrdCat', 'NVCat', 'Claim_Amount'],
+      dtype='object')
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           Claim_Amount   R-squared:                       0.001
+Model:                            OLS   Adj. R-squared:                  0.001
+Method:                 Least Squares   F-statistic:                     472.6
+Date:                Wed, 10 Jul 2019   Prob (F-statistic):               0.00
+Time:                        08:26:02   Log-Likelihood:            -1.4965e+07
+No. Observations:            10547432   AIC:                         2.993e+07
+Df Residuals:                10547415   BIC:                         2.993e+07
+Df Model:                          16                                         
+Covariance Type:            nonrobust                                         
+=================================================================================
+                    coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------
+Intercept        -0.0012      0.004     -0.327      0.744      -0.008       0.006
+Calendar_Year    -0.0017      0.001     -2.537      0.011      -0.003      -0.000
+Model_Year        0.0045      0.000     29.975      0.000       0.004       0.005
+Blind_Make        0.0007      0.000      4.951      0.000       0.000       0.001
+Cat1              0.0036      0.000     14.308      0.000       0.003       0.004
+Cat2             -0.0043      0.001     -5.179      0.000      -0.006      -0.003
+Cat3              0.0014      0.000      4.702      0.000       0.001       0.002
+Cat4              0.0020      0.001      2.665      0.008       0.001       0.004
+Cat5              0.0073      0.001      6.328      0.000       0.005       0.010
+Cat6              0.0015      0.000      3.715      0.000       0.001       0.002
+Cat8              0.0062      0.001      8.902      0.000       0.005       0.008
+Cat9              0.0052      0.001      5.943      0.000       0.004       0.007
+Cat10             0.0020      0.001      2.923      0.003       0.001       0.003
+Cat11             0.0028      0.001      2.868      0.004       0.001       0.005
+Cat12             0.0001      0.000      0.370      0.711      -0.000       0.001
+OrdCat           -0.0023      0.000     -7.198      0.000      -0.003      -0.002
+NVCat            -0.0127      0.000    -68.486      0.000      -0.013      -0.012
+==============================================================================
+Omnibus:                 17474515.802   Durbin-Watson:                   2.000
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):       7989131669.645
+Skew:                          11.606   Prob(JB):                         0.00
+Kurtosis:                     135.815   Cond. No.                         164.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+test error is 0.9969926123453906
