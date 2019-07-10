@@ -7,7 +7,7 @@ Dep. Variable:           Claim_Amount   R-squared:                       0.000
 Model:                            OLS   Adj. R-squared:                  0.000
 Method:                 Least Squares   F-statistic:                     10.90
 Date:                Wed, 10 Jul 2019   Prob (F-statistic):           9.46e-24
-Time:                        07:15:51   Log-Likelihood:            -5.3666e+07
+Time:                        12:02:31   Log-Likelihood:            -5.3666e+07
 No. Observations:            10547432   AIC:                         1.073e+08
 Df Residuals:                10547418   BIC:                         1.073e+08
 Df Model:                          13                                         
@@ -39,3 +39,4 @@ Kurtosis:                    8715.757   Cond. No.                         19.1
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 test error is 1453.627750836445
+R Square is 9.734913358872e-06
