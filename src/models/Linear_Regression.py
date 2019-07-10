@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 import statsmodels.formula.api as stfa
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error,r2_score
 import pickle
 
 # import dataset
@@ -55,6 +55,7 @@ def Linear_Regression(file,dataset,dataset_type,data_file_name,test_size=0.2):
     SLP_sum = SLP.summary()
     file.write(str(SLP_sum)+'\n')
     file.write('test error is '+str(test_error))
+    file.write('\nR Square is '+str(r2_score(dy_test, ytest_pred1)))
 
 main()
 
