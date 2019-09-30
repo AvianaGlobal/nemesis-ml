@@ -3,6 +3,8 @@ nemesisML
 
 Development of Machine Learning in Nemesis
 
+![image info](./Process_Roadmap.png)
+
 Project Organization
 ------------
 
