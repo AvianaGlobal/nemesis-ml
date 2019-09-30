@@ -105,3 +105,9 @@ venv.bak/
 
 # VS Code
 workspace.code-workspace
+.idea/
+.idea/inspectionProfiles/
+
+docs/.DS_Store
+reports/.DS_Store
+src/.DS_Store
