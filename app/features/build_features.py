@@ -713,7 +713,7 @@ def main():
         #Continuous variable construction:
         #If there are more than 2 continuous variables left in data set, perform PCA
         if new_continuous_predictors.shape[1] != 0:
-            pca = get_continuous_after_pca(new_continuous_predictors,new_df,new_df_type)
+            pca = get_continuous_after_pca(new_continuous_predictors, new_df, new_df_type)
             new_df = pca[0]
             new_df_type = pca[1]
 
