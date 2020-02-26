@@ -205,10 +205,6 @@ def outlier_trim(df,column):
     (flag, lower, upper) = outlier_identification(column)
     df.loc[flag, column.name] = pd.Series(map(lambda x : (lower if x <= lower else upper), column[flag]))
 
-# function to set outliers to missing values
-def outlier_toNone(df,column):
-    (flag, lower, upper) = outlier_identification(column)
-    df.loc[flag, column.name] = None
 
 # function to fill missing value and update statistic
 def fill_missing_value(mydata, column_type):
@@ -332,7 +328,7 @@ def Supervised_Merged (file,df, Predictor_type, dependent_variable_name, indep_c
         
         # fit the Chaid tree model to supervised merged the categories in category predictor
         tree = Tree.from_pandas_df(df, dict(zip(independent_variable_column, [Predictor_type] * 1)), 
-                                   dep_variable, dep_variable_type='continuous',max_depth = 1)
+                                   dep_variable, dep_variable_type='continuous', max_depth=1)
     
     # Print the fitted tree
     file.write('The CHAID TREE is presented below:\n\n')
