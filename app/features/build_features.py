@@ -305,23 +305,20 @@ def boxcox(df, target, df_type):
 def sort_data(Series):
     return Series.iloc[np.lexsort([Series.index, Series.values])]
 
+
 def add_noise(series, noise_level):
     return series * (1 + noise_level * np.random.randn(len(series)))
 
-def target_encode(trn_series=None,
-                  tst_series=None,
-                  target=None,
-                  min_samples_leaf=1,
-                  smoothing=1,
+
+def target_encode(trn_series=None,  # training categorical feature as a pd.Series
+                  tst_series=None,  # test categorical feature as a pd.Series
+                  target=None,  # target data as a pd.Series
+                  min_samples_leaf=1,  # minimum samples to take category average into account
+                  smoothing=1,  # smoothing effect to balance categorical average vs prior
                   noise_level=0):
     """
     Smoothing is computed like in the following paper by Daniele Micci-Barreca
     https://kaggle2.blob.core.windows.net/forum-message-attachments/225952/7441/high%20cardinality%20categoricals.pdf
-    trn_series : training categorical feature as a pd.Series
-    tst_series : test categorical feature as a pd.Series
-    target : target data as a pd.Series
-    min_samples_leaf (int) : minimum samples to take category average into account
-    smoothing (int) : smoothing effect to balance categorical average vs prior
     """
     assert len(trn_series) == len(target)
     assert trn_series.name == tst_series.name
