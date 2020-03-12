@@ -1,18 +1,19 @@
 
 
-def simple_chi (df, column):
+
+def __simple_chi (df, column):
     from scipy import stats
     temp = df[column].value_counts()
     chi = stats.chisquare(temp)
-    return chi
+    return 100*(1-chi[1])
 
 
-def pearson_redisual (df, col1, col2):
-    r_sq = map(lambda i, j: ((i-j)**2)/(j+0.00000000000001), df[col1], df[col2])
-    return sum(list(r_sq))
+def group_chi (df, group, column):
+    return df.groupby(group).apply(__simple_chi, column).reset_index().rename(columns={0 : column+'Chi'})
+
 
 # import pandas as pd
 
-# data = pd.read_csv('card.csv')
+# data = pd.read_csv('kdemo.tab', sep = '\t')
 
-# print(pearson_redisual(data, 'count_Cardnum_7d', 'Actual/mean_Merchnum_14d'))
+# print(group_chi(data, 'DLR_KEY', 'ProductCodeDescr'))
