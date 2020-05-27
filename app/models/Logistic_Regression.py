@@ -12,7 +12,7 @@ def main():
     data_file_name = input('Data file name: ')
     target = input('What is the column name of the target: : ')
     df = pd.read_csv(data_file_name + '.csv')
-    file = open('../../reports/build_models/' + data_file_name + '_Logistic_regression_report.txt', 'w')
+    file = open(data_file_name + '_Logistic_regression_report.txt', 'w')
     Logistic_Regression(file, df, target, data_file_name)
     file.close()
 
@@ -32,7 +32,7 @@ def Logistic_Regression(file, dataset, target, data_file_name, Test_size=0.2):
     Logist_R = LogisticRegression(random_state=0, penalty='l2', solver='liblinear').fit(x_train, y_train)
 
     # save the model to disk
-    filename = '../../models/' + data_file_name + '_LogisticRegressor.sav'
+    filename = data_file_name + '_LogisticRegressor.sav'
     pickle.dump(Logist_R, open(filename, 'wb'))
 
     # prediction
