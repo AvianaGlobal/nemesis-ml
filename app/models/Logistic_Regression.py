@@ -10,32 +10,20 @@ from sklearn.metrics import confusion_matrix
 
 def main():
     data_file_name = input('Data file name: ')
-    data_type_file_name = input('Column type file name: ')
-    df = pd.read_csv('../../data/processed/' + data_file_name + '.csv')
-    df_type = pd.read_csv('../../data/processed/' + data_type_file_name + '.csv')
+    target = input('What is the column name of the target: : ')
+    df = pd.read_csv(data_file_name + '.csv')
     file = open('../../reports/build_models/' + data_file_name + '_Logistic_regression_report.txt', 'w')
-    Logistic_Regression(file, df, df_type, data_file_name)
+    Logistic_Regression(file, df, target, data_file_name)
     file.close()
 
 
-def Logistic_Regression(file, dataset, dataset_type, data_file_name, Test_size=0.2):
+def Logistic_Regression(file, dataset, target, data_file_name, Test_size=0.2):
     file.write('1. The current dataset has ' + str(dataset.shape[1]) + ' columns and ' + str(
         dataset.shape[0]) + ' rows' + '\n')
     file.write('\n' + 'Column names are  :' + str(list(dataset.columns)) + '\n')
     file.write('\n' + 'The first 10 rows of this dataset: ' + '\n' + '\n' + str(dataset.head(10)) + '\n' + '\n')
 
-    # Funtion to get column type
-    def column_type(column_name, df_type):
-        return df_type.loc[df_type['Variable'] == column_name, 'Type'].iloc[0]
-
-    # Function to get target variable
-    def get_target(df, df_type):
-        for c in df:
-            if column_type(c, df_type) == 'Flag_Continuous' or column_type(c, df_type) == 'Flag_Categorical':
-                return (c)
-
-    # Separate the Train and Test set.      
-    target = get_target(dataset, dataset_type)
+    # Separate the Train and Test set.
     X = dataset.drop([target], axis=1)
     Y = dataset.loc[:, target]
     x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=Test_size, random_state=0)
@@ -64,7 +52,7 @@ def Logistic_Regression(file, dataset, dataset_type, data_file_name, Test_size=0
     # Confusion metrix
     Logist_R_matrix = metrics.confusion_matrix(y_test, y_pred)
 
-    sns.heatmap(pd.DataFrame(Logist_R_matrix), annot=True, cmap="YlGnBu" ,fmt='g')
+    sns.heatmap(pd.DataFrame(Logist_R_matrix), annot=True, cmap="YlGnBu", fmt='g')
     plt.tight_layout()
     plt.title('Confusion matrix', y=1.1)
     plt.ylabel('Actual label')
