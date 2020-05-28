@@ -50,7 +50,7 @@ def fill_NAs(data, target_col, groupby_col):
     return data, skipgroup
 
         
-def fill_NAs_no_enough_data(data, skipgroup, method, fill_num = None):
+def fill_NAs_no_enough_data(data, skipgroup, target_col, method, fill_num = None):
     print('Successfully filled NAs except for groups: ' + str(skipgroup))
     #print('Do you want to fill those using mean, median, mode, linear, a specific value, or remove?')
     #method = input('Please choose a method (mean, median, mode, value, linear, remove): ')
@@ -147,9 +147,9 @@ def main(filepath, target_col, groupby_col):
                 method = input('Please choose a method (mean, median, mode, value, linear, remove): ')
                 if method == 'value':
                     fill_num = input('Value to use to replace NAs: ')
-                    data = fill_NAs_no_enough_data(data, skipgroup, method, fill_num)
+                    data = fill_NAs_no_enough_data(data, skipgroup, target_col, method, fill_num)
                 else:
-                    data = fill_NAs_no_enough_data(data, skipgroup, method)
+                    data = fill_NAs_no_enough_data(data, skipgroup, target_col, method)
             fill = input('Fill another column? (Y/N): ')
             if fill == 'Y':
                 target_col = input('Enter a new target column: ')
