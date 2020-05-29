@@ -90,6 +90,22 @@ def scaler(data,scale):
     return data
 
 
+def to_datetime(dataset, datetime_col, date_format='%y-%m-%d'):
+    try:
+        dataset[datetime_col + '_date'] = pd.to_datetime(dataset[datetime_col], format=date_format)
+    except:
+        print('Sorry, this datetime format cannot be recognized')
+
+
+def get_week_of_year(dataset, datetime_col):
+    dataset[datetime_col + '_wk'] = [i.weekofyear for i in dataset[datetime_col]]
+
+def get_weekday (dataset, datetime_col) :
+    dataset[datetime_col + '_wkd']=[i.weekday() for i in dataset[datetime_col]]
+
+def get_month (dataset, datetime_col) :
+    dataset[datetime_col + '_mth']=[i.month for i in dataset[datetime_col]]
+
 # In[ ]:
 
 
@@ -108,17 +124,24 @@ def main(filepath, target_col, groupby_col):
     
     while modification.upper() == 'Y':
         column = input('Input the column name: ')
-        col_type = input('Input the column type (e.g. int64, float64, category) ')
-        try:
-            data[column] = data[column].astype(col_type)
-            print(data.dtypes)
-            modification = input('Do you want to make another change (Y/N) ')
-        except KeyError:
-            print('Column ' + str(column) + ' is not defined')
-            modification = input('Do you want to make another change (Y/N) ')
-        except:
-            print('You cannot assign ' + str(col_type) + ' type to ' + str(column) + ' column' )
-            modification = input('Do you want to make another change (Y/N) ')
+        col_type = input('Input the column type (e.g. int64, float64, category, datetime) ')
+        if col_type != 'datetime':
+            try:
+                data[column] = data[column].astype(col_type)
+                print(data.dtypes)
+                modification = input('Do you want to make another change (Y/N) ')
+            except KeyError:
+                print('Column ' + str(column) + ' is not defined')
+                modification = input('Do you want to make another change (Y/N) ')
+            except:
+                print('You cannot assign ' + str(col_type) + ' type to ' + str(column) + ' column' )
+                modification = input('Do you want to make another change (Y/N) ')
+        else:
+            try: # when pandas can recognize the date format
+                data[column] = pd.to_datetime(data[column])
+            except: # when pandas cannot recognize the date format
+                date_format = input('Please enter the format of your data: i.e. %y/%m/%d: ')
+                to_datetime(data, column, date_format)
     
     print(data[data.isna().any(axis=1)].head())
     drop_cat_NA = input('Drop all NAs in categorical columns? (Y/N): ')
