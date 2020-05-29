@@ -2,17 +2,13 @@ import pickle
 import warnings
 
 warnings.filterwarnings('ignore')
-import numpy as np
 import pandas as pd
-import xgboost as xgb
-from matplotlib import pyplot as plt
 from xgboost import XGBClassifier
 from sklearn import metrics
-from sklearn.model_selection import train_test_split, RandomizedSearchCV, GridSearchCV
-from sklearn.metrics import roc_auc_score, r2_score, mean_squared_error, accuracy_score
+from sklearn.model_selection import train_test_split, RandomizedSearchCV
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import StratifiedKFold
-from matplotlib import pyplot as plt
-from xgboost import plot_importance
+
 
 
 # import dataset
