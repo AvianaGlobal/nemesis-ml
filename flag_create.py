@@ -20,17 +20,19 @@ def flag_create_main(data):
     while loop == 'Y':
         flag_name = input('Enter the flag_name: ')
         condition = input('Enter the condition for the flag: ')
+        if flag_name not in data.columns:
+            i = 1
         try:
-            data = create_flag(data, flag_name, condition, i)
+            data = flag_create(data, flag_name, condition, i)
             i = i + 1
             loop = input('Do you have another condition or want to create another flag? (Y/N) ')
             if loop == 'N':
                 print(' ')
                 print('Finished!')
-                
+
         except:
             print('Invalid condition')
-            
+
     return data
 
 
