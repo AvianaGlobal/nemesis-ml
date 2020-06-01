@@ -53,7 +53,7 @@ def fill_NAs(data, target_col, groupby_col):
     return data, skipgroup
 
 
-def fill_NAs_no_enough_data(data, skipgroup, target_col, method, fill_num=None):
+def fill_NAs_no_enough_data(data, skipgroup, method, fill_num=None):
     print('Successfully filled NAs except for groups: ' + str(skipgroup))
     # print('Do you want to fill those using mean, median, mode, linear, a specific value, or remove?')
     # method = input('Please choose a method (mean, median, mode, value, linear, remove): ')
@@ -92,6 +92,26 @@ def scaler(data, scale):
     return data
 
 
+def to_datetime(dataset, datetime_col, date_format='%y-%m-%d'):
+    try:
+        dataset[datetime_col + '_date'] = pd.to_datetime(dataset[datetime_col], format=date_format)
+    except:
+        print('Sorry, this datetime format cannot be recognized')
+
+
+def get_week_of_year(dataset, datetime_col):
+    dataset[datetime_col + '_wk'] = [i.weekofyear for i in dataset[datetime_col]]
+
+
+def get_weekday(dataset, datetime_col):
+    dataset[datetime_col + '_wkd'] = [i.weekday() for i in dataset[datetime_col]]
+
+
+def get_month(dataset, datetime_col):
+    dataset[datetime_col + '_mth'] = [i.month for i in dataset[datetime_col]]
+
+
+
 def main(filepath, target_col, groupby_col):
     # read data
     data = pd.read_csv(filepath)
@@ -105,18 +125,25 @@ def main(filepath, target_col, groupby_col):
     modification = input('Do you want to make any change (Y/N) ')
 
     while modification.upper() == 'Y':
-        column = input('Input the column name: ')
-        col_type = input('Input the column type (e.g. int64, float64, category) ')
-        try:
-            data[column] = data[column].astype(col_type)
-            print(data.dtypes)
-            modification = input('Do you want to make another change (Y/N) ')
-        except KeyError:
-            print('Column ' + str(column) + ' is not defined')
-            modification = input('Do you want to make another change (Y/N) ')
-        except:
-            print('You cannot assign ' + str(col_type) + ' type to ' + str(column) + ' column')
-            modification = input('Do you want to make another change (Y/N) ')
+        column = input('Enter the column name: ')
+        col_type = input('Enter the column type (e.g. int64, float64, category, datetime) ')
+        if col_type != 'datetime':
+            try:
+                data[column] = data[column].astype(col_type)
+                print(data.dtypes)
+                modification = input('Do you want to make another change (Y/N) ')
+            except KeyError:
+                print('Column ' + str(column) + ' is not defined')
+                modification = input('Do you want to make another change (Y/N) ')
+            except:
+                print('You cannot assign ' + str(col_type) + ' type to ' + str(column) + ' column')
+                modification = input('Do you want to make another change (Y/N) ')
+        else:
+            try:  # when pandas can recognize the date format
+                data[column] = pd.to_datetime(data[column])
+            except:  # when pandas cannot recognize the date format
+                date_format = input('Please enter the format of your data: i.e. %y/%m/%d: ')
+                to_datetime(data, column, date_format)
 
     print(data[data.isna().any(axis=1)].head())
     drop_cat_NA = input('Drop all NAs in categorical columns? (Y/N): ')
@@ -135,32 +162,19 @@ def main(filepath, target_col, groupby_col):
 
     else:
         fill = 'Y'
-        error_flag = 0
-
         while fill == 'Y':
-            try:
-                data, skipgroup = fill_NAs(data, target_col, groupby_col)
-            except KeyError:
-                print('Column ' + str(target_col) + ' or ' + str(groupby_col) + ' is not defined')
-                error_flag = 1
-
-            if len(skipgroup) == 0 and error_flag == 0:
+            data, skipgroup = fill_NAs(data, target_col, groupby_col)
+            if len(skipgroup) == 0:
                 print('All groups have enough datapoints \n')
                 print('Filled NAs successfully for column: ' + str(target_col) + '\n')
                 print('Columns contains NAs' + str(get_cols_with_NAs(data)))
-            elif len(skipgroup) != 0 and error_flag == 0:
+            else:
                 method = input('Please choose a method (mean, median, mode, value, linear, remove): ')
                 if method == 'value':
                     fill_num = input('Value to use to replace NAs: ')
-                    try:
-                        data = fill_NAs_no_enough_data(data, skipgroup, target_col, method, fill_num)
-                    except KeyError:
-                        print('Column ' + str(target_col) + ' or ' + str(groupby_col) + ' is not defined')
+                    data = fill_NAs_no_enough_data(data, skipgroup, method, fill_num)
                 else:
-                    try:
-                        data = fill_NAs_no_enough_data(data, skipgroup, target_col, method)
-                    except KeyError:
-                        print('Column ' + str(target_col) + ' or ' + str(groupby_col) + ' is not defined')
+                    data = fill_NAs_no_enough_data(data, skipgroup, method)
             fill = input('Fill another column? (Y/N): ')
             if fill == 'Y':
                 target_col = input('Enter a new target column: ')
@@ -178,9 +192,9 @@ def main(filepath, target_col, groupby_col):
         # remove backup data
         import os
         os.remove("Backup.csv")
+        print('Backup file has been deleted')
 
         # Export clean data
         data.to_csv(str(filepath + '_cleaned'))
 
         return data
-
