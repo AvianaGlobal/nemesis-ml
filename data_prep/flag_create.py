@@ -4,8 +4,8 @@ import pandas as pd
 import os
 
 # Test file
-df = pd.read_csv('C:\Users\ziruiw\Sample_Data\card transactions_edited.csv')
-df.head()
+# df = pd.read_csv('C:\Users\ziruiw\Sample_Data\card transactions_edited.csv')
+# df.head()
 
 
 def flag_create(data, flag_name, condition, count):

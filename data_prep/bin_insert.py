@@ -3,10 +3,8 @@ import pandas as pd
 from pandas.api.types import is_numeric_dtype
 import os
 
-def bin_insert(filepath,target_col,groupby_col):
-    
-    # read data
-    df = pd.read_csv(filepath).sort_values(target_col)
+def bin_insert(df,target_col,groupby_col):
+
     if is_numeric_dtype(df[target_col]) == True:
         ###overview###
         n = df[target_col].count() 

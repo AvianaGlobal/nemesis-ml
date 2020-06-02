@@ -112,9 +112,7 @@ def get_month(dataset, datetime_col):
 
 
 
-def main(filepath, target_col, groupby_col):
-    # read data
-    data = pd.read_csv(filepath)
+def clean_data_main(data, target_col, groupby_col):
 
     # identify numerical and categorical columns
     for col in data:
