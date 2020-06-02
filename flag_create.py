@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import pandas as pd
+import os
 
 # Test file
 df = pd.read_csv('C:\Users\ziruiw\Sample_Data\card transactions_edited.csv')
@@ -24,6 +25,7 @@ def flag_create_main(data):
             i = 1
         try:
             data = flag_create(data, flag_name, condition, i)
+            data.to_csv('Backup.csv')
             i = i + 1
             loop = input('Do you have another condition or want to create another flag? (Y/N) ')
             if loop == 'N':
@@ -33,6 +35,7 @@ def flag_create_main(data):
         except:
             print('Invalid condition')
 
+    os.remove("Backup.csv")
     return data
 
 
