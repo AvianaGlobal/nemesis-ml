@@ -1,8 +1,4 @@
-#!/usr/bin/env python
 # coding: utf-8
-
-# In[1]:
-
 
 import flag_create, data_cleaning, import_filter, bin_insert, stats_report
 import pandas as pd
@@ -10,9 +6,6 @@ from sklearn import preprocessing
 from pandas.api.types import is_numeric_dtype
 import warnings
 warnings.filterwarnings('ignore')
-
-
-# In[2]:
 
 
 def data_prep(data):
@@ -82,19 +75,12 @@ def data_prep(data):
     
 
 
-# In[3]:
 
 
-df = pd.read_csv('card transactions_edited_with_NAs.csv')
+# Test file
+# df = pd.read_csv('card transactions_edited_with_NAs.csv')
+# data = data_prep(df)
 
-
-# In[4]:
-
-
-data = data_prep(df)
-
-
-# In[ ]:
 
 
 
