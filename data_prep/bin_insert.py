@@ -5,6 +5,7 @@ import os
 
 def bin_insert(df,target_col,groupby_col):
 
+    df = df.sort_values(target_col)
     if is_numeric_dtype(df[target_col]) == True:
         ###overview###
         n = df[target_col].count() 
@@ -45,18 +46,17 @@ def bin_insert(df,target_col,groupby_col):
                 print(data)
 
                 os.remove("Backup.csv")
-                data.to_csv('Newdata_BinCreated.csv')
-                return data
+                break
 
             else:
-                print('Please enter a vaild positive integer')
+                print('Please enter a valid positive integer: ')
                 redo ='Y' 
             
         
     else:
         print(str(target_col) + ' is not numeric.')
-        
-        
+
+    return data
 
 
 

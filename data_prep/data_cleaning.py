@@ -187,12 +187,10 @@ def clean_data_main(data, target_col, groupby_col):
         print('\n')
         print('Finished!')
 
+        data = data.reset_index(drop = True)
+
         # remove backup data
         import os
         os.remove("Backup.csv")
-        print('Backup file has been deleted')
-
-        # Export clean data
-        data.to_csv(str(filepath + '_cleaned'))
 
         return data
