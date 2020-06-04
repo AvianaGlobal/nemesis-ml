@@ -1,12 +1,12 @@
 import pickle
+
 import pandas as pd
-from datetime import datetime
-from sklearn.model_selection import train_test_split, RandomizedSearchCV, GridSearchCV
-from sklearn.metrics import roc_auc_score, r2_score, mean_squared_error
+from xgboost import XGBClassifier
+from sklearn import metrics
+from sklearn.model_selection import train_test_split, RandomizedSearchCV
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import StratifiedKFold
-from xgboost.sklearn import XGBRegressor
-from matplotlib import pyplot as plt
-from xgboost import plot_importance
+
 
 
 # import dataset
@@ -18,12 +18,12 @@ def main():
         if tune == 'Y' or tune == 'N':
             break
     df = pd.read_csv(data_file_name + '.csv')
-    file = open(data_file_name + '_XGB_regression_report.txt', 'w')
-    XGB_Regression(file, df, target, data_file_name, tune)
+    file = open(data_file_name + '_XGB_Classifier_report.txt', 'w')
+    XGB_Classifier(file, df, target, data_file_name, tune)
     file.close()
 
 
-def XGB_Regression(file, df, target, data_file_name, tune, test_size=0.2):
+def XGB_Classifier(file, df, target, data_file_name, tune, test_size=0.2):
     def timer(start_time=None):
         if not start_time:
             start_time = datetime.now()
@@ -55,16 +55,15 @@ def XGB_Regression(file, df, target, data_file_name, tune, test_size=0.2):
 
         # Instantiate and train the model
 
-        model = XGBRegressor(max_depth=1, learning_rate=0.1, n_estimators=100, silent=True, objective='reg:linear')
+        model = XGBClassifier()
 
         folds = 3
         param_comb = 5
 
         skf = StratifiedKFold(n_splits=folds, shuffle=True, random_state=0)
 
-        random_search = RandomizedSearchCV(model, param_distributions=params, n_iter=param_comb,
-                                           scoring='neg_mean_squared_error', n_jobs=4, cv=skf.split(X_train, y_train),
-                                           verbose=3, random_state=0)
+        random_search = RandomizedSearchCV(model, param_distributions=params, n_iter=param_comb, scoring='roc_auc',
+                                           n_jobs=4, cv=skf.split(X_train, y_train), verbose=3, random_state=0)
 
         # Here we go
         start_time = timer(None)  # timing starts from this point for "start_time" variable
@@ -81,19 +80,19 @@ def XGB_Regression(file, df, target, data_file_name, tune, test_size=0.2):
         print(random_search.best_params_)
         results = pd.DataFrame(random_search.cv_results_)
         # save the model to disk
-        results.to_csv('random-grid-search-xgb.csv', index=False)
+        results.to_csv('classifier-random-grid-search-xgb.csv', index=False)
 
-        model = XGBRegressor(max_depth=random_search.best_params_['max_depth'], \
-                             learning_rate=0.1, \
-                             n_estimators=random_search.best_params_['n_estimators'], \
-                             min_child_weight=random_search.best_params_['min_child_weight'], \
-                             gamma=random_search.best_params_['gamma'], \
-                             subsample=random_search.best_params_['subsample'], \
-                             colsample_bytree=random_search.best_params_['colsample_bytree'], \
-                             silent=True, objective='reg:linear')
+        model = XGBClassifier(max_depth=random_search.best_params_['max_depth'], \
+                              learning_rate=0.1, \
+                              n_estimators=random_search.best_params_['n_estimators'], \
+                              min_child_weight=random_search.best_params_['min_child_weight'], \
+                              gamma=random_search.best_params_['gamma'], \
+                              subsample=random_search.best_params_['subsample'], \
+                              colsample_bytree=random_search.best_params_['colsample_bytree'], \
+                              silent=True, objective='reg:linear')
 
     else:
-        model = XGBRegressor(max_depth=1, learning_rate=0.1, n_estimators=100, silent=True, objective='reg:linear')
+        model = XGBClassifier()
 
     model.fit(X_train, y_train)
 
@@ -103,18 +102,21 @@ def XGB_Regression(file, df, target, data_file_name, tune, test_size=0.2):
 
     # prediction
     loaded_model = pickle.load(open(filename, 'rb'))
-    pred_test = loaded_model.predict(X_test)
+    y_pred = loaded_model.predict(X_test)
 
-    # important features
-    plot_importance(loaded_model)
-    plt.show()
+    # print the confusion matrix
+    cnf_matrix = metrics.confusion_matrix(y_test, y_pred)
+    file.write('2. Test set performance ')
+    file.write('\n' + 'The confusion matrix is:\n' + str(cnf_matrix) + '\n')
 
-    file.write('Test MSE: ' + str(mean_squared_error(y_test, pred_test)))
-    file.write('R Square: ' + str(r2_score(y_test, pred_test)))
+    # evaluate predictions
+    accuracy = accuracy_score(y_test, y_pred)
+    file.write("Accuracy: " + str(accuracy * 100.0))
 
     y_test['y_pred'] = y_pred
 
     return y_test
+
 
 if __name__ == '__main__':
     main()
