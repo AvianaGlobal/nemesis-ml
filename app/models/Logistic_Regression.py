@@ -8,16 +8,15 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 
 
-def main():
-    data_file_name = input('Data file name: ')
+def main(data):
+    data_file_name = input("What's the name of this data set:")
     target = input('What is the column name of the target: : ')
-    df = pd.read_csv(data_file_name + '.csv')
     file = open(data_file_name + '_Logistic_regression_report.txt', 'w')
-    Logistic_Regression(file, df, target, data_file_name)
+    Logistic_Regression(file, data, target, data_file_name)
     file.close()
 
 
-def Logistic_Regression(file, dataset, target, data_file_name, Test_size=0.2):
+def Logistic_Regression(file, dataset, target, data_file_name, test_size=0.2):
     file.write('1. The current dataset has ' + str(dataset.shape[1]) + ' columns and ' + str(
         dataset.shape[0]) + ' rows' + '\n')
     file.write('\n' + 'Column names are  :' + str(list(dataset.columns)) + '\n')
@@ -26,10 +25,10 @@ def Logistic_Regression(file, dataset, target, data_file_name, Test_size=0.2):
     # Separate the Train and Test set.
     X = dataset.drop([target], axis=1)
     Y = dataset.loc[:, target]
-    x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=Test_size, random_state=0)
+    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state=0)
 
     # Fit the Logistic Regression using train set.
-    Logist_R = LogisticRegression(random_state=0, penalty='l2', solver='liblinear').fit(x_train, y_train)
+    Logist_R = LogisticRegression(random_state=0, penalty='l2', solver='liblinear').fit(X_train, y_train)
 
     # save the model to disk
     filename = data_file_name + '_LogisticRegressor.sav'
@@ -37,11 +36,11 @@ def Logistic_Regression(file, dataset, target, data_file_name, Test_size=0.2):
 
     # prediction
     loaded_model = pickle.load(open(filename, 'rb'))
-    y_pred = loaded_model.predict(x_test)
+    y_pred = loaded_model.predict(X_test)
 
     # Cross Validation
     from sklearn.model_selection import cross_val_score
-    scores = cross_val_score(Logist_R, x_train, y_train, cv=10)
+    scores = cross_val_score(Logist_R, X_train, y_train, cv=10)
     list_S = list(scores)
     Rounded_list = [round(elem, 4) for elem in list_S]
     Avg_S = round(scores.mean(), 4)
@@ -72,6 +71,10 @@ def Logistic_Regression(file, dataset, target, data_file_name, Test_size=0.2):
         Recall = round(metrics.recall_score(y_test, y_pred), 3)
         file.write("Precision: " + str(precision) + '\n')
         file.write("Recall: " + str(Recall) + '\n')
+
+    y_test['y_pred'] = y_pred
+
+    return y_test
 
 
 if __name__ == '__main__':

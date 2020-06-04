@@ -1,7 +1,5 @@
 import pickle
-import warnings
 
-warnings.filterwarnings('ignore')
 import pandas as pd
 from xgboost import XGBClassifier
 from sklearn import metrics
@@ -114,6 +112,10 @@ def XGB_Classifier(file, df, target, data_file_name, tune, test_size=0.2):
     # evaluate predictions
     accuracy = accuracy_score(y_test, y_pred)
     file.write("Accuracy: " + str(accuracy * 100.0))
+
+    y_test['y_pred'] = y_pred
+
+    return y_test
 
 
 if __name__ == '__main__':

@@ -1,6 +1,4 @@
 import pickle
-import warning
-warnings.filterwarnings('ignore')
 import pandas as pd
 from datetime import datetime
 from sklearn.model_selection import train_test_split, RandomizedSearchCV, GridSearchCV
@@ -114,6 +112,9 @@ def XGB_Regression(file, df, target, data_file_name, tune, test_size=0.2):
     file.write('Test MSE: ' + str(mean_squared_error(y_test, pred_test)))
     file.write('R Square: ' + str(r2_score(y_test, pred_test)))
 
+    y_test['y_pred'] = y_pred
+
+    return y_test
 
 if __name__ == '__main__':
     main()
