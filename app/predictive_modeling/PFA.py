@@ -1,5 +1,5 @@
 # PFA is a feature selection method. It reduces dimension of a feature set by
-# choosing a subset of the original features that contains most of the
+# choosing a subset of the original feature_engineering that contains most of the
 # essential information, using the same criteria as PCA
 
 from sklearn.decomposition import PCA
@@ -43,5 +43,5 @@ class PFA(object):
 # To get the transformed matrix
 # X = pfa.features_
 
-# To get the column indices of the kept features
+# To get the column indices of the kept feature_engineering
 # column_indices = pfa.indices_

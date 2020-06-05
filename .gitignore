@@ -35,7 +35,7 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Unit test / coverage model_results
 htmlcov/
 .tox/
 .coverage
@@ -109,5 +109,5 @@ workspace.code-workspace
 .idea/inspectionProfiles/
 
 docs/.DS_Store
-reports/.DS_Store
-nemesis-ml/.DS_Store
+model_results/.DS_Store
+app/.DS_Store

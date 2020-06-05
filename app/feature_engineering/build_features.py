@@ -312,7 +312,7 @@ def add_noise(series, noise_level):
 
 def target_encode(trn_series=None,  # training categorical feature as a pd.Series
                   tst_series=None,  # test categorical feature as a pd.Series
-                  target=None,  # target data as a pd.Series
+                  target=None,  # target sample_data as a pd.Series
                   min_samples_leaf=1,  # minimum samples to take category average into account
                   smoothing=1,  # smoothing effect to balance categorical average vs prior
                   noise_level=0):
@@ -327,7 +327,7 @@ def target_encode(trn_series=None,  # training categorical feature as a pd.Serie
     averages = temp.groupby(by=trn_series.name)[target.name].agg(["mean", "count"])
     # Compute smoothing
     smoothing = 1 / (1 + np.exp(-(averages["count"] - min_samples_leaf) / smoothing))
-    # Apply average function to all target data
+    # Apply average function to all target sample_data
     prior = target.mean()
     # The bigger the count the less full_avg is taken into account
     averages[target.name] = prior * (1 - smoothing) + averages["mean"] * smoothing
@@ -534,7 +534,7 @@ def p_value_target_predictor(target,column,df_type):
         return p
 
 # Function to get best depth which help to train optimal model
-# Input: data of each column, data of decision varaiable
+# Input: sample_data of each column, sample_data of decision varaiable
 # Output: best depth
 def get_best_depth(file,d_column, d_flag):
     score_mean = [] # here I will store the roc auc
@@ -556,13 +556,13 @@ def get_best_depth(file,d_column, d_flag):
 
 
 # Function to do supervised binning, based single variable decision tree model
-# Input: all data processed in the previous step，the data including variable and column type
-# Output: new data file
+# Input: all sample_data processed in the previous step，the sample_data including variable and column type
+# Output: new sample_data file
 def supervised_binning(file,df,df_type):    
     # get all continuous variable
     new_df = get_continuous_variables(df,df_type)
     # get target
-    d_flag = df[[get_target(df,df_type)]] # get data of target
+    d_flag = df[[get_target(df,df_type)]] # get sample_data of target
     #d_flag.loc[d_flag['Claim_Amount'] != 0] = 1
     column_list = new_df.columns.values.tolist()
     num_row = len(new_df)
@@ -570,7 +570,7 @@ def supervised_binning(file,df,df_type):
     i = 0
     for column in column_list:
         
-        # get data of a certain column
+        # get sample_data of a certain column
         d_column = new_df[[column]]
         
         num_unique = len(new_df[column].unique())
@@ -613,7 +613,7 @@ def get_continuous_variables(new_df,new_df_type):
             continuous_predictor_name.append(c)
     return (new_df[continuous_predictor_name])
 
-#function to delete non highly correlated features with target
+#function to delete non highly correlated feature_engineering with target
 def continuous_selection(new_df,new_df_type):
     target_name = get_target(new_df,new_df_type)
     target = new_df[target_name]
@@ -635,7 +635,7 @@ def get_corr_group(variable_index,group_list,new_continuous_predictors):
 
 #function to get grouped feature index. 
 #input: a datset of all continuous variables. 
-#output: a list of names of grouped features.
+#output: a list of names of grouped feature_engineering.
 def get_grouped_features(new_continuous_predictors):
     #correlation matrix
     corre = new_continuous_predictors.corr()
@@ -653,7 +653,7 @@ def get_grouped_features(new_continuous_predictors):
         if (np.amax(tri_corre) > alpha):
             group = list(np.unravel_index(np.argmax(tri_corre), (len(tri_corre),len(tri_corre))))
 
-            #max features in a group is 5
+            #max feature_engineering in a group is 5
             while len(group) <= 5:
                 #get the next correlated feature to group
                 group_var_corr = {}
@@ -668,7 +668,7 @@ def get_grouped_features(new_continuous_predictors):
                     group.append(i)
 
                 else:
-                    #remove correlations of grouped features
+                    #remove correlations of grouped feature_engineering
                     group_name = []
                     for i in group:
                         tri_corre[i] = 0
@@ -681,9 +681,9 @@ def get_grouped_features(new_continuous_predictors):
             alpha -= 0.1
     return(groups)
 
-#function to get continuous features after PCA
-#input: a dataset contains only continuous features with high correlation with target and the new_df from previous steps
-#output: a dataset contains only continuous features after PCA 
+#function to get continuous feature_engineering after PCA
+#input: a dataset contains only continuous feature_engineering with high correlation with target and the new_df from previous steps
+#output: a dataset contains only continuous feature_engineering after PCA
 def get_continuous_after_pca(new_continuous_predictors,new_df,new_df_type):
     pca = PCA(n_components=1)
     groups = get_grouped_features(new_continuous_predictors)
@@ -706,17 +706,17 @@ def get_continuous_after_pca(new_continuous_predictors,new_df,new_df_type):
     return(new_df,new_df_type)
 
 def main():
-    #load data
+    #load sample_data
     data_file_name = input('Data file name: ')
     data_type_file_name = input('Column type file name: ')
-    df = pd.read_csv('../../data/raw/'+data_file_name+'.csv')
-    df_type = pd.read_csv('../../data/raw/'+data_type_file_name+'.csv')
+    df = pd.read_csv('../../sample_data/raw/'+data_file_name+'.csv')
+    df_type = pd.read_csv('../../sample_data/raw/'+data_type_file_name+'.csv')
 
     target_name = get_target(df,df_type)
     target_type = column_type(target_name,df_type)
 
     # Basic screening and print report
-    file = open('../../reports/build_features/'+data_file_name+'_raw_univariate_statistic_report.txt','w') 
+    file = open('../../model_results/build_features/'+data_file_name+'_raw_univariate_statistic_report.txt','w')
     d = Stats_Collection(file,df,df_type)
     file.close()
     # After deleting useless variables, new dataset and new column type dataset are named as new_df and new_df_type
@@ -743,11 +743,11 @@ def main():
 
 
     #Categorical variable handling: Reorder and Supervised Merged
-    file = open('../../reports/build_features/'+data_file_name+'_supervised_merge_report.txt','w') 
+    file = open('../../model_results/build_features/'+data_file_name+'_supervised_merge_report.txt','w')
     new_df = Reorder_Categories(file,new_df,new_df_type)
     file.close()
 
-    #Continuous variable handling when target is continuous: Abandon not highly correlated features with target
+    #Continuous variable handling when target is continuous: Abandon not highly correlated feature_engineering with target
     if target_type == 'Flag_Continuous':
         selection = continuous_selection(new_df,new_df_type)
         new_continuous_predictors = selection[0]
@@ -755,7 +755,7 @@ def main():
         new_df_type = selection[2]
 
         #Continuous variable construction:
-        #If there are more than 2 continuous variables left in data set, perform PCA
+        #If there are more than 2 continuous variables left in sample_data set, perform PCA
         if new_continuous_predictors.shape[1] != 0:
             pca = get_continuous_after_pca(new_continuous_predictors, new_df, new_df_type)
             new_df = pca[0]
@@ -763,15 +763,15 @@ def main():
 
     #Continuous variable handling when target is categorical
     else:
-        file = open('../../reports/build_features/'+data_file_name+'_supervised_binning_report.txt','w')
+        file = open('../../model_results/build_features/'+data_file_name+'_supervised_binning_report.txt','w')
         new_df = supervised_binning(file,new_df,new_df_type)
         file.close()
 
-    new_df.to_csv('../../data/processed/processed_'+data_file_name+'.csv', index=False)
-    new_df_type.to_csv('../../data/processed/processed_'+data_type_file_name+'.csv', index=False)
+    new_df.to_csv('../../sample_data/processed/processed_'+data_file_name+'.csv', index=False)
+    new_df_type.to_csv('../../sample_data/processed/processed_'+data_type_file_name+'.csv', index=False)
 
-    #Univariate stats report for processed data
-    file = open('../../reports/build_features/'+data_file_name+'_processed_univariate_statistic_report.txt','w')
+    #Univariate stats report for processed sample_data
+    file = open('../../model_results/build_features/'+data_file_name+'_processed_univariate_statistic_report.txt','w')
     d = Stats_Collection(file,new_df,new_df_type)
     file.close()
 

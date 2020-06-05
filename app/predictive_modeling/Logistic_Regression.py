@@ -11,9 +11,9 @@ from sklearn.metrics import confusion_matrix
 def main():
     data_file_name = input('Data file name: ')
     data_type_file_name = input('Column type file name: ')
-    df = pd.read_csv('../../data/processed/' + data_file_name + '.csv')
-    df_type = pd.read_csv('../../data/processed/' + data_type_file_name + '.csv')
-    file = open('../../reports/build_models/' + data_file_name + '_Logistic_regression_report.txt', 'w')
+    df = pd.read_csv('../../sample_data/processed/' + data_file_name + '.csv')
+    df_type = pd.read_csv('../../sample_data/processed/' + data_type_file_name + '.csv')
+    file = open('../../model_results/build_models/' + data_file_name + '_Logistic_regression_report.txt', 'w')
     Logistic_Regression(file, df, df_type, data_file_name)
     file.close()
 
@@ -44,7 +44,7 @@ def Logistic_Regression(file, dataset, dataset_type, data_file_name, Test_size=0
     Logist_R = LogisticRegression(random_state=0, penalty='l2', solver='liblinear').fit(x_train, y_train)
 
     # save the model to disk
-    filename = '../../models/' + data_file_name + '_LogisticRegressor.sav'
+    filename = '../../predictive_modeling/' + data_file_name + '_LogisticRegressor.sav'
     pickle.dump(Logist_R, open(filename, 'wb'))
 
     # prediction
