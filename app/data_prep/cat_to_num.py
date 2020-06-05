@@ -1,11 +1,8 @@
-# coding: utf-8
-
 import pandas as pd
 import numpy as np
-import sklearn
+from sklearn.model_selection import train_test_split
 import warnings
 warnings.filterwarnings('ignore')
-
 
 def add_noise(series, noise_level):
     return series * (1 + noise_level * np.random.randn(len(series)))
@@ -60,10 +57,8 @@ def target_encode_main(data, train_test_series, target_col):
     train_data, test_data, train_x, test_x, train_y, test_y = \
         train_test_split(data, data[train_test_series], data[target_col], test_size=size)
 
-    # target encode
     temp_train, temp_test = target_encode(train_x, test_x, train_y)
 
-    # append encoded columns and drop old categorical columns
     train_data[train_test_series + '_encoded'] = temp_train
     train_data = train_data.drop(columns=[train_test_series])
 
@@ -86,7 +81,6 @@ def dummy(data, target_col):
 def cat_to_num(data):
     encoded_col = input('Enter the column that you want to encode: ') # a categorical column
 
-    # determine if using get_dummies or target_encode base on the number of categories
     if data[encoded_col].nunique() < 5:
         train_data, test_data = dummy(data, encoded_col)
     else:
@@ -94,9 +88,3 @@ def cat_to_num(data):
         train_data, test_data = target_encode_main(data, encoded_col, target_col)
 
     return train_data, test_data
-
-
-# test dataset
-# df = pd.read_csv('card transactions_edited.csv')
-# train, test = target_encode_main(df)
-
