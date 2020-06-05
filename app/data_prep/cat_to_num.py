@@ -52,17 +52,18 @@ def target_encode(trn_series=None,  # training categorical feature as a pd.Serie
     return add_noise(ft_trn_series, noise_level), add_noise(ft_tst_series, noise_level)
 
 
-def target_encode_main(data, target_col):
+def target_encode_main(data, train_test_series, target_col):
     # split train, test data
     data = data.dropna()
-    train_test_series = input('Enter the column that you want to encode: ')
     size = float(input('Enter the training size: '))
 
     train_data, test_data, train_x, test_x, train_y, test_y = \
         train_test_split(data, data[train_test_series], data[target_col], test_size=size)
 
+    # target encode
     temp_train, temp_test = target_encode(train_x, test_x, train_y)
 
+    # append encoded columns and drop old categorical columns
     train_data[train_test_series + '_encoded'] = temp_train
     train_data = train_data.drop(columns=[train_test_series])
 
@@ -74,7 +75,6 @@ def target_encode_main(data, target_col):
 
 def dummy(data, target_col):
     size = float(input('Enter the training size: '))
-
     train_data, test_data = train_test_split(data, test_size=size)
 
     train_data = pd.get_dummies(train_data, columns=[target_col], drop_first=False)
@@ -84,12 +84,14 @@ def dummy(data, target_col):
 
 
 def cat_to_num(data):
-    target_col = input('please enter your target column: ')
+    encoded_col = input('Enter the column that you want to encode: ') # a categorical column
 
-    if data[target_col].nunique() < 5:
-        train_data, test_data = dummy(data, target_col)
+    # determine if using get_dummies or target_encode base on the number of categories
+    if data[encoded_col].nunique() < 5:
+        train_data, test_data = dummy(data, encoded_col)
     else:
-        train_data, test_data = target_encode_main(data, target_col)
+        target_col = input('please enter your target column (Y column): ')  # a numeric column
+        train_data, test_data = target_encode_main(data, encoded_col, target_col)
 
     return train_data, test_data
 
