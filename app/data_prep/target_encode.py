@@ -1,17 +1,10 @@
-#!/usr/bin/env python
 # coding: utf-8
-
-# In[125]:
-
 
 import pandas as pd
 import numpy as np
 import sklearn
 import warnings
 warnings.filterwarnings('ignore')
-
-
-# In[82]:
 
 
 def add_noise(series, noise_level):
@@ -59,9 +52,6 @@ def target_encode(trn_series=None,  # training categorical feature as a pd.Serie
     return add_noise(ft_trn_series, noise_level), add_noise(ft_tst_series, noise_level)
 
 
-# In[122]:
-
-
 def target_encode_main(data):
     # split train, test data
     data = data.dropna()
@@ -69,7 +59,8 @@ def target_encode_main(data):
     target_col = input('Enter the target column: ')
     size = float(input('Enter the training size: '))
     
-    train_data, test_data, train_x, test_x, train_y, test_y =             sklearn.model_selection.train_test_split(data, data[train_test_series], data[target_col], test_size = size)
+    train_data, test_data, train_x, test_x, train_y, test_y = \
+        sklearn.model_selection.train_test_split(data, data[train_test_series], data[target_col], test_size = size)
     
     temp_train, temp_test = target_encode(train_x, test_x, train_y)
     
