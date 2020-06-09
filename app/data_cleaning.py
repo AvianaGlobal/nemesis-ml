@@ -20,7 +20,10 @@ def data_prep(data):
         while True:
 
             if operation == '1':
+
                 try:
+                    print('Here are the columns from your dataset: \n')
+                    print(data.dtypes)
                     criterion = input('Please enter your filter: ')
                     data = import_filter.data_filter(data, criterion)
                 except:
@@ -28,6 +31,8 @@ def data_prep(data):
 
             if operation == '2':
                 while True:
+                    print('Here are the columns from your dataset: \n')
+                    print(data.dtypes)
                     target_col = input('please enter your target column: ')
                     groupby_col = input('Please enter your groupby column: ')
                     if target_col in data.columns and groupby_col in data.columns:
@@ -37,11 +42,14 @@ def data_prep(data):
                 data = data_cleaning.clean_data_main(data, target_col, groupby_col)
 
             if operation == '3':
-
+                print('Here are the columns from your dataset: \n')
+                print(data.dtypes)
                 data = flag_create.flag_create_main(data)
 
             if operation == '4':
                 while True:
+                    print('Here are the columns from your dataset: \n')
+                    print(data.dtypes)
                     target_col = input('please enter your target column: ')
                     groupby_col = input('Please enter your groupby column: ')
                     if target_col in data.columns and groupby_col in data.columns:
@@ -52,6 +60,8 @@ def data_prep(data):
 
             if operation == '5':
                 while True:
+                    print('Here are the columns from your dataset: \n')
+                    print(data.dtypes)
                     target_col = input('please enter your target column: ')
                     groupby_col = input('Please enter your groupby column: ')
                     if target_col in data.columns and groupby_col in data.columns:
@@ -59,7 +69,11 @@ def data_prep(data):
                     else:
                         print('Invalid target column or groupby column')
                 data = stats_report.stats_insert(data,target_col,groupby_col)
-            
+            print('1 - filter data')
+            print('2 - clean data')
+            print('3 - create flags')
+            print('4 - create bins')
+            print('5 - insert stats columns\n')
             operation = input('Do you want to make another change? : (1/2/3/4/5/N) ')
             
             if operation == 'N':
