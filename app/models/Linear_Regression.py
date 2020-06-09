@@ -15,18 +15,18 @@ def main(data):
     file.close()
 
 
-def Linear_Regression(file, dataset, target, data_file_name, test_size=0.2):
-    file.write('1. The current dataset has ' + str(dataset.shape[1]) + ' columns and ' + str(
-        dataset.shape[0]) + ' rows' + '\n')
-    file.write('\n' + 'Column names are  :' + str(list(dataset.columns)) + '\n')
-    file.write('\n' + 'The first 10 rows of this dataset: ' + '\n' + '\n' + str(dataset.head(10)) + '\n' + '\n')
+def Linear_Regression(file, train, test, target, data_file_name):
+    file.write('1. The current dataset has ' + str(train.shape[1]) + ' columns. The training set has ' + str(
+        train.shape[0]) + ' rows and the testing set has ' + str(test.shape[0]) + 'rows\n')
+    file.write('\n' + 'Column names are  :' + str(list(train.columns)) + '\n')
+    file.write('\n' + 'The first 10 rows of this dataset: ' + '\n' + '\n' + str(train.head(10)) + '\n' + '\n')
     y = target
 
     # seperate train set and test set
-    X = dataset.drop(y, axis=1).values
-    y = dataset[y].values
-
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=0)
+    X_train = train.drop(y, axis=1).values
+    y_train = train[y].values
+    X_test = test.drop(y, axis=1).values
+    y_test = test[y].values
 
     # model
     regressor = LinearRegression()
@@ -44,10 +44,7 @@ def Linear_Regression(file, dataset, target, data_file_name, test_size=0.2):
 
     file.write('\n' + 'The mean squared error is :' + str(RMSE) + '\n')
 
-    y_test['y_pred'] = y_pred
-
-
-    return (y_test)
+    print('The model is', filename)
 
 
 if __name__ == '__main__':

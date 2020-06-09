@@ -1,6 +1,5 @@
 import pickle
 import pandas as pd
-from datetime import datetime
 from sklearn.model_selection import train_test_split, RandomizedSearchCV, GridSearchCV
 from sklearn.metrics import roc_auc_score, r2_score, mean_squared_error
 from sklearn.model_selection import StratifiedKFold
@@ -23,24 +22,19 @@ def main():
     file.close()
 
 
-def XGB_Regression(file, df, target, data_file_name, tune, test_size=0.2):
-    def timer(start_time=None):
-        if not start_time:
-            start_time = datetime.now()
-            return start_time
-        elif start_time:
-            thour, temp_sec = divmod((datetime.now() - start_time).total_seconds(), 3600)
-            tmin, tsec = divmod(temp_sec, 60)
-            print('\n Time taken: %i hours %i minutes and %s seconds.' % (thour, tmin, round(tsec, 2)))
+def XGB_Regression(file, train, test, target, data_file_name, tune):
 
-    file.write('The current dataset has' + str(df.shape[1]) + ' columns and ' + str(df.shape[0]) + ' rows')
-    file.write('Column names are ' + str(df.columns) + '\n')
+    file.write('1. The current dataset has ' + str(train.shape[1]) + ' columns. The training set has ' + str(
+        train.shape[0]) + ' rows and the testing set has ' + str(test.shape[0]) + 'rows\n')
+    file.write('\n' + 'Column names are  :' + str(list(train.columns)) + '\n')
+    file.write('\n' + 'The first 10 rows of this dataset: ' + '\n' + '\n' + str(train.head(10)) + '\n' + '\n')
+    y = target
 
-    X = df.drop(columns=target)
-    y = df[target]
-
-    # seperate train set (80%) and test set (20%)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=0)
+    # seperate train set and test set
+    X_train = train.drop(y, axis=1).values
+    y_train = train[y].values
+    X_test = test.drop(y, axis=1).values
+    y_test = test[y].values
 
     if tune == 'Y':
         # A parameter grid for XGBoost
@@ -67,9 +61,7 @@ def XGB_Regression(file, df, target, data_file_name, tune, test_size=0.2):
                                            verbose=3, random_state=0)
 
         # Here we go
-        start_time = timer(None)  # timing starts from this point for "start_time" variable
         random_search.fit(X_train, y_train)
-        timer(start_time)
 
         print('\n All results:')
         print(random_search.cv_results_)
@@ -112,9 +104,7 @@ def XGB_Regression(file, df, target, data_file_name, tune, test_size=0.2):
     file.write('Test MSE: ' + str(mean_squared_error(y_test, pred_test)))
     file.write('R Square: ' + str(r2_score(y_test, pred_test)))
 
-    y_test['y_pred'] = y_pred
-
-    return y_test
+    print('The model is', filename)
 
 if __name__ == '__main__':
     main()

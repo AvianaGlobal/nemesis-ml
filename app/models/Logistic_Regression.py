@@ -16,16 +16,18 @@ def main(data):
     file.close()
 
 
-def Logistic_Regression(file, dataset, target, data_file_name, test_size=0.2):
-    file.write('1. The current dataset has ' + str(dataset.shape[1]) + ' columns and ' + str(
-        dataset.shape[0]) + ' rows' + '\n')
-    file.write('\n' + 'Column names are  :' + str(list(dataset.columns)) + '\n')
-    file.write('\n' + 'The first 10 rows of this dataset: ' + '\n' + '\n' + str(dataset.head(10)) + '\n' + '\n')
+def Logistic_Regression(file, train, test, target, data_file_name):
+    file.write('1. The current dataset has ' + str(train.shape[1]) + ' columns. The training set has ' + str(
+        train.shape[0]) + ' rows and the testing set has ' + str(test.shape[0]) + 'rows\n')
+    file.write('\n' + 'Column names are  :' + str(list(train.columns)) + '\n')
+    file.write('\n' + 'The first 10 rows of this dataset: ' + '\n' + '\n' + str(train.head(10)) + '\n' + '\n')
+    y = target
 
-    # Separate the Train and Test set.
-    X = dataset.drop([target], axis=1)
-    Y = dataset.loc[:, target]
-    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state=0)
+    # seperate train set and test set
+    X_train = train.drop(y, axis=1).values
+    y_train = train[y].values
+    X_test = test.drop(y, axis=1).values
+    y_test = test[y].values
 
     # Fit the Logistic Regression using train set.
     Logist_R = LogisticRegression(random_state=0, penalty='l2', solver='liblinear').fit(X_train, y_train)
@@ -66,16 +68,13 @@ def Logistic_Regression(file, dataset, target, data_file_name, test_size=0.2):
     Avg_Accuracy = round(metrics.accuracy_score(y_test, y_pred), 3)
     file.write('\n' + 'The accuracy of confusion matrix is :' + str(Avg_Accuracy) + '\n')
 
-    if dataset[target].dtype == int:
+    if train[target].dtype == int:
         precision = round(metrics.precision_score(y_test, y_pred), 3)
         Recall = round(metrics.recall_score(y_test, y_pred), 3)
         file.write("Precision: " + str(precision) + '\n')
         file.write("Recall: " + str(Recall) + '\n')
 
-    y_test['y_pred'] = y_pred
-
-    return y_test
-
+    print('The model is', filename)
 
 if __name__ == '__main__':
     main()
