@@ -75,7 +75,8 @@ def dummy(data, target_col, train_data, test_data):
     return train_data, test_data
 
 
-def cat_to_num(data, label):
+
+def encoding(data, label):
     if label == True:
         redo = "Y"
         count = 1
@@ -160,8 +161,10 @@ def cat_to_num(data, label):
                 templist = data[encoded_col].unique()
 
                 print('Encoding the column...')
+
                 for item in templist:
                     if item not in lookup[encoded_col].values:
+
                         data = data.drop(data.loc[data[encoded_col] == item].index)
                 data[encoded_col] = data[encoded_col].replace(lookup.iloc[:, 0].values, lookup.iloc[:, 1].values)
                 print('Finished!')
@@ -169,4 +172,7 @@ def cat_to_num(data, label):
             except:
                 print('There is a error raised when encoding the column.')
 
+        data.to_csv('test.csv')
+
         return data
+

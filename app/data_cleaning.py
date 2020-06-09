@@ -73,10 +73,3 @@ def data_prep(data):
         
     return data
     
-
-
-
-
-# Test file
-# df = pd.read_csv('card transactions_edited_with_NAs.csv')
-# data = data_prep(df)
