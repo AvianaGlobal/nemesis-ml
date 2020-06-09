@@ -120,7 +120,7 @@ def clean_data_main(data, target_col, groupby_col):
             data[col] = data[col].astype('category')
 
     print(data.dtypes)
-    modification = input('Do you want to make any change (Y/N) ')
+    modification = input('Do you want to make any change to the data type (Y/N) ')
 
     while modification.upper() == 'Y':
         column = input('Enter the column name: ')
