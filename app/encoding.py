@@ -92,7 +92,7 @@ def encoding(data, label):
             redo = "Y"
             count = 1
             # split data
-            size = float(input('Enter the training size: '))
+            size = float(input('Enter the testing size: '))
             train_data, test_data = train_test_split(data, test_size=size)
 
             #############
