@@ -88,6 +88,7 @@ def XGB_Regression(file, train, test, target, data_file_name, tune):
         model = XGBRegressor(max_depth=1, learning_rate=0.1, n_estimators=100, silent=True, objective='reg:linear')
 
     model.fit(X_train, y_train)
+    model.feature_names = list(X_train.columns.values)
 
     # save the model to disk
     filename = data_file_name + '_XGBRegressor.sav'

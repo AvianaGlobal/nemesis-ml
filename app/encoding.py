@@ -92,7 +92,7 @@ def encoding(data, label):
             redo = "Y"
             count = 1
             # split data
-            size = float(input('Enter the training size: '))
+            size = float(input('Enter the testing size: '))
             train_data, test_data = train_test_split(data, test_size=size)
 
             #############
@@ -112,6 +112,8 @@ def encoding(data, label):
                         print(test_data)
                         train_data.to_csv('Backup_train.csv')
                         test_data.to_csv('Backup_test.csv')
+                        print('Columns in the current dataset: ')
+                        print(df.columns.to_list())
                         # new columns
                         redo = input('Wanna encode a new column? Y/N')
 
@@ -126,6 +128,8 @@ def encoding(data, label):
                         print(test_data)
                         train_data.to_csv('Backup_train.csv')
                         test_data.to_csv('Backup_test.csv')
+                        print('Columns in the current dataset: ')
+                        print(df.columns.to_list())
                         # new columns
                         redo = input('Wanna encode a new column? Y/N')
 
@@ -178,6 +182,12 @@ def encoding(data, label):
                     redo = input('Do you want to encode another column using lookup table? (Y/N): ')
                 except:
                     print('There is a error raised when encoding the column.')
+
+            # drop all other categorical columns
+            for col in data:
+                if str(data[col].dtypes) != 'int64' and str(data[col].dtypes) != 'float64' and str(
+                        data[col].dtypes) != 'uint8':
+                    data = data.drop([col], axis=1)
 
             data.to_csv('test.csv')
 
