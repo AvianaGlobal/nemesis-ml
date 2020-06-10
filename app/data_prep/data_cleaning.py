@@ -53,7 +53,7 @@ def fill_NAs(data, target_col, groupby_col):
     return data, skipgroup
 
 
-def fill_NAs_no_enough_data(data, skipgroup, method, fill_num=None):
+def fill_NAs_no_enough_data(data, target_col, skipgroup, method, fill_num=None):
     print('Successfully filled NAs except for groups: ' + str(skipgroup))
     # print('Do you want to fill those using mean, median, mode, linear, a specific value, or remove?')
     # method = input('Please choose a method (mean, median, mode, value, linear, remove): ')
@@ -83,12 +83,12 @@ def scaler(data, scale):
     for col in data:
         if hasattr(pd.Series(data[col]), 'cat') == False:
             numlist.append(col)
-    if scale.upper() == 'Y':
-        scaler = preprocessing.StandardScaler().fit(data[numlist])
-        data[numlist] = scaler.transform(data[numlist])
-        print('Successfully scaled data! \n')
-        print(data[0:10])
-        data.to_csv('Backup.csv')
+    # if scale.upper() == 'Y':
+    scaler = preprocessing.StandardScaler().fit(data[numlist])
+    data[numlist] = scaler.transform(data[numlist])
+    print('Successfully scaled data! \n')
+    print(data[0:10])
+    data.to_csv('Backup.csv')
     return data
 
 
@@ -170,9 +170,9 @@ def clean_data_main(data, target_col, groupby_col):
                 method = input('Please choose a method (mean, median, mode, value, linear, remove): ')
                 if method == 'value':
                     fill_num = input('Value to use to replace NAs: ')
-                    data = fill_NAs_no_enough_data(data, skipgroup, method, fill_num)
+                    data = fill_NAs_no_enough_data(data, target_col, skipgroup, method, fill_num)
                 else:
-                    data = fill_NAs_no_enough_data(data, skipgroup, method)
+                    data = fill_NAs_no_enough_data(data, target_col, skipgroup, method)
             fill = input('Fill another column? (Y/N): ')
             if fill == 'Y':
                 target_col = input('Enter a new target column: ')
@@ -182,7 +182,21 @@ def clean_data_main(data, target_col, groupby_col):
 
         # scale numerical data
         scale = input('Do you want to scale numerical data (Y/N): ')
-        data = scaler(data, scale)
+        if scale.upper() == 'Y':
+            scalewy = input('Do you want to scale all the numerical data including the target (Y) column? Y/N')
+            if scalewy.upper() == 'Y':
+                data = scaler(data, scale)
+            else:
+                target_col = input('Enter your target (Y) column')
+                df = data.drop(columns=target_col)
+                df = scaler(df, scale)
+                data = pd.concat([data[target_col], df], axis=1)
+        else:
+            print('Scaling finished')
+
+        print(data.dtypes)
+        print(data)
+
 
         print('\n')
         print('Finished!')

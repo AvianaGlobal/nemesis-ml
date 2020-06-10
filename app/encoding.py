@@ -152,7 +152,7 @@ def encoding(data, label):
     else:
         data = data.dropna()
         lookup = pd.read_csv('smoothingLookUp.csv')
-        print(data.columns)
+        print(data.dtypes)
         redo = 'Y'
         while redo == 'Y':
             encoded_col = input('Enter the column that you want to encode: ')
