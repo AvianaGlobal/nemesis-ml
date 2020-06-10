@@ -123,6 +123,8 @@ def clean_data_main(data, target_col, groupby_col):
     modification = input('Do you want to make any change to the data type (Y/N) ')
 
     while modification.upper() == 'Y':
+
+        print('Columns contains NAs' + str(get_cols_with_NAs(data)))
         column = input('Enter the column name: ')
         col_type = input('Enter the column type (e.g. int64, float64, category, datetime) ')
         if col_type != 'datetime':
