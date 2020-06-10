@@ -15,14 +15,15 @@ def data_prep(data):
     print('4 - create flags')
     print('5 - create bins')
     print('6 - insert stats columns\n')
-    operation = input('Do you want to make any change above to your data: (1/2/3/4/5/N) ')
+    operation = input('Do you want to make any change above to your data: (1/2/3/4/5/6/N) ')
     
     if operation != 'N':
         while True:
 
             if operation == '1':
-
+                modification = 'Y'
                 while modification.upper() == 'Y':
+                    print(data.dtypes)
                     column = input('Enter the column name: ')
                     col_type = input('Enter the column type (e.g. int64, float64, category, datetime) ')
                     if col_type != 'datetime':
@@ -95,12 +96,13 @@ def data_prep(data):
                     else:
                         print('Invalid target column or groupby column')
                 data = stats_report.stats_insert(data,target_col,groupby_col)
-            print('1 - filter data')
-            print('2 - clean data')
-            print('3 - create flags')
-            print('4 - create bins')
-            print('5 - insert stats columns\n')
-            operation = input('Do you want to make another change? : (1/2/3/4/5/N) ')
+            print('1 - change data type')
+            print('2 - filter data')
+            print('3 - fill NAs')
+            print('4 - create flags')
+            print('5 - create bins')
+            print('6 - insert stats columns\n')
+            operation = input('Do you want to make another change? : (1/2/3/4/5/6/N) ')
             
             if operation == 'N':
                 print('Finished! \n')
