@@ -59,7 +59,7 @@ def data_prep(data):
                 while True:
                     print('Here are the columns from your dataset: \n')
                     print(data.columns.to_list())
-                    print('Columns contains NAs' + str(get_cols_with_NAs(data)))
+                    print('Columns contains NAs' + str(data_cleaning.get_cols_with_NAs(data)))
                     target_col = input('please enter your target column: ')
                     groupby_col = input('Please enter your groupby column: ')
                     if target_col in data.columns and groupby_col in data.columns:
