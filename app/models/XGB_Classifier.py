@@ -88,7 +88,9 @@ def XGB_Classifier(file, train, test, target, data_file_name, tune):
         model = XGBClassifier()
 
     model.fit(X_train, y_train)
-    model.feature_names = list(X_train.columns.values)
+    colname = list(train.columns.values)
+    colname.remove(target)
+    model.feature_names = colname
 
     # save the model to disk
     filename = data_file_name + '_XGBRegressor.sav'

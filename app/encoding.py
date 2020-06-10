@@ -102,18 +102,18 @@ def encoding(data, label):
 
             while redo.upper() == 'Y':
                 print('Here are the columns from your dataset: \n')
-                print(data.columns)
+                print(train_data.columns.to_list())
                 encoded_col = input('Enter the column that you want to encode: ')
                 try:
                     if data[encoded_col].nunique() < 5:
                         train_data, test_data = dummy(data, encoded_col, train_data, test_data)
                         # print and save backup
-                        print(train_data)
-                        print(test_data)
+                        #print(train_data)
+                        #print(test_data)
                         train_data.to_csv('Backup_train.csv')
                         test_data.to_csv('Backup_test.csv')
                         print('Columns in the current dataset: ')
-                        print(df.columns.to_list())
+                        print(train_data.columns.to_list())
                         # new columns
                         redo = input('Wanna encode a new column? Y/N')
 
@@ -124,12 +124,12 @@ def encoding(data, label):
                         train_data, test_data = target_encode_main(encoded_col, train_data, test_data, train_x, test_x,
                                                                    train_y)
                         # print and save backup
-                        print(train_data)
-                        print(test_data)
+                        #print(train_data)
+                        #print(test_data)
                         train_data.to_csv('Backup_train.csv')
                         test_data.to_csv('Backup_test.csv')
                         print('Columns in the current dataset: ')
-                        print(df.columns.to_list())
+                        print(train_data.columns.to_list())
                         # new columns
                         redo = input('Wanna encode a new column? Y/N')
 

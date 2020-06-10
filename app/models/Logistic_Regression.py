@@ -31,7 +31,9 @@ def Logistic_Regression(file, train, test, target, data_file_name):
 
     # Fit the Logistic Regression using train set.
     Logist_R = LogisticRegression(random_state=0, penalty='l2', solver='liblinear').fit(X_train, y_train)
-    Logist_R.feature_names = list(X_train.columns.values)
+    colname = list(train.columns.values)
+    colname.remove(target)
+    Logist_R.feature_names = colname
 
     # save the model to disk
     filename = data_file_name + '_LogisticRegressor.sav'

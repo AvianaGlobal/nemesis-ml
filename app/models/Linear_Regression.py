@@ -31,7 +31,10 @@ def Linear_Regression(file, train, test, target, data_file_name):
     # model
     regressor = LinearRegression()
     regressor.fit(X_train, y_train)  # training the algorithm
-    regressor.feature_names = list(X_train.columns.values)
+    colname = list(train.columns.values)
+    colname.remove(target)
+    regressor.feature_names = colname
+
 
     # save the model to disk
     filename = data_file_name + '_LinearRegressor.sav'
