@@ -34,7 +34,7 @@ def target_encode(trn_series=None,  # training categorical feature as a pd.Serie
     print(smoothing)
     print(' ')
     print(type(smoothing))
-    path = 'Lookup_Tables' + "\\" + encoded_col + '_lookup.csv'
+    path = 'Lookup_Tables' + '\\' + encoded_col + '_lookup.csv'
     smoothing.to_csv(path, header=['values'])
     # Apply average function to all target data
     prior = target.mean()
@@ -169,19 +169,40 @@ def encoding(data, label):
             redo = 'Y'
             while redo == 'Y':
                 encoded_col = input('Enter the column that you want to encode: ')
-                path = 'Lookup_Tables' + "\\" + encoded_col + '_lookup.csv'
-                lookup = pd.read_csv(path)
-                try:
-                    templist = data[encoded_col].unique()
+                if data[encoded_col].nunique() < 5:
+                    data = pd.get_dummies(data, columns=[encoded_col], drop_first=False)
+                    # print and save backup
+                    #print(train_data)
+                    #print(test_data)
+                    data.to_csv('Backup_encodededata.csv')
 
-                    print('Encoding the column...')
-                    for item in templist:
-                        if item not in lookup[encoded_col].values:
-                            data = data.drop(data.loc[data[encoded_col] == item].index)
-                    data[encoded_col] = data[encoded_col].replace(lookup.iloc[:, 0].values, lookup.iloc[:, 1].values)
-                    redo = input('Do you want to encode another column using lookup table? (Y/N): ')
-                except:
-                    print('There is a error raised when encoding the column.')
+                    print('Columns in the current dataset: ')
+                    print(data.columns.to_list())
+                    # new columns
+                    redo = input('Wanna encode a new column? Y/N')
+                else:
+                    print('This variable has more than 5 classes. Searching for lookup table')
+                    path = 'Lookup_Tables' + '\\'+ encoded_col + '_lookup.csv'
+                    try:
+                        lookup = pd.read_csv(path)
+                        try:
+                            templist = data[encoded_col].unique()
+
+                            print('Encoding the column...')
+                            for item in templist:
+                                if item not in lookup[encoded_col].values:
+                                    data = data.drop(data.loc[data[encoded_col] == item].index)
+                            data[encoded_col] = data[encoded_col].replace(lookup.iloc[:, 0].values,
+                                                                          lookup.iloc[:, 1].values)
+                            print('Columns in the current dataset: ')
+                            print(data.columns.to_list())
+                            redo = input('Do you want to encode another column? (Y/N): ')
+                        except:
+                            print('There is a error raised when encoding the column.')
+                    except:
+                        print('Lookup table not found')
+
+
 
             # drop all other categorical columns
             for col in data:
