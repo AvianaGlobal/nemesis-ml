@@ -5,8 +5,13 @@ import pandas as pd
 from data_cleaning import data_prep
 
 while True:
-    datafile = input("Please enter the name of the csv data file: ")
-    data = pd.read_csv(datafile + '.csv')
+    while True:
+        datafile = input("Please enter the name of the csv data file: ")
+        try:
+            data = pd.read_csv(datafile + '.csv')
+            break
+        except:
+            print('File does not exist!')
     data = data_prep(data)
 
     datafile = input("Please enter the name of the csv data file you want to save the processed data to: ")
