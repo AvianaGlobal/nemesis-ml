@@ -146,15 +146,24 @@ def clean_data_main(data, target_col, groupby_col):
                 to_datetime(data, column, date_format)
 
     # print(data[data.isna().any(axis=1)].head())
-    drop_cat_NA = input('Drop all NAs in categorical columns? (Y/N): ')
-    if drop_cat_NA == 'Y':
+    drop_cat_NA = input('Drop all NAs in categorical columns (D), Fill NAs with mode (F) or Do nothing (N)? (D/F/N): ')
+    if drop_cat_NA.upper() == 'D':
         print(data[data.isna().any(axis=1)].head())
-
-    # drop NAs in categorical columns
-    if drop_cat_NA.upper() == 'Y':
         for col in data:
             if hasattr(pd.Series(data[col]), 'cat') == True:
                 data = data.dropna(subset=[col])
+    elif drop_cat_NA.upper() == 'F':
+
+        for col in data:
+
+            if hasattr(pd.Series(data[col]), 'cat') == True and data[col].isna().any() == True:  # & data[col].isna().any() == True
+                print('Column ' + str(col) + ' has NAs. Start filling NAs........')
+                data[col] = data[col].fillna(data[col].mode().iloc[0])
+                print('Done with this column')
+        print('Fill Nas for categorical columns finished')
+    else:
+        print('Proceed to next step......')
+
 
     if NAs_ratio(data, target_col) > 0.2:
         data.drop(target_col, axis=1, inplace=True)
