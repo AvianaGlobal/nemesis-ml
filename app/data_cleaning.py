@@ -22,6 +22,10 @@ def data_prep(data):
 
             if operation == '1':
                 modification = 'Y'
+                for col in data:
+                    if data[col].dtype == 'object':
+                        data[col] = data[col].astype('category')
+
                 while modification.upper() == 'Y':
                     print(data.dtypes)
                     column = input('Enter the column name: ')
