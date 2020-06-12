@@ -78,12 +78,11 @@ def fill_NAs_no_enough_data(data, target_col, skipgroup, method, fill_num=None):
     return data
 
 
-def scaler(data, scale):
+def scaler(data):
     numlist = []
     for col in data:
         if hasattr(pd.Series(data[col]), 'cat') == False:
             numlist.append(col)
-    # if scale.upper() == 'Y':
     scaler = preprocessing.StandardScaler().fit(data[numlist])
     data[numlist] = scaler.transform(data[numlist])
     print('Successfully scaled data! \n')
@@ -111,111 +110,69 @@ def get_month(dataset, datetime_col):
     dataset[datetime_col + '_mth'] = [i.month for i in dataset[datetime_col]]
 
 
-
 def clean_data_main(data, target_col, groupby_col):
+    while True:
 
-    # identify numerical and categorical columns
-    for col in data:
-        if data[col].dtype == 'object':
-            data[col] = data[col].astype('category')
+        if hasattr(pd.Series(data[groupby_col]), 'cat') == False:
+            print('Invalid groupby column. Groupby column must be categorical')
+
+        if hasattr(pd.Series(data[target_col]), 'cat') == True and hasattr(pd.Series(data[groupby_col]), 'cat') == True:
+            print('Filling NAs in a categorical col')
+            data[target_col] = data[target_col].fillna(
+                data[target_col].groupby(data[groupby_col]).agg(pd.Series.mode).iloc[0])
+            print('Filled NAs successfully for column: ' + str(target_col) + '\n')
+            print('Columns contains NAs' + str(get_cols_with_NAs(data)))
+
+        if hasattr(pd.Series(data[target_col]), 'cat') == False and hasattr(pd.Series(data[groupby_col]),
+                                                                            'cat') == True:
+
+            if NAs_ratio(data, target_col) > 0.2:
+                data.drop(target_col, axis=1, inplace=True)
+                print('Dropped column: ' + str(target_col))
+
+            else:
+                data, skipgroup = fill_NAs(data, target_col, groupby_col)
+                if len(skipgroup) == 0:
+                    print('All groups have enough datapoints \n')
+                    print('Filled NAs successfully for column: ' + str(target_col) + '\n')
+                    print('Columns contains NAs' + str(get_cols_with_NAs(data)))
+                else:
+                    method = input('Please choose a method (mean, median, mode, value, linear, remove): ')
+                    if method == 'value':
+                        fill_num = input('Value to use to replace NAs: ')
+                        data = fill_NAs_no_enough_data(data, target_col, skipgroup, method, fill_num)
+                    else:
+                        data = fill_NAs_no_enough_data(data, target_col, skipgroup, method)
+
+        fill = input('Fill another column? (Y/N): ')
+        if fill == 'Y':
+            target_col = input('Enter a new target column: ')
+            groupby_col = input('Enter a new groupby column: ')
+        else:
+            break
+
+    # scale numerical data
+    scale = input('Do you want to scale numerical data (Y/N): ')
+    if scale.upper() == 'Y':
+        scalewy = input('Do you want to scale all the numerical data including the target (Y) column? Y/N')
+        if scalewy.upper() == 'Y':
+            data = scaler(data)
+        else:
+            target_col = input('Enter your target (Y) column')
+            df = data.drop(columns=target_col)
+            df = scaler(df)
+            data = pd.concat([data[target_col], df], axis=1)
 
     print(data.dtypes)
-    modification = input('Do you want to make any change to the data type (Y/N) ')
+    print(data)
 
-    while modification.upper() == 'Y':
+    print('\n')
+    print('Finished!')
 
-        # print('Columns contains NAs' + str(get_cols_with_NAs(data)))
-        column = input('Enter the column name: ')
-        col_type = input('Enter the column type (e.g. int64, float64, category, datetime) ')
-        if col_type != 'datetime':
-            try:
-                data[column] = data[column].astype(col_type)
-                print(data.dtypes)
-                modification = input('Do you want to make another change (Y/N) ')
-            except KeyError:
-                print('Column ' + str(column) + ' is not defined')
-                modification = input('Do you want to make another change (Y/N) ')
-            except:
-                print('You cannot assign ' + str(col_type) + ' type to ' + str(column) + ' column')
-                modification = input('Do you want to make another change (Y/N) ')
-        else:
-            try:  # when pandas can recognize the date format
-                data[column] = pd.to_datetime(data[column])
-            except:  # when pandas cannot recognize the date format
-                date_format = input('Please enter the format of your data: i.e. %y/%m/%d: ')
-                to_datetime(data, column, date_format)
+    data = data.reset_index(drop=True)
 
-    # print(data[data.isna().any(axis=1)].head())
-    drop_cat_NA = input('Drop all NAs in categorical columns (D), Fill NAs with mode (F) or Do nothing (N)? (D/F/N): ')
-    if drop_cat_NA.upper() == 'D':
-        print(data[data.isna().any(axis=1)].head())
-        for col in data:
-            if hasattr(pd.Series(data[col]), 'cat') == True:
-                data = data.dropna(subset=[col])
-    elif drop_cat_NA.upper() == 'F':
+    # remove backup data
+    import os
+    os.remove("Backup.csv")
 
-        for col in data:
-
-            if hasattr(pd.Series(data[col]), 'cat') == True and data[col].isna().any() == True:  # & data[col].isna().any() == True
-                print('Column ' + str(col) + ' has NAs. Start filling NAs........')
-                data[col] = data[col].fillna(data[col].mode().iloc[0])
-                print('Done with this column')
-        print('Fill Nas for categorical columns finished')
-    else:
-        print('Proceed to next step......')
-
-
-    if NAs_ratio(data, target_col) > 0.2:
-        data.drop(target_col, axis=1, inplace=True)
-        print('Dropped column: ' + str(target_col))
-
-    else:
-        fill = 'Y'
-        while fill == 'Y':
-            data, skipgroup = fill_NAs(data, target_col, groupby_col)
-            if len(skipgroup) == 0:
-                print('All groups have enough datapoints \n')
-                print('Filled NAs successfully for column: ' + str(target_col) + '\n')
-                print('Columns contains NAs' + str(get_cols_with_NAs(data)))
-            else:
-                method = input('Please choose a method (mean, median, mode, value, linear, remove): ')
-                if method == 'value':
-                    fill_num = input('Value to use to replace NAs: ')
-                    data = fill_NAs_no_enough_data(data, target_col, skipgroup, method, fill_num)
-                else:
-                    data = fill_NAs_no_enough_data(data, target_col, skipgroup, method)
-            fill = input('Fill another column? (Y/N): ')
-            if fill == 'Y':
-                target_col = input('Enter a new target column: ')
-                groupby_col = input('Enter a new groupby column: ')
-            else:
-                break
-
-        # scale numerical data
-        scale = input('Do you want to scale numerical data (Y/N): ')
-        if scale.upper() == 'Y':
-            scalewy = input('Do you want to scale all the numerical data including the target (Y) column? Y/N')
-            if scalewy.upper() == 'Y':
-                data = scaler(data, scale)
-            else:
-                target_col = input('Enter your target (Y) column')
-                df = data.drop(columns=target_col)
-                df = scaler(df, scale)
-                data = pd.concat([data[target_col], df], axis=1)
-        else:
-            print('Scaling finished')
-
-        print(data.dtypes)
-        print(data)
-
-
-        print('\n')
-        print('Finished!')
-
-        data = data.reset_index(drop = True)
-
-        # remove backup data
-        import os
-        os.remove("Backup.csv")
-
-        return data
+    return data

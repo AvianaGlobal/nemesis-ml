@@ -61,17 +61,48 @@ def data_prep(data):
                     print('Invalid filter')
 
             if operation == '3':
+                # identify numerical and categorical columns
+                for col in data:
+                    if data[col].dtype == 'object':
+                        data[col] = data[col].astype('category')
+
+                print(data.dtypes)
+                modification = input('Do you want to make any change to the data type (Y/N) ')
+
+                while modification.upper() == 'Y':
+                    column = input('Enter the column name: ')
+                    col_type = input('Enter the column type (e.g. int64, float64, category, datetime) ')
+                    if col_type != 'datetime':
+                        try:
+                            data[column] = data[column].astype(col_type)
+                            print(data.dtypes)
+                            modification = input('Do you want to make another change (Y/N) ')
+                        except KeyError:
+                            print('Column ' + str(column) + ' is not defined')
+                            modification = input('Do you want to make another change (Y/N) ')
+                        except:
+                            print('You cannot assign ' + str(col_type) + ' type to ' + str(column) + ' column')
+                            modification = input('Do you want to make another change (Y/N) ')
+                    else:
+                        try:  # when pandas can recognize the date format
+                            data[column] = pd.to_datetime(data[column])
+                        except:  # when pandas cannot recognize the date format
+                            date_format = input('Please enter the format of your data: i.e. %y/%m/%d: ')
+                            to_datetime(data, column, date_format)
+
                 while True:
                     print('Here are the columns from your dataset: \n')
                     print(data.columns.to_list())
-                    print(data.dtypes) ####
+                    print(data.dtypes)
                     print('Columns contains NAs' + str(data_cleaning.get_cols_with_NAs(data)))
-                    target_col = input('please enter your (numeric) target column: ')
+
+                    target_col = input('please enter your target column: ')
                     groupby_col = input('Please enter your groupby column: ')
                     if target_col in data.columns and groupby_col in data.columns:
                         break
                     else:
                         print('Invalid target column or groupby column')
+
                 data = data_cleaning.clean_data_main(data, target_col, groupby_col)
 
             if operation == '4':
