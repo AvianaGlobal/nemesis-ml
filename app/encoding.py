@@ -194,6 +194,9 @@ def encoding(data, label):
                                     data = data.drop(data.loc[data[encoded_col] == item].index)
                             data[encoded_col] = data[encoded_col].replace(lookup.iloc[:, 0].values,
                                                                           lookup.iloc[:, 1].values)
+
+                            data[encoded_col] = data[encoded_col].astype(float)
+
                             print('Columns in the current dataset: ')
                             print(data.columns.to_list())
                             redo = input('Do you want to encode another column? (Y/N): ')
