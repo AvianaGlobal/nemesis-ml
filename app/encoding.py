@@ -89,7 +89,7 @@ def column_check(data1, data2):
     return data1, data2
 
 
-def dummy(train_data, test_data):
+def dummy(target_col, train_data, test_data):
     train_data = pd.get_dummies(train_data, columns=[target_col], drop_first=False)
     test_data = pd.get_dummies(test_data, columns=[target_col], drop_first=False)
     train_data, test_data = column_check(train_data, test_data)
@@ -125,7 +125,7 @@ def encoding(data, label):
                 encoded_col = input('Enter the column that you want to encode: ')
                 try:
                     if data[encoded_col].nunique() < 5:
-                        train_data, test_data = dummy(data, encoded_col, train_data, test_data)
+                        train_data, test_data = dummy(encoded_col, train_data, test_data)
                         # print and save backup
                         #print(train_data)
                         #print(test_data)
