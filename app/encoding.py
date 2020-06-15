@@ -129,8 +129,8 @@ def encoding(data, label):
                         # print and save backup
                         #print(train_data)
                         #print(test_data)
-                        train_data.to_csv('Backup_train.csv')
-                        test_data.to_csv('Backup_test.csv')
+                        train_data.to_csv('Backup_train.csv', index = False)
+                        test_data.to_csv('Backup_test.csv', index = False)
                         print('Columns in the current dataset: ')
                         print(train_data.columns.to_list())
                         # new columns
@@ -145,8 +145,8 @@ def encoding(data, label):
                         # print and save backup
                         #print(train_data)
                         #print(test_data)
-                        train_data.to_csv('Backup_train.csv')
-                        test_data.to_csv('Backup_test.csv')
+                        train_data.to_csv('Backup_train.csv', index = False)
+                        test_data.to_csv('Backup_test.csv', index = False)
                         print('Columns in the current dataset: ')
                         print(train_data.columns.to_list())
                         # new columns
@@ -181,11 +181,12 @@ def encoding(data, label):
             print(test_data)
             os.remove('Backup_train.csv')
             os.remove('Backup_test.csv')
-            train_data.to_csv('train_data.csv')
-            test_data.to_csv('test_data.csv')
+            train_data.to_csv('train_data.csv', index = False)
+            test_data.to_csv('test_data.csv', index = False)
             return train_data, test_data
 
         else:
+            collist = []
             print(data.columns)
             redo = 'Y'
             while redo == 'Y':
@@ -195,7 +196,7 @@ def encoding(data, label):
                     # print and save backup
                     #print(train_data)
                     #print(test_data)
-                    data.to_csv('Backup_encodededata.csv')
+                    data.to_csv('Backup_encodededata.csv', index = False)
 
                     print('Columns in the current dataset: ')
                     print(data.columns.to_list())
@@ -204,40 +205,51 @@ def encoding(data, label):
                 else:
                     print('This variable has more than 5 classes. Searching for lookup table')
                     path = 'Lookup_Tables' + '\\'+ encoded_col + '_lookup.csv'
-                    try:
-                        lookup = pd.read_csv(path)
-                        try:
-                            templist = data[encoded_col].unique()
+                    #try:
+                    lookup = pd.read_csv(path)
+                    #try:
+                    templist = data[encoded_col].unique()
 
-                            print('Encoding the column...')
-                            for item in templist:
-                                if item not in lookup[encoded_col].values:
-                                    data = data.drop(data.loc[data[encoded_col] == item].index)
-                                    #data.loc[data[encoded_col]==item, encoded_col] = 3333
-                            data[encoded_col + '_encoded'] = data[encoded_col].replace(lookup.iloc[:, 0].values,
-                                                                          lookup.iloc[:, 1].values)
-                            data[encoded_col + '_encoded'] = data[encoded_col + '_encoded'].astype(float)
-                            data = data.drop(columns=[encoded_col])
-                            print('Columns in the current dataset: ')
-                            print(data.columns.to_list())
-                            redo = input('Do you want to encode another column? (Y/N): ')
-                        except:
-                            print('There is a error raised when encoding the column.')
-                    except:
-                        print('Lookup table not found')
+                    print('Encoding the column...')
+                    #print(data.shape)
+                    for item in templist:
+                        if item not in lookup[encoded_col].values:
+                            #data = data.drop(data.loc[data[encoded_col] == item].index)
+                            data.loc[data[encoded_col]==item, encoded_col] = 123456789
 
+                    data[encoded_col + '_encoded'] = data[encoded_col].replace(lookup.iloc[:, 0].values,
+                                                                               lookup.iloc[:, 1].values)
+                    #print(data.shape)
+                    data[encoded_col + '_encoded'] = data[encoded_col + '_encoded'].astype(float)
+                    collist.append(encoded_col + '_encoded')
+                    #print(collist)
+                    data = data.drop(columns=[encoded_col])
+                    print('Columns in the current dataset: ')
+                    print(data.columns.to_list())
+                    redo = input('Do you want to encode another column? (Y/N): ')
+                    #except:
+                    #print('There is a error raised when encoding the column.')
+                    # except:
+                    #     print('Lookup table not found')
 
+            indexNames = data[data[collist[0]] == 123456789].index
+            for i in collist[1:]:
+                indexNames.union(data[data[i] == 123456789].index)
+            #print(data.shape)
+            #print(indexNames)
+            data.drop(indexNames, inplace=True)
+            #print(data.shape)
 
             # drop all other categorical columns
-            print(data.dtypes)
+            #print(data.dtypes)
 
             for col in data:
                 if str(data[col].dtypes) != 'int64' and str(data[col].dtypes) != 'float64' and str(
                         data[col].dtypes) != 'uint8':
                     data = data.drop([col], axis=1)
 
-            data.to_csv('test.csv')
-            print(data.dtypes)
+            data.to_csv('data_for_prediction.csv', index = False)
+            #print(data.dtypes)
             print('Finished')
 
             return data

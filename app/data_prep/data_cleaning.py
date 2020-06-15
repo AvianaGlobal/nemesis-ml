@@ -48,7 +48,7 @@ def fill_NAs(data, target_col, groupby_col):
     data[~data[groupby_col].isin(skipgroup)].groupby(groupby_col)[target_col].apply(lambda x: x.fillna(x.mean()))
 
     print(data[0:10])
-    data.to_csv('Backup.csv')
+    data.to_csv('Backup.csv', index = False)
 
     return data, skipgroup
 
@@ -73,7 +73,7 @@ def fill_NAs_no_enough_data(data, target_col, skipgroup, method, fill_num=None):
 
     print('Filled NAs successfully for column: ' + str(target_col) + '\n')
     print('Columns contains NAs: ' + str(get_cols_with_NAs(data)) + '\n')
-    data.to_csv('Backup.csv')
+    data.to_csv('Backup.csv', index = False)
 
     return data
 
@@ -87,7 +87,7 @@ def scaler(data):
     data[numlist] = scaler.transform(data[numlist])
     print('Successfully scaled data! \n')
     print(data[0:10])
-    data.to_csv('Backup.csv')
+    data.to_csv('Backup.csv', index = False)
     return data
 
 
@@ -123,7 +123,7 @@ def clean_data_main(data, target_col, groupby_col):
             print('Filled NAs successfully for column: ' + str(target_col) + '\n')
             print('Columns contains NAs' + str(get_cols_with_NAs(data)))
 
-            data.to_csv('Backup.csv')
+            data.to_csv('Backup.csv', index = False)
 
         if hasattr(pd.Series(data[target_col]), 'cat') == False and hasattr(pd.Series(data[groupby_col]),
                                                                             'cat') == True:

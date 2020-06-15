@@ -15,7 +15,7 @@ while True:
     data = data_prep(data)
 
     datafile = input("Please enter the name of the csv data file you want to save the processed data to: ")
-    data.to_csv(datafile + '.csv')
+    data.to_csv(datafile + '.csv', index = False)
     data_bool = input('Do you need to perform additional data prep? Y/N: ')
 
     if data_bool.upper() != 'Y':
@@ -30,7 +30,7 @@ if model_bool.upper()=='Y':
     elif target_bool == '2':
         data = encoding.encoding(data, False)
         prediction = prediction.prediction(data)
-        prediction.to_csv(datafile + '_prediction.csv')
+        prediction.to_csv(datafile + '_prediction.csv', index = False)
 
 
 else:
