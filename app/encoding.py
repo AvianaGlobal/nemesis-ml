@@ -70,10 +70,29 @@ def target_encode_main(train_test_series, train_data, test_data, train_x, test_x
     test_data = test_data.drop(columns=[train_test_series])
     return train_data, test_data
 
+# check if columns in train/test data match with each other
+# If not, add the column and fill with 0
 
-def dummy(data, target_col, train_data, test_data):
+def column_check(data1, data2):
+    # lists containing missing columns
+    data1missing = data2.columns.difference(data1.columns).to_list()
+    data2missing = data1.columns.difference(data2.columns).to_list()
+
+    if len(data1missing) != 0:
+        for col in data1missing:
+            data1[col] = 0
+
+    if len(data2missing) != 0:
+        for col in data2missing:
+            data2[col] = 0
+
+    return data1, data2
+
+
+def dummy(train_data, test_data):
     train_data = pd.get_dummies(train_data, columns=[target_col], drop_first=False)
     test_data = pd.get_dummies(test_data, columns=[target_col], drop_first=False)
+    train_data, test_data = column_check(train_data, test_data)
     return train_data, test_data
 
 
