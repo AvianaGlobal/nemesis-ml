@@ -154,6 +154,8 @@ def encoding(data, label):
                         test_data[col2].dtypes) != 'uint8':
                     test_data = test_data.drop([col2], axis=1)
 
+            print(data.dtypes)
+
             print('Encoding completed')
             print(train_data)
             print(' ')
@@ -192,11 +194,10 @@ def encoding(data, label):
                             for item in templist:
                                 if item not in lookup[encoded_col].values:
                                     data = data.drop(data.loc[data[encoded_col] == item].index)
-                            data[encoded_col] = data[encoded_col].replace(lookup.iloc[:, 0].values,
+                                    #data.loc[data[encoded_col]==item, encoded_col] = 3333
+                            data[encoded_col + '_encoded'] = data[encoded_col].replace(lookup.iloc[:, 0].values,
                                                                           lookup.iloc[:, 1].values)
-
-                            data[encoded_col] = data[encoded_col].astype(float)
-
+                            data = data.drop(columns=[encoded_col])
                             print('Columns in the current dataset: ')
                             print(data.columns.to_list())
                             redo = input('Do you want to encode another column? (Y/N): ')
@@ -208,13 +209,15 @@ def encoding(data, label):
 
 
             # drop all other categorical columns
+            print(data.dtypes)
+
             for col in data:
                 if str(data[col].dtypes) != 'int64' and str(data[col].dtypes) != 'float64' and str(
                         data[col].dtypes) != 'uint8':
                     data = data.drop([col], axis=1)
 
             data.to_csv('test.csv')
-
+            print(data.dtypes)
             print('Finished')
 
             return data

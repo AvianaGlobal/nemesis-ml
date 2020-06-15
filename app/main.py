@@ -30,6 +30,7 @@ if model_bool.upper()=='Y':
     elif target_bool == '2':
         data = encoding.encoding(data, False)
         prediction = prediction.prediction(data)
+        prediction.to_csv(datafile + '_prediction.csv')
 
 
 else:
