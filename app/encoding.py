@@ -197,6 +197,7 @@ def encoding(data, label):
                                     #data.loc[data[encoded_col]==item, encoded_col] = 3333
                             data[encoded_col + '_encoded'] = data[encoded_col].replace(lookup.iloc[:, 0].values,
                                                                           lookup.iloc[:, 1].values)
+                            data[encoded_col + '_encoded'] = data[encoded_col + '_encoded'].astype(float)
                             data = data.drop(columns=[encoded_col])
                             print('Columns in the current dataset: ')
                             print(data.columns.to_list())
