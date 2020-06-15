@@ -44,7 +44,7 @@ def model_building(train, test):
                     if tune == 'Y' or tune == 'N':
                         break
                 file = open(data_file_name + '_XGB_Regression_report.txt', 'w')
-                XGB_regression.XGB_regression(file, train, test, target, data_file_name, tune)
+                XGB_regression.XGB_Regression(file, train, test, target, data_file_name, tune)
                 file.close()
     else:
         print('Finished! \n')
