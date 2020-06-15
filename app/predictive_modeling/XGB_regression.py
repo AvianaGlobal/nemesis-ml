@@ -14,9 +14,9 @@ warnings.filterwarnings("ignore")
 def main():
     data_file_name = input('Data file name: ')
     data_type_file_name = input('Column type file name: ')
-    df = pd.read_csv('../../data/processed/' + data_file_name + '.csv')
-    df_type = pd.read_csv('../../data/processed/' + data_type_file_name + '.csv')
-    file = open('../../reports/build_models/' + data_file_name + '_XGB_regression_report.txt', 'w')
+    df = pd.read_csv('../../sample_data/processed/' + data_file_name + '.csv')
+    df_type = pd.read_csv('../../sample_data/processed/' + data_type_file_name + '.csv')
+    file = open('../../model_results/build_models/' + data_file_name + '_XGB_regression_report.txt', 'w')
     XGB_Regression(file, df, df_type, data_file_name)
     file.close()
 
@@ -47,14 +47,14 @@ def XGB_Regression(file, df, df_type, data_file_name):
     model.fit(X_train, y_train)
 
     # save the model to disk
-    filename = '../../models/' + data_file_name + '_XGBRegressor.sav'
+    filename = '../../predictive_modeling/' + data_file_name + '_XGBRegressor.sav'
     pickle.dump(model, open(filename, 'wb'))
 
     # prediction
     loaded_model = pickle.load(open(filename, 'rb'))
     pred_test = loaded_model.predict(X_test)
 
-    # important features
+    # important feature_engineering
     plot_importance(loaded_model)
     plt.show()
 

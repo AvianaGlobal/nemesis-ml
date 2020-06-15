@@ -9,9 +9,9 @@ from sklearn.metrics import mean_squared_error, r2_score
 def main():
     data_file_name = input('Data file name: ')
     data_type_file_name = input('Column type file name: ')
-    df = pd.read_csv('../../data/processed/' + data_file_name + '.csv')
-    df_type = pd.read_csv('../../data/processed/' + data_type_file_name + '.csv')
-    file = open('../../reports/build_models/' + data_file_name + '_linear_regression_report.txt', 'w')
+    df = pd.read_csv('../../sample_data/processed/' + data_file_name + '.csv')
+    df_type = pd.read_csv('../../sample_data/processed/' + data_type_file_name + '.csv')
+    file = open('../../model_results/build_models/' + data_file_name + '_linear_regression_report.txt', 'w')
     Linear_Regression(file, df, df_type, data_file_name)
     file.close()
 
@@ -51,7 +51,7 @@ def Linear_Regression(file, dataset, dataset_type, data_file_name, test_size=0.2
     SLP = stfa.ols(formula=formula_list, data=d_train).fit()
 
     # save the model to disk
-    filename = '../../models/' + data_file_name + '_LinearRegressor.sav'
+    filename = '../../predictive_modeling/' + data_file_name + '_LinearRegressor.sav'
     pickle.dump(SLP, open(filename, 'wb'))
 
     # prediction

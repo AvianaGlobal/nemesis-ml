@@ -11,9 +11,9 @@ from sklearn import metrics
 def main():
     data_file_name = input('Data file name: ')
     data_type_file_name = input('Column type file name: ')
-    df = pd.read_csv('../../data/processed/' + data_file_name + '.csv')
-    df_type = pd.read_csv('../../data/processed/' + data_type_file_name + '.csv')
-    file = open('../../reports/build_models/' + data_file_name + '_XGB_Classifier_report.txt', 'w')
+    df = pd.read_csv('../../sample_data/processed/' + data_file_name + '.csv')
+    df_type = pd.read_csv('../../sample_data/processed/' + data_type_file_name + '.csv')
+    file = open('../../model_results/build_models/' + data_file_name + '_XGB_Classifier_report.txt', 'w')
     XGB_Classifier(file, df, df_type, data_file_name)
     file.close()
 
@@ -33,24 +33,24 @@ def XGB_Classifier(file, dataset, dataset_type, data_file_name, test_size=0.2):
     file.write('\n' + 'Column names are ' + str(list(dataset.columns)) + '\n')
     file.write('\n' + 'The first 10 rows of this dataset: ' + '\n' + '\n' + str(dataset.head(10)) + '\n' + '\n')
 
-    # split data into X and Y
+    # split sample_data into X and Y
     target_name = get_target(dataset, dataset_type)
     X = dataset.drop(columns=target_name)
     Y = dataset[target_name]
 
-    # split data into train and test sets
+    # split sample_data into train and test sets
     seed = 0
     test_size = test_size
     x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state=seed)
 
-    # fit model no training data
+    # fit model no training sample_data
     model = XGBClassifier()
     model.fit(x_train, y_train)
     # save the model to disk
-    filename = '../../models/' + data_file_name + '_XGBClassifier.sav'
+    filename = '../../predictive_modeling/' + data_file_name + '_XGBClassifier.sav'
     pickle.dump(model, open(filename, 'wb'))
 
-    # important features
+    # important feature_engineering
     xgb.plot_importance(model)
     plt.show()
 

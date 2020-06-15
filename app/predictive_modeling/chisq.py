@@ -14,6 +14,6 @@ def group_chi (df, group, column):
 
 # import pandas as pd
 
-# data = pd.read_csv('kdemo.tab', sep = '\t')
+# sample_data = pd.read_csv('kdemo.tab', sep = '\t')
 
-# print(group_chi(data, 'DLR_KEY', 'ProductCodeDescr'))
+# print(group_chi(sample_data, 'DLR_KEY', 'ProductCodeDescr'))
