@@ -123,6 +123,8 @@ def clean_data_main(data, target_col, groupby_col):
             print('Filled NAs successfully for column: ' + str(target_col) + '\n')
             print('Columns contains NAs' + str(get_cols_with_NAs(data)))
 
+            data.to_csv('Backup.csv')
+
         if hasattr(pd.Series(data[target_col]), 'cat') == False and hasattr(pd.Series(data[groupby_col]),
                                                                             'cat') == True:
 
