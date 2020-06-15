@@ -3,5 +3,7 @@
 
 def data_filter(data, criterion):
     data = data.query(criterion).reset_index(drop = True)
+    print('Filter: ' + str(criterion) + ' applied')
+    print('')
     print(data)
     return data
