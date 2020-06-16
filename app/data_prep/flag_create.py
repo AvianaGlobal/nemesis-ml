@@ -3,10 +3,6 @@
 import pandas as pd
 import os
 
-# Test file
-# df = pd.read_csv('C:\Users\ziruiw\Sample_Data\card transactions_edited.csv')
-# df.head()
-
 
 def flag_create(data, flag_name, condition, count):
     if count == 1:
@@ -19,7 +15,7 @@ def flag_create_main(data):
     loop = 'Y'
     i = 1
     while loop == 'Y':
-        flag_name = input('Enter the flag_name: ')
+        flag_name = input('Enter the column name of the flag you want to create: ')
         condition = input('Enter the condition for the flag: ')
         if flag_name not in data.columns:
             i = 1

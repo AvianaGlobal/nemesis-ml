@@ -249,7 +249,7 @@ def encoding(data, label):
                         data[col].dtypes) != 'uint8':
                     data = data.drop([col], axis=1)
 
-            data.to_csv('data_for_prediction.csv', index = False)
+
             #print(data.dtypes)
             print('Finished')
 

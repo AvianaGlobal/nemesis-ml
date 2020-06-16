@@ -29,6 +29,7 @@ if model_bool.upper()=='Y':
         model_building.model_building(train, test)
     elif target_bool == '2':
         data = encoding.encoding(data, False)
+        data.to_csv(datafile +'_encoded.csv', index=False)
         prediction = prediction.prediction(data)
         prediction.to_csv(datafile + '_prediction.csv', index = False)
 
