@@ -116,3 +116,6 @@ app/.DS_Store
 /**/_build/
 /**/_static/
 /**/_templates/
+docs/
+venv37/
+venv38/
