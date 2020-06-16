@@ -7,6 +7,6 @@
 
 from math import factorial as fact
 
-def Comb(n,r):
-    return(fact(n) /(fact(r)*fact(n-r)))
 
+def Comb(n, r):
+    return (fact(n) / (fact(r) * fact(n - r)))
