@@ -54,10 +54,9 @@ def XGB_Regression(file, train, test, target, data_file_name, tune):
         folds = 3
         param_comb = 5
 
-        skf = StratifiedKFold(n_splits=folds, shuffle=True, random_state=0)
 
         random_search = RandomizedSearchCV(model, param_distributions=params, n_iter=param_comb,
-                                           scoring='neg_mean_squared_error', n_jobs=4, cv=skf.split(X_train, y_train),
+                                           scoring='neg_mean_squared_error', n_jobs=4, cv=5,
                                            verbose=3, random_state=0)
 
         # Here we go

@@ -10,7 +10,7 @@ def prediction(data):
 
     loaded_model = pickle.load(open(filename, 'rb'))
     f_names = loaded_model.feature_names
-    y_pred = loaded_model.predict(data[f_names])
+    y_pred = loaded_model.predict(data[f_names].values)
     data['prediction'] = y_pred
 
     return data

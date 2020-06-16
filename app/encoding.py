@@ -232,16 +232,17 @@ def encoding(data, label):
                     # except:
                     #     print('Lookup table not found')
 
-            indexNames = data[data[collist[0]] == 123456789].index
-            for i in collist[1:]:
-                indexNames.union(data[data[i] == 123456789].index)
-            #print(data.shape)
-            #print(indexNames)
-            data.drop(indexNames, inplace=True)
-            #print(data.shape)
+            if len(collist) != 0:
+                indexNames = data[data[collist[0]] == 123456789].index
+                for i in collist[1:]:
+                    indexNames.union(data[data[i] == 123456789].index)
+                #print(data.shape)
+                #print(indexNames)
+                data.drop(indexNames, inplace=True)
+                #print(data.shape)
 
-            # drop all other categorical columns
-            #print(data.dtypes)
+                # drop all other categorical columns
+                #print(data.dtypes)
 
             for col in data:
                 if str(data[col].dtypes) != 'int64' and str(data[col].dtypes) != 'float64' and str(
