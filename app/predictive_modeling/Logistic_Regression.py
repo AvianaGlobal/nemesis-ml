@@ -1,11 +1,12 @@
 import pickle
+
+import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as plt
 from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import train_test_split
 
 
 def main():
@@ -64,7 +65,7 @@ def Logistic_Regression(file, dataset, dataset_type, data_file_name, Test_size=0
     # Confusion metrix
     Logist_R_matrix = metrics.confusion_matrix(y_test, y_pred)
 
-    sns.heatmap(pd.DataFrame(Logist_R_matrix), annot=True, cmap="YlGnBu" ,fmt='g')
+    sns.heatmap(pd.DataFrame(Logist_R_matrix), annot=True, cmap="YlGnBu", fmt='g')
     plt.tight_layout()
     plt.title('Confusion matrix', y=1.1)
     plt.ylabel('Actual label')
@@ -88,4 +89,3 @@ def Logistic_Regression(file, dataset, dataset_type, data_file_name, Test_size=0
 
 if __name__ == '__main__':
     main()
-

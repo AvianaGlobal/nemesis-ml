@@ -70,7 +70,7 @@ docs/_build/
 target/
 
 # Jupyter Notebook
-.ipynb_checkpoints
+/**/.ipynb_checkpoints/
 
 # pyenv
 .python-version
@@ -111,3 +111,11 @@ workspace.code-workspace
 docs/.DS_Store
 model_results/.DS_Store
 app/.DS_Store
+
+# Sphinx documentation support
+/**/_build/
+/**/_static/
+/**/_templates/
+docs/
+venv37/
+venv38/

@@ -5,5 +5,6 @@
 # Anderson-Darling normality Test
 from scipy.stats import anderson
 
-result = anderson(data)
-print(result)
+if __name__ == '__main__':
+    result = anderson(data)
+    print(result)

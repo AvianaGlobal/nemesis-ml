@@ -1,11 +1,12 @@
 import pickle
-import xgboost as xgb
+
 import pandas as pd
+import xgboost as xgb
 from matplotlib import pyplot as plt
-from xgboost import XGBClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 from sklearn import metrics
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from xgboost import XGBClassifier
 
 
 def main():

@@ -2,11 +2,13 @@
 # choosing a subset of the original feature_engineering that contains most of the
 # essential information, using the same criteria as PCA
 
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans
 from collections import defaultdict
+
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
 from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.preprocessing import StandardScaler
+
 
 class PFA(object):
     def __init__(self, n_features, q=None):
@@ -34,8 +36,6 @@ class PFA(object):
 
         self.indices_ = [sorted(f, key=lambda x: x[1])[0][0] for f in dists.values()]
         self.features_ = X[:, self.indices_]
-
-
 
 # pfa = PFA(n_features=10)
 # pfa.fit(X)
