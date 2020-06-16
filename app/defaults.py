@@ -18,3 +18,9 @@ database = 'BLUDB'
 columns = '*'
 schema = 'kfn42270'
 table = 'OON_SCORES'
+
+file_path = path.joinpath(f'{dataset}')
+engine_str = create_engine_str(dialect, username, password, host, port, database)
+engine = sqlalchemy.create_engine(engine_str)
+session = engine.connect()
+query = f'select {columns} from {schema}.{table} limit 10'
