@@ -17,7 +17,7 @@ def target_encode(trn_series=None,  # training categorical feature as a pd.Serie
                   encoded_col=None,
                   min_samples_leaf=1,  # minimum samples to take category average into account
                   smoothing=1,  # smoothing effect to balance categorical average vs prior
-                  noise_level=0):
+                  noise_level=0.1):
     """
     Smoothing is computed like in the following paper by Daniele Micci-Barreca
     https://kaggle2.blob.core.windows.net/forum-message-attachments/225952/7441/high%20cardinality%20categoricals.pdf
