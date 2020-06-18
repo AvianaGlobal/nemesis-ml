@@ -148,7 +148,7 @@ def clean_data_main(data, target_col, groupby_col):
 
         fill = input('Fill another column? (Y/N): ')
         if fill == 'Y':
-            target_col = input('Enter a new target column: ')
+            target_col = input('Enter a the name of the column that has NAs: ')
             groupby_col = input('Enter a new groupby column: ')
         else:
             break
