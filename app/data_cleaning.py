@@ -164,6 +164,6 @@ def data_prep(data):
     else:
         print('Finished! \n')
         print(data)
-        
+        os.remove("Backup.csv")
     return data
     

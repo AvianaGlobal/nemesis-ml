@@ -51,7 +51,6 @@ def stats_insert(df,target_col,groupby_col):
             print('Not numeric')
 
     print('Finish!')
-    os.remove("Backup.csv")
 
     return data
 

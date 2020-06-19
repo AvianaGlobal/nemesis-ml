@@ -44,8 +44,6 @@ def bin_insert(df,target_col,groupby_col):
 
                 print("Here's the new data! \n")
                 print(data)
-
-                os.remove("Backup.csv")
                 break
 
             else:

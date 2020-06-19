@@ -178,8 +178,4 @@ def clean_data_main(data, target_col, groupby_col):
 
     data = data.reset_index(drop=True)
 
-    # remove backup data
-    import os
-    os.remove("Backup.csv")
-
     return data
