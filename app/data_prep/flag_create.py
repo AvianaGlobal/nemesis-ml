@@ -30,8 +30,10 @@ def flag_create_main(data):
 
         except:
             print('Invalid condition')
+            if (data[flag_name] == 0).all():
+                data = data.drop([flag_name],axis = 1)
+            break
 
-    os.remove("Backup.csv")
     return data
 
 
