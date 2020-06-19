@@ -128,6 +128,11 @@ def clean_data_main(data, target_col, groupby_col):
             print('Filled NAs successfully for column: ' + str(target_col) + '\n')
             print('Columns contains NAs' + str(get_cols_with_NAs(data)))
 
+            # # fill NAs for groups that has enough datapoints
+            # data.loc[~data[groupby_col].isin(skipgroup), target_col] =
+            #     data[~data[groupby_col].isin(skipgroup)].groupby(groupby_col)[target_col].apply(
+            #         lambda x: x.fillna(x.mean()))
+
             data.to_csv('Backup.csv', index = False)
 
         if hasattr(pd.Series(data[target_col]), 'cat') == False and hasattr(pd.Series(data[groupby_col]),
