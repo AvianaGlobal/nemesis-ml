@@ -24,6 +24,7 @@ def NAs_ratio(data, column):  # input the whole column
 
 
 def fill_NAs(data, target_col, groupby_col):
+
     # check if each gourp has more than 20 values
 
     # temp constains info about the number of NAs in each group
@@ -46,6 +47,10 @@ def fill_NAs(data, target_col, groupby_col):
     # fill NAs for groups that has enough datapoints
     data.loc[~data[groupby_col].isin(skipgroup), target_col] = \
     data[~data[groupby_col].isin(skipgroup)].groupby(groupby_col)[target_col].apply(lambda x: x.fillna(x.mean()))
+
+    # if groupby column contains NAs, fill target column with the mean value
+    if data[groupby_col].isna().any() == True:
+        data[target_col] = data[target_col].fillna(data[target_col].mean())
 
     print(data[0:10])
     data.to_csv('Backup.csv', index = False)
