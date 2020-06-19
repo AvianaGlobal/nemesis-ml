@@ -24,6 +24,8 @@ while True:
 model_bool = input('Do you want to build a supervised machine learning model with this data? Y/N: ')
 if model_bool.upper()=='Y':
     target_bool = input('Do you want to build a model (1), or to make predictions with an unlabeled data (2)? 1/2: ')
+    while target_bool != '1' and target_bool != '2':
+        target_bool = input('Do you want to build a model (1), or to make predictions with an unlabeled data (2)? 1/2: ')
     if target_bool == '1':
         train,test = encoding.encoding(data, True)
         model_building.model_building(train, test)
