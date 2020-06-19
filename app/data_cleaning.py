@@ -8,6 +8,16 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
+def read_modification():
+    modification = input('Do you want to make another change (Y/N) ')
+    while True:
+        if modification.upper() == 'Y' or modification.upper() == 'N':
+            break
+        modification = input('Invalid input. Do you want to make another change (Y/N) ')
+
+    return modification.upper()
+
+
 def data_prep(data):
     print('1 - change data type')
     print('2 - filter data')
@@ -34,21 +44,21 @@ def data_prep(data):
                         try:
                             data[column] = data[column].astype(col_type)
                             print(data.dtypes)
-                            modification = input('Do you want to make another change (Y/N) ')
+                            modification = read_modification()
                         except KeyError:
                             print('Column ' + str(column) + ' is not defined')
-                            modification = input('Do you want to make another change (Y/N) ')
+                            modification = read_modification()
                         except:
                             print('You cannot assign ' + str(col_type) + ' type to ' + str(column) + ' column')
-                            modification = input('Do you want to make another change (Y/N) ')
+                            modification = read_modification()
                     else:
                         try:  # when pandas can recognize the date format
                             data[column] = pd.to_datetime(data[column])
-                            modification = input('Do you want to make another change (Y/N) ')
+                            modification = read_modification()
                         except:  # when pandas cannot recognize the date format
                             date_format = input('Please enter the format of your data: i.e. %y/%m/%d: ')
                             to_datetime(data, column, date_format)
-                            modification = input('Do you want to make another change (Y/N) ')
+                            modification = read_modification()
 
             if operation == '2':
 
@@ -67,7 +77,7 @@ def data_prep(data):
                         data[col] = data[col].astype('category')
 
                 print(data.dtypes)
-                modification = input('Do you want to make any change to the data type (Y/N) ')
+                modification = read_modification()
 
                 while modification.upper() == 'Y':
                     column = input('Enter the column name: ')
@@ -76,13 +86,13 @@ def data_prep(data):
                         try:
                             data[column] = data[column].astype(col_type)
                             print(data.dtypes)
-                            modification = input('Do you want to make another change (Y/N) ')
+                            modification = read_modification()
                         except KeyError:
                             print('Column ' + str(column) + ' is not defined')
-                            modification = input('Do you want to make another change (Y/N) ')
+                            modification = read_modification()
                         except:
                             print('You cannot assign ' + str(col_type) + ' type to ' + str(column) + ' column')
-                            modification = input('Do you want to make another change (Y/N) ')
+                            modification = read_modification()
                     else:
                         try:  # when pandas can recognize the date format
                             data[column] = pd.to_datetime(data[column])
@@ -102,8 +112,10 @@ def data_prep(data):
                         break
                     else:
                         print('Invalid target column or groupby column')
-
-                data = data_cleaning.clean_data_main(data, target_col, groupby_col)
+                try:
+                    data = data_cleaning.clean_data_main(data, target_col, groupby_col)
+                except:
+                    print('There is an error when cleaning the data')
 
             if operation == '4':
                 print('Here are the columns from your dataset: \n')
@@ -133,15 +145,18 @@ def data_prep(data):
                     else:
                         print('Invalid target column or groupby column')
                 data = stats_report.stats_insert(data,target_col,groupby_col)
+
+
             print('1 - change data type')
             print('2 - filter data')
             print('3 - fill NAs')
             print('4 - create flags')
             print('5 - create bins')
             print('6 - insert stats columns\n')
+
             operation = input('Do you want to make another change? : (1/2/3/4/5/6/N) ')
             
-            if operation == 'N':
+            if operation.upper() == 'N':
                 print('Finished! \n')
                 print(data)
                 break
